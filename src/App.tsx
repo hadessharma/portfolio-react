@@ -10,8 +10,10 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <Home />
+      <div className="flex flex-col h-screen">
+        <Navbar />
+        <Home />
+      </div>
     </>
   );
 }
