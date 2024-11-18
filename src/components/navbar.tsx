@@ -1,5 +1,5 @@
 import React, { useState, FC } from "react";
-
+import { Link } from "react-router-dom";
 interface NavbarState {
   isOpen: boolean;
 }
@@ -10,14 +10,22 @@ const Navbar: React.FC = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const logF = () => {
+    console.log("Clicked!");
+  };
   return (
     <nav className="flex bg-gray-800 text-white p-10 justify-between">
-      <h2 className="text-2xl flex-1">Deep Sharma</h2>
+      <h2 className="text-3xl flex-1 min-w-7">Deep Sharma</h2>
       <ul className="flex item-center hidden md:flex">
-        <li className="text-2xl px-5">About</li>
-        <li className="text-2xl px-5">Experience</li>
-        <li className="text-2xl px-5">Project</li>
-        <li className="text-2xl px-5">Contact</li>
+        <li className="text-xl px-5" onClick={logF}>
+          About
+        </li>
+        <li className="text-xl px-5">
+          <Link to={"/experience"}>Experience</Link>
+        </li>
+        <li className="text-xl px-5">Project</li>
+        <li className="text-xl px-5">Contact</li>
       </ul>
 
       {/* HAMBURGER */}
@@ -28,7 +36,7 @@ const Navbar: React.FC = () => {
       </button>
       {/* menus */}
       <ul
-        className={`bg-gray-800 flex flex-col w-screen absolute right-0 duration-150 space-y-3 justify-end md:hidden ${
+        className={`bg-gray-800 flex flex-col w-screen absolute right-0 duration-150 space-y-2 justify-end md:hidden ${
           isOpen ? "top-0" : "-top-full"
         }`}
       >
@@ -40,7 +48,7 @@ const Navbar: React.FC = () => {
           About
         </li>
         <li className="flex justify-center w-full px-5 hover:bg-[#71717a]">
-          Experience
+          <Link to={"/experience"}>Experience</Link>
         </li>
         <li className="flex justify-center w-full px-5 hover:bg-[#71717a]">
           Project
