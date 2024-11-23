@@ -13,6 +13,19 @@ import mysql from "../../assets/skill-icons/mysql.png";
 import k8s from "../../assets/skill-icons/kubernetes.png";
 import git from "../../assets/skill-icons/git.png";
 
+// frontend import
+import html from "../../assets/skill-icons/html.png";
+import react from "../../assets/skill-icons/react.png";
+import tailwind from "../../assets/skill-icons/tailwind.png";
+import redux from "../../assets/skill-icons/redux.png";
+import compose from "../../assets/skill-icons/jetpackcompose.png";
+
+// cloud and database import
+import azure from "../../assets/skill-icons/azure.png";
+import aws from "../../assets/skill-icons/aws.png";
+import jenkins from "../../assets/skill-icons/jenkins.png";
+import terraform from "../../assets/skill-icons/terraform.png";
+import docker from "../../assets/skill-icons/docker.png";
 export interface ImageData {
   img: string;
   title: string;
@@ -65,5 +78,51 @@ export const toolsDatabase: ImageData[] = [
   {
     img: git,
     title: "Git",
+  },
+];
+
+export const frontend: ImageData[] = [
+  {
+    img: html,
+    title: "HTML",
+  },
+  {
+    img: react,
+    title: "REACT",
+  },
+  {
+    img: tailwind,
+    title: "Tailwind",
+  },
+  {
+    img: redux,
+    title: "Redux",
+  },
+  {
+    img: compose,
+    title: "Compose",
+  },
+];
+
+export const cloudDevOps: ImageData[] = [
+  {
+    img: azure,
+    title: "Azure",
+  },
+  {
+    img: aws,
+    title: "AWS",
+  },
+  {
+    img: jenkins,
+    title: "Jenkins",
+  },
+  {
+    img: terraform,
+    title: "Terraform",
+  },
+  {
+    img: docker,
+    title: "Docker",
   },
 ];

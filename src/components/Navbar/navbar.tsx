@@ -16,10 +16,12 @@ const Navbar: React.FC = () => {
   };
   return (
     <nav className="flex bg-gray-800 text-white p-10 justify-between">
-      <h2 className="text-3xl flex-1 min-w-7">Deep Sharma</h2>
-      <ul className="flex item-center hidden md:flex">
+      <h2 className="text-3xl flex-1 min-w-7">
+        <Link to={"/"}>Deep Sharma</Link>
+      </h2>
+      <ul className="item-center hidden md:flex">
         <li className="text-xl px-5" onClick={logF}>
-          About
+          <Link to={"/about"}>About</Link>
         </li>
         <li className="text-xl px-5">
           <Link to={"/experience"}>Experience</Link>
