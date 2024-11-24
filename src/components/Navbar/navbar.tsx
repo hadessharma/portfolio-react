@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
           <div className="w-6 h-1 -rotate-45 absolute bg-white"></div>
         </button>
         <li className="flex justify-center w-full px-5 hover:bg-[#71717a]">
-          About
+          <Link to={"/about"}>About</Link>
         </li>
         <li className="flex justify-center w-full px-5 hover:bg-[#71717a]">
           <Link to={"/experience"}>Experience</Link>

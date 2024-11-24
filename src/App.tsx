@@ -10,13 +10,11 @@ function App() {
     <Router>
       <div className="h-screen">
         <Navbar />
-        <div className="h-full">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
       </div>
     </Router>
   );
