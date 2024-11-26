@@ -6,7 +6,7 @@ const About: React.FC = () => {
   return (
     <>
       <div className="flex flex-col md:flex-row items-center w-full h-full md:px-40">
-        <div className="flex flex-col flex-1 items-center">
+        <div className="flex flex-col flex-1 items-center px-10">
           <p className="text-base pb-5 font-light">Get to Know More</p>
           <h2 className="text-5xl font-bold">About Me</h2>
           <br />
@@ -17,7 +17,7 @@ const About: React.FC = () => {
             designing automated cloud infrastructure deployment platforms.
           </p>
         </div>
-        <div className="flex flex-1 flex-col px-10 space-y-4">
+        <div className="flex flex-1 flex-col px-10 space-y-4 w-full sm: -mt-24 md:m-0 max-w-2xl">
           <div className="flex flex-col items-center border border-black rounded-2xl p-2 w-full">
             <img
               src={experienceIcon}
