@@ -75,10 +75,10 @@ export const toolsDatabase: ImageData[] = [
     img: k8s,
     title: "Kubernetes",
   },
-  {
-    img: git,
-    title: "Git",
-  },
+  // {
+  //   img: git,
+  //   title: "Git",
+  // },
 ];
 
 export const frontend: ImageData[] = [

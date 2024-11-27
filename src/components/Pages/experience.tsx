@@ -10,7 +10,7 @@ import {
 const Experience: React.FC = () => {
   return (
     <>
-      <div className="flex flex-col items-center w-full md:h-full sm:h-screen overflow-auto pt-4">
+      <div className="flex flex-col items-center w-full overflow-auto pt-4">
         <div className="flex flex-col items-center py-4">
           <h2 className="text-center text-base font-semibold text-zinc-500">
             Explore My
@@ -28,13 +28,13 @@ const Experience: React.FC = () => {
             }}
           >
             <CardContent>
-              <h2 className="text-center text-lg sm:text-xl lg:text-2xl font-semibold text-zinc-500">
+              <h2 className="text-center text-lg sm:text-xl lg:text-2xl font-semibold text-zinc-500 pb-4">
                 Programming Languages
               </h2>
-              <div className="flex flex-wrap justify-around p-4">
+              <div className="flex flex-wrap justify-around">
                 {programmingLanguages.map((item) => (
                   <img
-                    className="w-auto h-auto sm:h-24 md:h-28 lg:h-32 max-w-36 p-2"
+                    className="w-auto h-auto sm:h-24 md:h-28 lg:h-28 max-w-36 p-2"
                     srcSet={`${item.img}`}
                     src={`${item.img}`}
                     alt={item.title}
@@ -55,10 +55,10 @@ const Experience: React.FC = () => {
               <h2 className="text-center text-lg sm:text-xl lg:text-2xl font-semibold text-zinc-500">
                 Tools & Databases
               </h2>
-              <div className="flex flex-wrap justify-around p-4">
+              <div className="flex flex-wrap justify-around">
                 {toolsDatabase.map((item) => (
                   <img
-                    className="w-auto h-auto sm:h-24 md:h-28 lg:h-32 max-w-36 p-2"
+                    className="w-auto h-auto sm:h-24 md:h-28 lg:h-28 max-w-36 p-2"
                     srcSet={`${item.img}`}
                     src={`${item.img}`}
                     alt={item.title}
@@ -79,10 +79,10 @@ const Experience: React.FC = () => {
               <h2 className="text-center text-lg sm:text-xl lg:text-2xl font-semibold text-zinc-500">
                 Frontend
               </h2>
-              <div className="flex flex-wrap justify-around p-4">
+              <div className="flex flex-wrap justify-around">
                 {frontend.map((item) => (
                   <img
-                    className="w-auto h-auto sm:h-24 md:h-28 lg:h-32 max-w-36 p-2"
+                    className="w-auto h-auto sm:h-24 md:h-28 lg:h-28 max-w-36 p-2"
                     srcSet={`${item.img}`}
                     src={`${item.img}`}
                     alt={item.title}
@@ -103,10 +103,10 @@ const Experience: React.FC = () => {
               <h2 className="text-center text-lg sm:text-xl lg:text-2xl font-semibold text-zinc-500">
                 Cloud and DevOps
               </h2>
-              <div className="flex flex-wrap justify-around p-4">
+              <div className="flex flex-wrap justify-around">
                 {cloudDevOps.map((item) => (
                   <img
-                    className="w-auto h-auto sm:h-24 md:h-28 lg:h-32 max-w-36 p-2"
+                    className="w-auto h-auto sm:h-24 md:h-28 lg:h-28 max-w-36 p-2"
                     srcSet={`${item.img}`}
                     src={`${item.img}`}
                     alt={item.title}

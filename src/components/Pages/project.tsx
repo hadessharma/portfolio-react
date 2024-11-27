@@ -26,7 +26,7 @@ const Project: React.FC = () => {
               Browse My Recent
             </h2>
             <h2 className="text-center text-5xl font-semibold text-zinc-950">
-              Experiences
+              Projects
             </h2>
           </div>
         </div>
