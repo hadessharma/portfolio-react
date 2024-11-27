@@ -1,8 +1,8 @@
-import React, { useState, FC } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-interface NavbarState {
-  isOpen: boolean;
-}
+// interface NavbarState {
+//   isOpen: boolean;
+// }
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
