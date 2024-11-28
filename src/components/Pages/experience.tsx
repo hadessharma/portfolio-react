@@ -34,7 +34,7 @@ const Experience: React.FC = () => {
               <div className="flex flex-wrap justify-around">
                 {programmingLanguages.map((item) => (
                   <img
-                    className="w-auto h-auto sm:h-24 md:h-28 lg:h-28 max-w-36 p-2"
+                    className="w-auto h-auto sm:h-24 md:h-28 lg:h-28 max-w-36 p-2 mr-4"
                     srcSet={`${item.img}`}
                     src={`${item.img}`}
                     alt={item.title}
@@ -58,7 +58,7 @@ const Experience: React.FC = () => {
               <div className="flex flex-wrap justify-around">
                 {toolsDatabase.map((item) => (
                   <img
-                    className="w-auto h-auto sm:h-24 md:h-28 lg:h-28 max-w-36 p-2"
+                    className="w-auto h-auto sm:h-24 md:h-28 lg:h-28 max-w-36 p-2 mr-4"
                     srcSet={`${item.img}`}
                     src={`${item.img}`}
                     alt={item.title}
@@ -82,7 +82,7 @@ const Experience: React.FC = () => {
               <div className="flex flex-wrap justify-around">
                 {frontend.map((item) => (
                   <img
-                    className="w-auto h-auto sm:h-24 md:h-28 lg:h-28 max-w-36 p-2"
+                    className="w-auto h-auto sm:h-24 md:h-28 lg:h-28 max-w-36 p-2 mx-4"
                     srcSet={`${item.img}`}
                     src={`${item.img}`}
                     alt={item.title}
@@ -106,7 +106,7 @@ const Experience: React.FC = () => {
               <div className="flex flex-wrap justify-around">
                 {cloudDevOps.map((item) => (
                   <img
-                    className="w-auto h-auto sm:h-24 md:h-28 lg:h-28 max-w-36 p-2"
+                    className="w-auto h-auto sm:h-24 md:h-28 lg:h-28 max-w-36 p-2 mr-4"
                     srcSet={`${item.img}`}
                     src={`${item.img}`}
                     alt={item.title}

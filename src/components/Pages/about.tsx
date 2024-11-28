@@ -5,7 +5,7 @@ import educationIcon from "../../assets/education.png";
 const About: React.FC = () => {
   return (
     <>
-      <div className="flex flex-col md:flex-row items-center w-full h-full md:px-40">
+      <div className="flex flex-col md:flex-row items-center w-full h-5/6 md:px-40">
         <div className="flex flex-col flex-1 items-center px-10">
           <p className="text-base pb-5 font-light">Get to Know More</p>
           <h2 className="text-5xl font-bold">About Me</h2>
