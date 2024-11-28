@@ -11,7 +11,7 @@ import mongodb from "../../assets/skill-icons/mongodb.png";
 import express from "../../assets/skill-icons/express.png";
 import mysql from "../../assets/skill-icons/mysql.png";
 import k8s from "../../assets/skill-icons/kubernetes.png";
-import git from "../../assets/skill-icons/git.png";
+// import git from "../../assets/skill-icons/git.png";
 
 // frontend import
 import html from "../../assets/skill-icons/html.png";
