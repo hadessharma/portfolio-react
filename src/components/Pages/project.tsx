@@ -30,7 +30,7 @@ const Project: React.FC = () => {
             </h2>
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row md:space-x-10 md:space-y-0 sm:space-x-5 space-y-5 justify-center items-center px-10">
+        <div className="flex flex-col w-screen sm:flex-row md:space-x-10 md:space-y-0 sm:space-x-5 space-y-5 justify-center items-center px-10 overflow-auto hover:overflow-x-scroll">
           {/* card slider */}
           <Card img={tictacttoeImage1} app={true} />
           <Card img={phishingdetectionImage1} app={false} />
