@@ -29,7 +29,9 @@ const Navbar: React.FC = () => {
         <li className="text-xl px-5">
           <Link to={"/project"}>Project</Link>
         </li>
-        <li className="text-xl px-5">Contact</li>
+        <li className="text-xl px-5">
+          <Link to={"/contact"}>Contact</Link>
+        </li>
       </ul>
 
       {/* HAMBURGER */}

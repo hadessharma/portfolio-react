@@ -5,6 +5,7 @@ import Experience from "./components/Pages/experience";
 import Home from "./components/Pages/home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Project from "./components/Pages/project";
+import Contact from "./components/Pages/contact";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/experience" element={<Experience />} />
           <Route path="/about" element={<About />} />
           <Route path="/project" element={<Project />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
     </Router>
