@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../cards";
+import Card from "../projectCard";
 
 // importing tictactoe
 import tictacttoeImage1 from "../../assets/project/tictactoe/1.jpg";
@@ -32,9 +32,13 @@ const Project: React.FC = () => {
         </div>
         <div className="flex flex-col w-screen sm:flex-row md:space-x-10 md:space-y-0 sm:space-x-5 space-y-5 justify-center items-center px-10 overflow-auto hover:overflow-x-scroll">
           {/* card slider */}
-          <Card img={tictacttoeImage1} app={true} />
-          <Card img={phishingdetectionImage1} app={false} />
-          <Card img={terraZureImage1} app={false} />
+          <Card name="Tic Tac Toe" img={tictacttoeImage1} app={true} />
+          <Card
+            name="Phishing Detection"
+            img={phishingdetectionImage1}
+            app={false}
+          />
+          <Card name="TerraZure" img={terraZureImage1} app={false} />
         </div>
       </div>
     </>

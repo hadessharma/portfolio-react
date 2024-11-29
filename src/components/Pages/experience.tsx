@@ -44,13 +44,7 @@ const Experience: React.FC = () => {
               </div>
             </CardContent>
           </Card>
-          <Card
-            className="flex-grow flex-1 w-full lg:h-full md:h-full sm:w-1/2 md:w-1/3 lg:w-1/4 md:mx-4 my-4"
-            sx={{
-              border: 1,
-              borderRadius: 2.5,
-            }}
-          >
+          <Card className="flex-grow flex-1 w-full lg:h-full md:h-full sm:w-1/2 md:w-1/3 lg:w-1/4 md:mx-4 my-4 border border-black">
             <CardContent>
               <h2 className="text-center text-lg sm:text-xl lg:text-2xl font-semibold text-zinc-500">
                 Tools & Databases
