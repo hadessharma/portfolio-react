@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
       </button>
       {/* menus */}
       <ul
-        className={`bg-gray-800 flex flex-col w-screen absolute right-0 duration-150 space-y-2 justify-end md:hidden ${
+        className={`bg-zinc-800 flex flex-col w-screen absolute right-0 duration-150 space-y-2 justify-end md:hidden ${
           isOpen ? "top-0" : "-top-full"
         }`}
       >
@@ -50,16 +50,28 @@ const Navbar: React.FC = () => {
           <div className="w-6 h-1 rotate-45 absolute bg-white"></div>
           <div className="w-6 h-1 -rotate-45 absolute bg-white"></div>
         </button>
-        <li className="flex justify-center w-full px-5 hover:bg-[#71717a]">
+        <li
+          className="flex justify-center w-full px-5 hover:bg-[#71717a]"
+          onClick={toggleMenu}
+        >
           <Link to={"/about"}>About</Link>
         </li>
-        <li className="flex justify-center w-full px-5 hover:bg-[#71717a]">
+        <li
+          className="flex justify-center w-full px-5 hover:bg-[#71717a]"
+          onClick={toggleMenu}
+        >
           <Link to={"/experience"}>Experience</Link>
         </li>
-        <li className="flex justify-center w-full px-5 hover:bg-[#71717a]">
+        <li
+          className="flex justify-center w-full px-5 hover:bg-[#71717a]"
+          onClick={toggleMenu}
+        >
           Project
         </li>
-        <li className="flex justify-center w-full px-5 hover:bg-[#71717a]">
+        <li
+          className="flex justify-center w-full px-5 hover:bg-[#71717a]"
+          onClick={toggleMenu}
+        >
           Contact
         </li>
       </ul>
