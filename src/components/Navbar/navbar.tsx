@@ -66,13 +66,13 @@ const Navbar: React.FC = () => {
           className="flex justify-center w-full px-5 hover:bg-[#71717a]"
           onClick={toggleMenu}
         >
-          Project
+          <Link to={"/project"}>Project</Link>
         </li>
         <li
           className="flex justify-center w-full px-5 hover:bg-[#71717a]"
           onClick={toggleMenu}
         >
-          Contact
+          <Link to={"./contact"}>Contact</Link>
         </li>
       </ul>
     </nav>
