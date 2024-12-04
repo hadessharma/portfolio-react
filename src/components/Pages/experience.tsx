@@ -6,6 +6,7 @@ import {
   frontend,
   cloudDevOps,
 } from "../data/experienceData";
+import ExperienceCard from "../Cards/experienceCard";
 
 const Experience: React.FC = () => {
   return (
@@ -20,7 +21,16 @@ const Experience: React.FC = () => {
           </h2>
         </div>
         <div className="flex flex-col sm:flex-row flex-wrap p-4 w-full h-auto">
-          <Card
+          <div className="flex justify-evenly px-20">
+            <ExperienceCard
+              name="Programming Languages"
+              logos={programmingLanguages}
+            />
+            <ExperienceCard name="Tools & Databases" logos={toolsDatabase} />
+            <ExperienceCard name="Frontend" logos={frontend} />
+            <ExperienceCard name="Cloud & DevOps" logos={cloudDevOps} />
+          </div>
+          {/* <Card
             className="flex-grow flex-1 w-full lg:h-full md:h-full sm:w-1/2 md:w-1/3 lg:w-1/4 md:mx-4 my-4"
             sx={{
               border: 1,
@@ -109,7 +119,7 @@ const Experience: React.FC = () => {
                 ))}
               </div>
             </CardContent>
-          </Card>
+          </Card> */}
         </div>
       </div>
     </>

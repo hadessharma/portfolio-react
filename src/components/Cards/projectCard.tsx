@@ -5,7 +5,7 @@ interface CardProps {
   img: string;
   app: boolean;
 }
-const Card: React.FC<CardProps> = ({ name, img, app }) => {
+const ProjectCard: React.FC<CardProps> = ({ name, img, app }) => {
   return (
     <>
       <div className="transition-transform duration-300 ease-in-out transform hover:scale-105 flex flex-col border border-black rounded-3xl p-4">
@@ -43,4 +43,4 @@ const Card: React.FC<CardProps> = ({ name, img, app }) => {
   );
 };
 
-export default Card;
+export default ProjectCard;
