@@ -14,7 +14,7 @@ const ProjectCard: React.FC<CardProps> = ({ name, img, app, github, demo }) => {
         {/* card */}
         <div className="border border-black rounded-3xl">
           {/* image slider */}
-          <button className="absolute top-2 right-2 p-0 font-baskerville italic font-bold text-xl bg-white border border-black size-7 rounded-full transition-transform duration-300 ease-in-out transform hover:scale-110 hover:bg-black hover:text-white hover:border-white z-10">
+          <button className="absolute top-2 right-2 flex items-center justify-center font-baskerville italic font-bold text-2xl bg-white border border-black w-8 h-8 rounded-full transition-transform duration-300 ease-in-out transform hover:scale-110 hover:bg-black hover:text-white hover:border-white z-10">
             i
           </button>
           <img
@@ -30,15 +30,15 @@ const ProjectCard: React.FC<CardProps> = ({ name, img, app, github, demo }) => {
           <h3 className="text-center text-2xl font-semibold px-10">{name}</h3>
           <div className="flex justify-evenly">
             {/* Buttons */}
-            <div className="border p-3 min-w-28 border-zinc-400 rounded-2xl bg-zinc-800 text-white hover:bg-black transition delay-150 hover:delay-75">
-              <a href={github} className="block text-center">
+            <div className="border min-w-28 border-zinc-400 rounded-2xl bg-zinc-800 text-white hover:bg-black transition delay-150 hover:delay-75">
+              <a href={github} className="block text-center p-3">
                 GitHub
               </a>
             </div>
             <>
               {demo && (
-                <div className="border border-black rounded-2xl p-3 min-w-28 hover:bg-black hover:text-white transition delay-150 hover:delay-75">
-                  <a href="" className="block text-center">
+                <div className="border border-black rounded-2xl min-w-28 hover:bg-black hover:text-white transition delay-150 hover:delay-75">
+                  <a href="" className="block text-center p-3">
                     Live Demo
                   </a>
                 </div>
