@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
     console.log("Clicked!");
   };
   return (
-    <nav className="flex bg-zinc-800 text-white px-40 py-10 justify-between">
+    <nav className="flex bg-zinc-800 text-white p-10 md:px-10 lg:px-40 md:py-10 justify-between">
       <h2 className="text-3xl flex-1 min-w-7">
         <Link to={"/"}>Deep Sharma</Link>
       </h2>
