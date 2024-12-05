@@ -13,7 +13,12 @@ const ExperienceCard: React.FC<CardProps> = ({ name, logos }) => {
         </div>
         <div className="flex flex-wrap justify-center items-center gap-4 grow">
           {logos.map((item) => (
-            <img src={item.img} alt={item.title} className=""></img>
+            <img
+              key={item.title}
+              src={item.img}
+              alt={item.title}
+              className=""
+            ></img>
           ))}
         </div>
       </div>

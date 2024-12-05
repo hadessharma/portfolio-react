@@ -20,7 +20,7 @@ const Project: React.FC = () => {
   return (
     <>
       <div className="flex flex-col">
-        <div className="flex flex-col items-center w-full md:h-full overflow-auto pt-4">
+        <div className="flex flex-col flex-none items-center w-full md:h-full overflow-auto pt-4">
           <div className="flex flex-col items-center py-4">
             <h2 className="text-center text-base font-semibold text-zinc-500">
               Browse My Recent
@@ -30,15 +30,28 @@ const Project: React.FC = () => {
             </h2>
           </div>
         </div>
-        <div className="flex flex-col w-screen sm:flex-row md:space-x-10 md:space-y-0 sm:space-x-5 space-y-5 justify-center items-center px-10 overflow-auto hover:overflow-x-scroll">
+        <div className="flex flex-col grow w-screen sm:flex-row md:space-x-10 md:space-y-0 sm:space-x-5 space-y-5 justify-center items-center px-10">
+          {/* <div className="flex flex-col grow w-screen sm:flex-row md:space-x-10 md:space-y-0 sm:space-x-5 space-y-5 justify-center items-center px-10 overflow-auto hover:overflow-x-scroll"> */}
           {/* card slider */}
-          <ProjectCard name="Tic Tac Toe" img={tictacttoeImage1} app={true} />
+          <ProjectCard
+            name="Tic Tac Toe"
+            img={tictacttoeImage1}
+            app={true}
+            github="https://github.com/hadessharma/TicTacToe"
+            demo={["https://www.youtube.com/watch?v=TWcV-bMbiUk"]}
+          />
           <ProjectCard
             name="Phishing Detection"
             img={phishingdetectionImage1}
             app={false}
+            github="https://github.com/shoviknandy/Phishing-detection---ML"
           />
-          <ProjectCard name="TerraZure" img={terraZureImage1} app={false} />
+          <ProjectCard
+            name="TerraZure"
+            img={terraZureImage1}
+            app={false}
+            github="https://github.com/hadessharma/terraZure"
+          />
         </div>
       </div>
     </>
