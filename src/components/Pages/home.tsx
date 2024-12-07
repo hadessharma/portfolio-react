@@ -21,8 +21,8 @@ const Home: React.FC = () => {
   return (
     <>
       <div className="flex flex-wrap justify-center items-center h-5/6">
-        <div className="basis-96 min-w-96">
-          <img src={profilePic} alt="profile pic" />
+        <div className="basis-96 min-w-24 shrink">
+          <img src={profilePic} alt="profile pic" className="p-4" />
         </div>
         <div className="flex flex-col px-10 size-96 min-w-max justify-center items-center">
           <h3 className="pt-2 text-base">Hello I'm</h3>
