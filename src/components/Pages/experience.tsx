@@ -1,5 +1,4 @@
 import React from "react";
-import { Card, CardContent } from "@mui/material";
 import {
   programmingLanguages,
   toolsDatabase,
@@ -20,16 +19,16 @@ const Experience: React.FC = () => {
             Experiences
           </h2>
         </div>
-        <div className="flex flex-col sm:flex-row flex-wrap p-4 w-full h-auto">
-          <div className="flex justify-evenly px-20">
-            <ExperienceCard
-              name="Programming Languages"
-              logos={programmingLanguages}
-            />
-            <ExperienceCard name="Tools & Databases" logos={toolsDatabase} />
-            <ExperienceCard name="Frontend" logos={frontend} />
-            <ExperienceCard name="Cloud & DevOps" logos={cloudDevOps} />
-          </div>
+        <div className="flex flex-col sm:flex-row flex-wrap justify-evenly px-5 md:px-20 h-auto">
+          {/* <div className="flex justify-evenly px-20"> */}
+          <ExperienceCard
+            name="Programming Languages"
+            logos={programmingLanguages}
+          />
+          <ExperienceCard name="Tools & Databases" logos={toolsDatabase} />
+          <ExperienceCard name="Frontend" logos={frontend} />
+          <ExperienceCard name="Cloud & DevOps" logos={cloudDevOps} />
+          {/* </div> */}
           {/* <Card
             className="flex-grow flex-1 w-full lg:h-full md:h-full sm:w-1/2 md:w-1/3 lg:w-1/4 md:mx-4 my-4"
             sx={{

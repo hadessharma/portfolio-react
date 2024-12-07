@@ -7,11 +7,11 @@ interface CardProps {
 const ExperienceCard: React.FC<CardProps> = ({ name, logos }) => {
   return (
     <>
-      <div className="flex flex-col w-1/5 border-black border rounded-2xl">
+      <div className="flex flex-col md:w-1/5 border-black border my-5 p-2 rounded-2xl">
         <div className="flex justify-center text-2xl py-4">
-          <h2 className="text-center">{name}</h2>
+          <h2 className="text-center text-zinc-500 font-semibold">{name}</h2>
         </div>
-        <div className="flex flex-wrap justify-center items-center gap-4 grow">
+        <div className="flex flex-wrap justify-center items-center gap-4 grow mt-2">
           {logos.map((item) => (
             <img
               key={item.title}
