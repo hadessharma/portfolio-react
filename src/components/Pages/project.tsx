@@ -39,18 +39,27 @@ const Project: React.FC = () => {
             app={true}
             github="https://github.com/hadessharma/TicTacToe"
             demo={["https://www.youtube.com/watch?v=TWcV-bMbiUk"]}
+            info={[
+              "This project develops a Tic-Tac-Toe app for Android, featuring an AI opponent that uses the Minimax algorithm with alpha-beta pruning for optimized gameplay across three difficulty levels: Easy, Medium, and Hard.",
+            ]}
           />
           <ProjectCard
             name="Phishing Detection"
             img={phishingdetectionImage1}
             app={false}
             github="https://github.com/shoviknandy/Phishing-detection---ML"
+            info={[
+              "This project aims to detect phishing URLs using advanced machine learning techniques. We compare and contrast different algorithms to identify the most effective approach in phishing detection.",
+            ]}
           />
           <ProjectCard
             name="TerraZure"
             img={terraZureImage1}
             app={false}
             github="https://github.com/hadessharma/terraZure"
+            info={[
+              "TerraZure enables users to easily deploy and manage cloud resources through a user-friendly graphical interface, without needing in-depth knowledge of the underlying Terraform technology. The platform integrates with multiple cloud providers, allowing authenticated deployment across different environments. Users can customize cloud deployments through simple front-end forms, which directly feed into Terraform's automation modules.",
+            ]}
           />
         </div>
       </div>
