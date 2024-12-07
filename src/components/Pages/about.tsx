@@ -17,7 +17,7 @@ const About: React.FC = () => {
             designing automated cloud infrastructure deployment platforms.
           </p>
         </div>
-        <div className="flex flex-1 flex-col px-10 space-y-4 w-full sm: -mt-24 md:m-0 max-w-2xl">
+        <div className="flex flex-1 flex-col justify-center px-10 space-y-4 w-full sm: -mt-24 md:m-0 max-w-2xl">
           <div className="flex flex-col items-center border border-black rounded-2xl p-2 w-full">
             <img
               src={experienceIcon}
