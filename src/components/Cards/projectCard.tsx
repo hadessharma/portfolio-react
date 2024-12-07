@@ -22,6 +22,11 @@ const ProjectCard: React.FC<CardProps> = ({
     setIsInfo(!isInfo);
   };
 
+  const handleCick = () => {
+    if (typeof window != "undefined" && window.innerWidth < 640) {
+      toggleHover();
+    }
+  };
   return (
     <div className="relative">
       <div className="transition-transform duration-300 ease-in-out transform hover:scale-105 flex flex-col border border-black rounded-3xl p-4">
@@ -29,10 +34,12 @@ const ProjectCard: React.FC<CardProps> = ({
         <div className="border border-black rounded-3xl">
           {/* image slider */}
           <button
-            className="absolute top-2 right-2 flex items-center justify-center font-baskerville italic font-bold text-2xl bg-white border border-black w-8 h-8 rounded-full transition-transform duration-300 ease-in-out transform hover:scale-110 hover:bg-black hover:text-white hover:border-white z-10"
+            className={`absolute top-2 right-2 flex items-center justify-center font-baskerville italic font-bold text-2xl bg-white border border-black w-8 h-8 rounded-full transition-transform duration-300 ease-in-out transform hover:scale-110 hover:bg-black hover:text-white hover:border-white z-10
+            ${info ? "" : " "}`}
             onMouseEnter={toggleHover}
             onMouseLeave={toggleHover}
-            onClick={toggleHover}
+            onClick={handleCick}
+            disabled={isInfo}
           >
             i
           </button>
