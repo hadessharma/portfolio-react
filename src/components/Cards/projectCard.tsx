@@ -5,7 +5,7 @@ interface CardProps {
   img: string;
   app: boolean;
   github: string;
-  demo?: string[];
+  demo?: { title: string; link: string }[];
   info: string[];
 }
 const ProjectCard: React.FC<CardProps> = ({
@@ -17,9 +17,14 @@ const ProjectCard: React.FC<CardProps> = ({
   info,
 }) => {
   const [isInfo, setIsInfo] = useState<boolean>(false);
+  const [isDemoClicked, setIsDemoClicked] = useState<boolean>(false);
 
   const toggleHover = () => {
     setIsInfo(!isInfo);
+  };
+
+  const toggleDemoClicked = () => {
+    setIsDemoClicked(!isDemoClicked);
   };
 
   const handleCick = () => {
@@ -68,7 +73,7 @@ const ProjectCard: React.FC<CardProps> = ({
             <div className="border min-w-28 border-zinc-400 rounded-2xl bg-zinc-800 text-white hover:bg-black transition delay-150 hover:delay-75">
               <button
                 onClick={() => window.open(github)}
-                className="w-full text-center p-3"
+                className="w-full text-center p-3 text-sm"
               >
                 GitHub
               </button>
@@ -76,9 +81,23 @@ const ProjectCard: React.FC<CardProps> = ({
             <>
               {demo && (
                 <div className="border border-black rounded-2xl min-w-28 hover:bg-black hover:text-white transition delay-150 hover:delay-75">
-                  <a href="" className="block text-center p-3">
-                    Live Demo
-                  </a>
+                  {!isDemoClicked ? (
+                    <button
+                      className="w-full text-center p-3 text-sm"
+                      onClick={toggleDemoClicked}
+                    >
+                      Live Demo
+                    </button>
+                  ) : (
+                    demo.map((item) => (
+                      <button
+                        className="w-full text-center p-3 text-sm"
+                        onClick={() => window.open(item.link)}
+                      >
+                        {item.title}
+                      </button>
+                    ))
+                  )}
                 </div>
               )}
             </>

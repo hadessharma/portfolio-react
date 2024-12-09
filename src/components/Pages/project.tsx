@@ -38,7 +38,16 @@ const Project: React.FC = () => {
             img={tictacttoeImage1}
             app={true}
             github="https://github.com/hadessharma/TicTacToe"
-            demo={["https://www.youtube.com/watch?v=TWcV-bMbiUk"]}
+            demo={[
+              {
+                title: "link",
+                link: "https://www.youtube.com/watch?v=TWcV-bMbiUk",
+              },
+              {
+                title: "",
+                link: "",
+              },
+            ]}
             info={[
               "This project develops a Tic-Tac-Toe app for Android, featuring an AI opponent that uses the Minimax algorithm with alpha-beta pruning for optimized gameplay across three difficulty levels: Easy, Medium, and Hard.",
             ]}

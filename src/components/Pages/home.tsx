@@ -24,7 +24,7 @@ const Home: React.FC = () => {
         <div className="basis-96 min-w-24 shrink">
           <img src={profilePic} alt="profile pic" className="p-4" />
         </div>
-        <div className="flex flex-col px-10 size-96 min-w-max justify-center items-center">
+        <div className="flex flex-col px-10 size-96 min-w-max justify-center items-center cursor-default">
           <h3 className="pt-2 text-base">Hello I'm</h3>
           <h1 className="py-2 text-5xl font-semibold">Deep Sharma</h1>
           <h2 className="py-2 text-3xl font-semibold text-zinc-500 mb-3">

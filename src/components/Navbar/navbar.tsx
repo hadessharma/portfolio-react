@@ -20,16 +20,16 @@ const Navbar: React.FC = () => {
         <Link to={"/"}>Deep Sharma</Link>
       </h2>
       <ul className="item-center hidden md:flex">
-        <li className="text-xl px-5" onClick={logF}>
+        <li className="text-xl px-5 hover:scale-105" onClick={logF}>
           <Link to={"/about"}>About</Link>
         </li>
-        <li className="text-xl px-5">
+        <li className="text-xl px-5 hover:scale-105">
           <Link to={"/experience"}>Experience</Link>
         </li>
-        <li className="text-xl px-5">
+        <li className="text-xl px-5 hover:scale-105">
           <Link to={"/project"}>Project</Link>
         </li>
-        <li className="text-xl px-5">
+        <li className="text-xl px-5 hover:scale-105">
           <Link to={"/contact"}>Contact</Link>
         </li>
       </ul>
