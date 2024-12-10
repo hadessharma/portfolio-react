@@ -80,23 +80,27 @@ const ProjectCard: React.FC<CardProps> = ({
             </div>
             <>
               {demo && (
-                <div className="border border-black rounded-2xl min-w-28 hover:bg-black hover:text-white transition delay-150 hover:delay-75">
-                  {!isDemoClicked ? (
-                    <button
-                      className="w-full text-center p-3 text-sm"
-                      onClick={toggleDemoClicked}
-                    >
+                <div className="relative">
+                  <div
+                    className="border border-black rounded-2xl min-w-28 bg-white hover:bg-black hover:text-white transition delay-150 hover:delay-75 cursor-pointer"
+                    onClick={toggleDemoClicked}
+                  >
+                    <button className="w-full text-center p-3 text-sm">
                       Live Demo
                     </button>
-                  ) : (
-                    demo.map((item) => (
-                      <button
-                        className="w-full text-center p-3 text-sm"
-                        onClick={() => window.open(item.link)}
-                      >
-                        {item.title}
-                      </button>
-                    ))
+                  </div>
+                  {isDemoClicked && (
+                    <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                      {demo.map((item, index) => (
+                        <button
+                          key={index}
+                          onClick={() => window.open(item.link)}
+                          className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 hover:text-black"
+                        >
+                          {item.title}
+                        </button>
+                      ))}
+                    </div>
                   )}
                 </div>
               )}

@@ -40,12 +40,12 @@ const Project: React.FC = () => {
             github="https://github.com/hadessharma/TicTacToe"
             demo={[
               {
-                title: "link",
+                title: "Bluetooth Multiplayer",
                 link: "https://www.youtube.com/watch?v=TWcV-bMbiUk",
               },
               {
-                title: "",
-                link: "",
+                title: "vs AI",
+                link: "https://www.youtube.com/watch?v=8V81xjbQjyY",
               },
             ]}
             info={[
