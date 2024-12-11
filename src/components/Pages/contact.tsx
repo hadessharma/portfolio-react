@@ -11,7 +11,10 @@ const Contact: React.FC = () => {
         <div className="flex border-0 md:border flex-col md:flex-row justify-center items-center rounded-2xl border-black p-1">
           <div className="flex m-3 items-center border md:border-0 border-black rounded-2xl">
             <img src={mailIcon} alt="Email Icon" className="w-12 h-12 m-2" />
-            <a className="md:text-xl m-2" href="mailto:de.sharma993@gmail.com">
+            <a
+              className="md:text-xl m-2 transition ease-in-out duration-300 hover:scale-105"
+              href="mailto:de.sharma993@gmail.com"
+            >
               de.sharma993@gmail.com
             </a>
           </div>
@@ -22,7 +25,7 @@ const Contact: React.FC = () => {
               className="w-10 h-10 m-2"
             />
             <a
-              className="text-xl m-2"
+              className="text-xl m-2 transition ease-in-out duration-300 hover:scale-105"
               href="https://www.linkedin.com/in/deepsharma993/"
             >
               LinkedIn
