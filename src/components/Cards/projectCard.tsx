@@ -102,13 +102,17 @@ const ProjectCard: React.FC<CardProps> = ({
                 ref={dropdownRef}
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
-                <div className="border border-black rounded-2xl min-w-28 bg-white hover:bg-black hover:text-white transition delay-150 hover:delay-75 cursor-pointer">
+                <div
+                  className={`border border-black rounded-2xl min-w-28 bg-white hover:bg-black hover:text-white transition delay-150 hover:delay-75 cursor-pointer ${
+                    isDropdownOpen ? "bg-gray-800 text-white" : " "
+                  }`}
+                >
                   <button className="w-full text-center p-3 text-sm">
                     Live Demo
                   </button>
                 </div>
                 {isDropdownOpen && (
-                  <ul className="absolute mt-1 w-48 bg-white border border-gray-200 rounded-xl shadow-lg z-10">
+                  <ul className="absolute mt-1 w-48 bg-white border border-gray-800 rounded-xl shadow-lg z-10">
                     {demo.map((item, index) => (
                       <li
                         key={index}
