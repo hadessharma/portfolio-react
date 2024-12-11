@@ -108,11 +108,11 @@ const ProjectCard: React.FC<CardProps> = ({
                   </button>
                 </div>
                 {isDropdownOpen && (
-                  <ul className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                  <ul className="absolute mt-1 w-48 bg-white border border-gray-200 rounded-xl shadow-lg z-10">
                     {demo.map((item, index) => (
                       <li
                         key={index}
-                        className="px-4 py-2 text-sm  text-gray-700 hover:bg-gray-100 hover:text-black cursor-pointer"
+                        className="px-4 py-2 text-sm  text-gray-700 hover:bg-black hover:text-white cursor-pointer rounded-xl text-center"
                         onClick={() => window.open(item.link)}
                       >
                         {item.title}
