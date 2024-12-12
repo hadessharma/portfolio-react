@@ -104,7 +104,7 @@ const ProjectCard: React.FC<CardProps> = ({
               >
                 <div
                   className={`border border-black rounded-2xl min-w-28 bg-white hover:bg-black hover:text-white transition delay-150 hover:delay-75 cursor-pointer ${
-                    isDropdownOpen ? "bg-gray-800 text-white" : " "
+                    isDropdownOpen ? "bg-gray-800" : " "
                   }`}
                 >
                   <button className="w-full text-center p-3 text-sm">
