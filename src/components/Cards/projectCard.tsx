@@ -49,9 +49,9 @@ const ProjectCard: React.FC<CardProps> = ({
 
   return (
     <div className="relative">
-      <div className="transition-transform duration-300 ease-in-out transform hover:scale-105 flex flex-col border border-black rounded-3xl p-4">
+      <div className="transition-transform duration-300 ease-in-out transform hover:scale-105 shadow-lg flex flex-col border border-gray-500 rounded-3xl p-4">
         {/* Card */}
-        <div className="border border-black rounded-3xl">
+        <div className="border border-gray-500 rounded-3xl">
           {/* Info Button */}
           <button
             className={`absolute top-2 right-2 flex items-center justify-center font-baskerville italic font-bold text-2xl bg-white border border-black w-8 h-8 rounded-full transition-transform duration-300 ease-in-out transform hover:scale-110 hover:bg-black hover:text-white hover:border-white z-10
@@ -87,7 +87,7 @@ const ProjectCard: React.FC<CardProps> = ({
           <h3 className="text-center text-2xl font-semibold px-10">{name}</h3>
           <div className="flex justify-evenly">
             {/* GitHub Button */}
-            <div className="border min-w-28 border-zinc-400 rounded-2xl bg-zinc-800 text-white hover:bg-black transition delay-150 hover:delay-75">
+            <div className="border min-w-28 border-gray-500 rounded-2xl bg-zinc-800 text-white hover:bg-black transition delay-150 hover:delay-75">
               <button
                 onClick={() => window.open(github)}
                 className="w-full text-center p-3 text-sm"
