@@ -3,18 +3,18 @@ import ProjectCard from "../Cards/projectCard";
 
 // importing tictactoe
 import tictacttoeImage1 from "../../assets/project/tictactoe/1.jpg";
-// import tictacttoeImage2 from "../../assets/project/tictactoe/2.jpg";
-// import tictacttoeImage3 from "../../assets/project/tictactoe/3.jpg";
+import tictacttoeImage2 from "../../assets/project/tictactoe/2.jpg";
+import tictacttoeImage3 from "../../assets/project/tictactoe/3.jpg";
 
 // importing phishing detection
 import phishingdetectionImage1 from "../../assets/project/phishing/1.png";
-// import phishingdetectionImage2 from "../../assets/project/phishing/2.png";
+import phishingdetectionImage2 from "../../assets/project/phishing/2.png";
 
 // importing terraZure
 import terraZureImage1 from "../../assets/project/terraZure/1.png";
-// import terraZureImage2 from "../../assets/project/terraZure/2.png";
-// import terraZureImage3 from "../../assets/project/terraZure/3.png";
-// import terraZureImage4 from "../../assets/project/terraZure/4.png";
+import terraZureImage2 from "../../assets/project/terraZure/2.png";
+import terraZureImage3 from "../../assets/project/terraZure/3.png";
+import terraZureImage4 from "../../assets/project/terraZure/4.png";
 
 const Project: React.FC = () => {
   return (
@@ -35,7 +35,7 @@ const Project: React.FC = () => {
           {/* card slider */}
           <ProjectCard
             name="Tic Tac Toe"
-            img={tictacttoeImage1}
+            img={[tictacttoeImage1, tictacttoeImage2, tictacttoeImage3]}
             app={true}
             github="https://github.com/hadessharma/TicTacToe"
             demo={[
@@ -54,7 +54,7 @@ const Project: React.FC = () => {
           />
           <ProjectCard
             name="Phishing Detection"
-            img={phishingdetectionImage1}
+            img={[phishingdetectionImage1, phishingdetectionImage2]}
             app={false}
             github="https://github.com/shoviknandy/Phishing-detection---ML"
             info={[
@@ -63,7 +63,12 @@ const Project: React.FC = () => {
           />
           <ProjectCard
             name="TerraZure"
-            img={terraZureImage1}
+            img={[
+              terraZureImage1,
+              terraZureImage2,
+              terraZureImage3,
+              terraZureImage4,
+            ]}
             app={false}
             github="https://github.com/hadessharma/terraZure"
             info={[
