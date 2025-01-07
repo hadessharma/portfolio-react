@@ -13,7 +13,6 @@ import phishingdetectionImage2 from "../../assets/project/phishing/2.png";
 // importing terraZure
 import terraZureImage1 from "../../assets/project/terraZure/1.png";
 import terraZureImage2 from "../../assets/project/terraZure/2.png";
-import terraZureImage3 from "../../assets/project/terraZure/3.png";
 import terraZureImage4 from "../../assets/project/terraZure/4.png";
 
 const Project: React.FC = () => {
@@ -63,12 +62,7 @@ const Project: React.FC = () => {
           />
           <ProjectCard
             name="TerraZure"
-            img={[
-              terraZureImage1,
-              terraZureImage2,
-              terraZureImage3,
-              terraZureImage4,
-            ]}
+            img={[terraZureImage1, terraZureImage2, terraZureImage4]}
             app={false}
             github="https://github.com/hadessharma/terraZure"
             info={[

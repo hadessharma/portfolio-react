@@ -4,7 +4,7 @@ import About from "./components/Pages/about";
 import Experience from "./components/Pages/experience";
 import Home from "./components/Pages/home";
 import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
-import Project from "./components/Pages/project";
+import Project from "./components/Pages/projects";
 import Contact from "./components/Pages/contact";
 
 const Layout: React.FC = () => {
@@ -25,7 +25,7 @@ function App() {
         { path: "/", element: <Home /> },
         { path: "experience", element: <Experience /> },
         { path: "about", element: <About /> },
-        { path: "project", element: <Project /> },
+        { path: "projects", element: <Project /> },
         { path: "contact", element: <Contact /> },
       ],
     },

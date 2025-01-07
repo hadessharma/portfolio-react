@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
           <Link to={"/experience"}>Experience</Link>
         </li>
         <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
-          <Link to={"/project"}>Project</Link>
+          <Link to={"/projects"}>Projects</Link>
         </li>
         <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
           <Link to={"/contact"}>Contact</Link>
@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
           className="flex justify-center w-full px-5 hover:bg-[#71717a]"
           onClick={toggleMenu}
         >
-          <Link to={"/project"}>Project</Link>
+          <Link to={"/projects"}>Projects</Link>
         </li>
         <li
           className="flex justify-center w-full px-5 hover:bg-[#71717a]"
