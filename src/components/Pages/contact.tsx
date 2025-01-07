@@ -15,7 +15,7 @@ const Contact: React.FC = () => {
           <div className="flex m-3 items-center border md:border-0 border-black rounded-2xl">
             <img src={mailIcon} alt="Email Icon" className="w-12 h-12 m-2" />
             <a
-              className="md:text-xl m-2 transition ease-in-out duration-300 hover:scale-105"
+              className="md:text-xl m-2 transition ease-in-out duration-75 hover:scale-105"
               href="mailto:de.sharma993@gmail.com"
             >
               de.sharma993@gmail.com
@@ -28,7 +28,7 @@ const Contact: React.FC = () => {
               className="w-10 h-10 m-2"
             />
             <a
-              className="text-xl m-2 transition ease-in-out duration-300 hover:scale-105"
+              className="text-xl m-2 transition ease-in-out duration-75 hover:scale-105"
               href="https://www.linkedin.com/in/deepsharma993/"
             >
               LinkedIn
@@ -37,16 +37,28 @@ const Contact: React.FC = () => {
         </div>
       </div>
       <div className="flex justify-center -mt-5 font-medium">
-        <Link to={"/about"} className="px-3 md:px-4 md:text-xl">
+        <Link
+          to={"/about"}
+          className="px-3 md:px-4 md:text-xl trasnition duration-75 hover:scale-105"
+        >
           About
         </Link>
-        <Link to={"/experience"} className="px-3 md:px-4 md:text-xl">
+        <Link
+          to={"/experience"}
+          className="px-3 md:px-4 md:text-xl trasnition duration-75 hover:scale-105"
+        >
           Experience
         </Link>
-        <Link to={"/projects"} className="px-3 md:px-4 md:text-xl">
+        <Link
+          to={"/projects"}
+          className="px-3 md:px-4 md:text-xl trasnition duration-75 hover:scale-105"
+        >
           Projects
         </Link>
-        <Link to={"/contact"} className="px-3 md:px-4 md:text-xl">
+        <Link
+          to={"/contact"}
+          className="px-3 md:px-4 md:text-xl trasnition duration-75 hover:scale-105"
+        >
           Contact
         </Link>
       </div>
