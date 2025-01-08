@@ -53,7 +53,7 @@ const ProjectCard: React.FC<CardProps> = ({
   }, []);
 
   return (
-    <div className="transition-transform duration-300 ease-in-out transform hover:scale-105 shadow-lg flex flex-col border border-gray-500 rounded-3xl p-4">
+    <div className="transition-transform duration-300 ease-in-out transform hover:scale-105 shadow-lg flex flex-col border border-gray-500 rounded-3xl p-4 m-4">
       {/* Card */}
       {/* Info Button */}
       <button

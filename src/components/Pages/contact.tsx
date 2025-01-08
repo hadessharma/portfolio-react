@@ -63,7 +63,8 @@ const Contact: React.FC = () => {
         </Link>
       </div>
       <div className="flex justify-center mt-10 font-light">
-        Deep Sharma <span>&copy;</span> 2024
+        Deep Sharma
+        <span>&copy;</span> 2024
       </div>
     </>
   );

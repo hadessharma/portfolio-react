@@ -11,19 +11,13 @@ const Navbar: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
-  const logF = () => {
-    console.log("Clicked!");
-  };
   return (
     <nav className="flex bg-zinc-800 text-white p-10 mb-5 md:mb-0 md:px-10 lg:px-40 md:py-10 justify-between">
       <h2 className="text-3xl flex-1 min-w-7">
         <Link to={"/"}>Deep Sharma</Link>
       </h2>
       <ul className="item-center hidden md:flex">
-        <li
-          className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110"
-          onClick={logF}
-        >
+        <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
           <Link to={"/about"}>About</Link>
         </li>
         <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
@@ -32,7 +26,6 @@ const Navbar: React.FC = () => {
         <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
           <Link to={"/experience"}>Experience</Link>
         </li>
-
         <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
           <Link to={"/contact"}>Contact</Link>
         </li>

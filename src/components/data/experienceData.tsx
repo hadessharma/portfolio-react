@@ -11,6 +11,7 @@ import mongodb from "../../assets/skill-icons/mongodb.png";
 import express from "../../assets/skill-icons/express.png";
 import mysql from "../../assets/skill-icons/mysql.png";
 import k8s from "../../assets/skill-icons/kubernetes.png";
+import postgre from "../../assets/skill-icons/postgre.png";
 // import git from "../../assets/skill-icons/git.png";
 
 // frontend import
@@ -20,7 +21,7 @@ import tailwind from "../../assets/skill-icons/tailwind.png";
 import redux from "../../assets/skill-icons/redux.png";
 import compose from "../../assets/skill-icons/jetpackcompose.png";
 
-// cloud and database import
+// cloud and DevOps import
 import azure from "../../assets/skill-icons/azure.png";
 import aws from "../../assets/skill-icons/aws.png";
 import jenkins from "../../assets/skill-icons/jenkins.png";
@@ -70,6 +71,10 @@ export const toolsDatabase: ImageData[] = [
   {
     img: mysql,
     title: "MySQL",
+  },
+  {
+    img: postgre,
+    title: "PostgreSQL",
   },
   {
     img: k8s,
