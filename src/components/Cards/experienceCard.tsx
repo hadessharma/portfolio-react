@@ -17,7 +17,7 @@ const ExperienceCard: React.FC<CardProps> = ({ name, logos }) => {
               key={item.title}
               src={item.img}
               alt={item.title}
-              className=""
+              className="max-w-36"
             ></img>
           ))}
         </div>

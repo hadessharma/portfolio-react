@@ -89,6 +89,7 @@ const ProjectCard: React.FC<CardProps> = ({
           >
             {img.map((value, index) => (
               <img
+                key={index}
                 className={`w-full embla__slide `}
                 src={img[index]}
                 alt={`${name} - ${index + 1}`}
