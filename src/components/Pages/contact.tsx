@@ -8,10 +8,10 @@ const Contact: React.FC = () => {
     <>
       <div className="flex flex-col justify-center items-center h-3/4">
         <p className="cursor-default">Get in Touch</p>
-        <h3 className="text-5xl font-semibold mb-4 mt-2 cursor-default">
+        <h3 className="text-5xl font-semibold mb-4 cursor-default">
           Contact Me
         </h3>
-        <div className="flex border-0 md:border flex-col md:flex-row justify-center items-center rounded-2xl border-black p-1">
+        <div className="flex mt-4 border-0 md:border flex-col md:flex-row justify-center items-center rounded-2xl border-black p-1">
           <div className="flex m-3 items-center border md:border-0 border-black rounded-2xl">
             <img src={mailIcon} alt="Email Icon" className="w-12 h-12 m-2" />
             <a
@@ -36,28 +36,28 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center -mt-5 font-medium">
+      <div className="flex justify-center -mt-5">
         <Link
           to={"/about"}
-          className="px-3 md:px-4 md:text-xl trasnition duration-75 hover:scale-105"
+          className="px-3 md:px-4 md:text-2xl trasnition duration-75 hover:scale-105"
         >
           About
         </Link>
         <Link
           to={"/experience"}
-          className="px-3 md:px-4 md:text-xl trasnition duration-75 hover:scale-105"
+          className="px-3 md:px-4 md:text-2xl trasnition duration-75 hover:scale-105"
         >
           Experience
         </Link>
         <Link
           to={"/projects"}
-          className="px-3 md:px-4 md:text-xl trasnition duration-75 hover:scale-105"
+          className="px-3 md:px-4 md:text-2xl trasnition duration-75 hover:scale-105"
         >
           Projects
         </Link>
         <Link
           to={"/contact"}
-          className="px-3 md:px-4 md:text-xl trasnition duration-75 hover:scale-105"
+          className="px-3 md:px-4 md:text-2xl trasnition duration-75 hover:scale-105"
         >
           Contact
         </Link>

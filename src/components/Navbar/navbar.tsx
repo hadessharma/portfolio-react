@@ -27,11 +27,12 @@ const Navbar: React.FC = () => {
           <Link to={"/about"}>About</Link>
         </li>
         <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
-          <Link to={"/experience"}>Experience</Link>
-        </li>
-        <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
           <Link to={"/projects"}>Projects</Link>
         </li>
+        <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
+          <Link to={"/experience"}>Experience</Link>
+        </li>
+
         <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
           <Link to={"/contact"}>Contact</Link>
         </li>
