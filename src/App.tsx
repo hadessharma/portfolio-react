@@ -6,7 +6,7 @@ import Home from "./components/Pages/home";
 import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
 import Project from "./components/Pages/projects";
 import Contact from "./components/Pages/contact";
-// import NotFound from "./components/Pages/notfound";
+import NotFound from "./components/Pages/notfound";
 
 const Layout: React.FC = () => {
   return (
@@ -28,7 +28,7 @@ function App() {
         { path: "about", element: <About /> },
         { path: "projects", element: <Project /> },
         { path: "contact", element: <Contact /> },
-        // { path: "/*", element: <NotFound /> },
+        { path: "/*", element: <NotFound /> },
       ],
     },
   ]);
