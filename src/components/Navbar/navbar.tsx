@@ -46,35 +46,39 @@ const Navbar: React.FC = () => {
       </button>
       {/* menus */}
       <ul
-        className={`bg-zinc-800 flex flex-col w-screen absolute right-0 duration-150 space-y-2 justify-end md:hidden ${
+        className={`bg-zinc-800 flex flex-col w-screen absolute right-0 duration-150 space-y-2 justify-end md:hidden p-2 ${
           isOpen ? "top-0" : "-top-full"
         }`}
       >
-        <button className="px-10 py-4 relative ml-auto" onClick={toggleMenu}>
+        <button
+          className="px-10 py-4 absolute right-0 top-0 ml-auto"
+          onClick={toggleMenu}
+        >
           <div className="w-6 h-1 rotate-45 absolute bg-white"></div>
           <div className="w-6 h-1 -rotate-45 absolute bg-white"></div>
         </button>
         <li
-          className="flex justify-center w-full px-5 hover:bg-[#71717a]"
+          className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
           onClick={toggleMenu}
         >
           <Link to={"/about"}>About</Link>
         </li>
+
         <li
-          className="flex justify-center w-full px-5 hover:bg-[#71717a]"
+          className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
           onClick={toggleMenu}
         >
           <Link to={"/projects"}>Projects</Link>
         </li>
         <li
-          className="flex justify-center w-full px-5 hover:bg-[#71717a]"
+          className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
           onClick={toggleMenu}
         >
           <Link to={"/experience"}>Experience</Link>
         </li>
 
         <li
-          className="flex justify-center w-full px-5 hover:bg-[#71717a]"
+          className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
           onClick={toggleMenu}
         >
           <Link to={"./contact"}>Contact</Link>
