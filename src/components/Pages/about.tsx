@@ -5,12 +5,12 @@ import educationIcon from "../../assets/education.png";
 const About: React.FC = () => {
   return (
     <>
-      <div className="flex flex-col flex-wrap md:flex-row items-center w-full h-auto md:h-5/6 md:px-40">
+      <div className="flex flex-col flex-wrap pb-4 md:flex-row items-center w-full h-auto md:h-5/6 md:px-40">
         <div className="flex flex-col md:flex-1 items-center px-10 mb-8 md:mb-0">
           <p className="text-base pb-5 font-light">Get to Know More</p>
           <h2 className="text-5xl font-bold">About Me</h2>
           <br />
-          <p className="text-sm md:text-lg text-center font-light">
+          <p className="md:text-lg text-center font-light">
             I am a graduate student at Arizona State University with three years
             of work experience in Software Development and DevOps in the
             industry. I'm also passionate about building web applications and
@@ -41,15 +41,15 @@ const About: React.FC = () => {
               />
             </div>
             <h3 className="text-sm md:text-lg font-semibold pb-2">Education</h3>
-            <div className="flex">
+            <div className="flex items-center">
               <p className="text-sm md:text-lg px-4 font-semibold">
                 M.S. Computer Science
               </p>
-              <p className="text-sm md:text-lgfont-light">
+              <p className="text-sm md:text-lg font-light">
                 Arizona State University, USA
               </p>
             </div>
-            <div className="flex">
+            <div className="flex items-center">
               <p className="text-sm md:text-lg px-4 font-semibold">
                 B.Tech. Computer Science
               </p>

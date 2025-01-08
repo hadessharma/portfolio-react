@@ -29,7 +29,7 @@ const Project: React.FC = () => {
             </h2>
           </div>
         </div>
-        <div className="flex flex-col grow w-screen sm:flex-row md:space-x-14 md:space-y-0 sm:space-x-5 space-y-5 justify-center items-center px-10">
+        <div className="flex flex-col grow w-screen sm:flex-row py-4 md:space-x-14 md:space-y-0 sm:space-x-5 space-y-5 justify-center items-center px-10">
           {/* <div className="flex flex-col grow w-screen sm:flex-row md:space-x-10 md:space-y-0 sm:space-x-5 space-y-5 justify-center items-center px-10 overflow-auto hover:overflow-x-scroll"> */}
           {/* card slider */}
           <ProjectCard

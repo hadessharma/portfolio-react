@@ -40,9 +40,9 @@ const Navbar: React.FC = () => {
 
       {/* HAMBURGER */}
       <button className="space-y-1 group md:hidden" onClick={toggleMenu}>
-        <div className="w-6 h-1 bg-white"></div>
-        <div className="w-6 h-1 bg-white"></div>
-        <div className="w-6 h-1 bg-white"></div>
+        <div className="w-6 h-[2px] bg-white"></div>
+        <div className="w-6 h-[2px] bg-white"></div>
+        <div className="w-6 h-[2px] bg-white"></div>
       </button>
       {/* menus */}
       <ul
@@ -64,14 +64,15 @@ const Navbar: React.FC = () => {
           className="flex justify-center w-full px-5 hover:bg-[#71717a]"
           onClick={toggleMenu}
         >
-          <Link to={"/experience"}>Experience</Link>
+          <Link to={"/projects"}>Projects</Link>
         </li>
         <li
           className="flex justify-center w-full px-5 hover:bg-[#71717a]"
           onClick={toggleMenu}
         >
-          <Link to={"/projects"}>Projects</Link>
+          <Link to={"/experience"}>Experience</Link>
         </li>
+
         <li
           className="flex justify-center w-full px-5 hover:bg-[#71717a]"
           onClick={toggleMenu}
