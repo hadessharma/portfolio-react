@@ -18,20 +18,25 @@ const Layout: React.FC = () => {
 };
 
 function App() {
-  const router = createBrowserRouter([
+  const router = createBrowserRouter(
+    [
+      {
+        path: "/",
+        element: <Layout />,
+        children: [
+          { path: "/", element: <Home /> },
+          { path: "experience", element: <Experience /> },
+          { path: "about", element: <About /> },
+          { path: "projects", element: <Project /> },
+          { path: "contact", element: <Contact /> },
+          { path: "/*", element: <NotFound /> },
+        ],
+      },
+    ],
     {
-      path: "/",
-      element: <Layout />,
-      children: [
-        { path: "/", element: <Home /> },
-        { path: "experience", element: <Experience /> },
-        { path: "about", element: <About /> },
-        { path: "projects", element: <Project /> },
-        { path: "contact", element: <Contact /> },
-        { path: "/*", element: <NotFound /> },
-      ],
-    },
-  ]);
+      basename: "/portfolio-react",
+    }
+  );
   return <RouterProvider router={router} />;
 }
 
