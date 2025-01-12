@@ -32,10 +32,10 @@ function App() {
           { path: "/*", element: <NotFound /> },
         ],
       },
-    ],
-    {
-      basename: "/portfolio-react",
-    }
+    ]
+    // {
+    //   basename: "/portfolio-react",
+    // }
   );
   return <RouterProvider router={router} />;
 }
