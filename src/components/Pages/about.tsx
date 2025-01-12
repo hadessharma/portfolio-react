@@ -7,7 +7,7 @@ const About: React.FC = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   return (
     <>
-      <div className="flex flex-col flex-wrap pb-4 md:flex-row items-center w-full h-auto md:h-5/6 md:px-40">
+      <div className="flex flex-col flex-wrap pb-4 md:flex-row items-center w-full min-h-screen md:h-5/6 md:px-40">
         <div className="flex flex-col md:flex-1 items-center px-10 mb-8 md:mb-0">
           <p className="text-base pb-5 font-light">Get to Know More</p>
           <h2 className="text-5xl font-bold">About Me</h2>

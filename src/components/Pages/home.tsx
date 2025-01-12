@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import profilePic from "../../assets/profile-pic.png";
 
 // importing icons
@@ -8,19 +7,19 @@ import linkedinIcon from "../../assets/linkedin.png";
 import cvPDF from "../../assets/resume_DeepSharma.pdf";
 
 const Home: React.FC = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleDownloadCV = () => {
     window.open(cvPDF);
   };
 
-  const handleContactInfo = () => {
-    navigate("/contact");
-  };
+  // const handleContactInfo = () => {
+  //   navigate("/contact");
+  // };
 
   return (
     <>
-      <div className="flex flex-wrap justify-center items-center h-5/6">
+      <div className="flex flex-wrap justify-center items-center min-h-screen">
         <div className="basis-96 min-w-24 shrink">
           <img src={profilePic} alt="profile pic" className="p-4" />
         </div>
@@ -37,12 +36,12 @@ const Home: React.FC = () => {
             >
               Download CV
             </button>
-            <button
-              className="px-4 h-full w-full min-w-36 min-h-14 border border-zinc-800 rounded-2xl bg-zinc-800 text-white hover:bg-black transition delay-150 hover:delay-75"
-              onClick={handleContactInfo}
+            <a
+              href="#contact"
+              className="px-4 h-full w-full min-w-36 min-h-14 border border-zinc-800 rounded-2xl bg-zinc-800 text-white hover:bg-black transition delay-150 hover:delay-75 flex items-center justify-center"
             >
               Contact Info
-            </button>
+            </a>
           </div>
           <div className="flex justify-center w-10 h-10 mt-5">
             <img

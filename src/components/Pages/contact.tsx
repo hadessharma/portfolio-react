@@ -1,12 +1,11 @@
 import React from "react";
 import mailIcon from "../../assets/email.png";
 import linkedinIcon from "../../assets/linkedin.png";
-import { Link } from "react-router-dom";
 
 const Contact: React.FC = () => {
   return (
-    <>
-      <div className="flex flex-col justify-center items-center h-3/4">
+    <div className="min-h-screen flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center">
         <p className="cursor-default">Get in Touch</p>
         <h3 className="text-5xl font-semibold mb-4 cursor-default">
           Contact Me
@@ -36,37 +35,39 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center -mt-5">
-        <Link
-          to={"/about"}
-          className="px-3 md:px-4 md:text-2xl trasnition duration-75 hover:scale-105"
-        >
-          About
-        </Link>
-        <Link
-          to={"/experience"}
-          className="px-3 md:px-4 md:text-2xl trasnition duration-75 hover:scale-105"
-        >
-          Experience
-        </Link>
-        <Link
-          to={"/projects"}
-          className="px-3 md:px-4 md:text-2xl trasnition duration-75 hover:scale-105"
-        >
-          Projects
-        </Link>
-        <Link
-          to={"/contact"}
-          className="px-3 md:px-4 md:text-2xl trasnition duration-75 hover:scale-105"
-        >
-          Contact
-        </Link>
+      <div className="flex flex-col items-center justify-end">
+        <div className="flex justify-center">
+          <a
+            href="#about"
+            className="px-3 md:px-4 md:text-2xl trasnition duration-75 hover:scale-105"
+          >
+            About
+          </a>
+          <a
+            href="#experience"
+            className="px-3 md:px-4 md:text-2xl trasnition duration-75 hover:scale-105"
+          >
+            Experience
+          </a>
+          <a
+            href="#projects"
+            className="px-3 md:px-4 md:text-2xl trasnition duration-75 hover:scale-105"
+          >
+            Projects
+          </a>
+          <a
+            href="#contact"
+            className="px-3 md:px-4 md:text-2xl trasnition duration-75 hover:scale-105"
+          >
+            Contact
+          </a>
+        </div>
+        <div className="flex justify-center mt-10 font-light">
+          Deep Sharma
+          <span>&copy;</span> 2024
+        </div>
       </div>
-      <div className="flex justify-center mt-10 font-light">
-        Deep Sharma
-        <span>&copy;</span> 2024
-      </div>
-    </>
+    </div>
   );
 };
 

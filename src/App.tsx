@@ -6,7 +6,7 @@ import Home from "./components/Pages/home";
 import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
 import Project from "./components/Pages/projects";
 import Contact from "./components/Pages/contact";
-import NotFound from "./components/Pages/notfound";
+// import NotFound from "./components/Pages/notfound";
 
 const Layout: React.FC = () => {
   return (
@@ -18,26 +18,28 @@ const Layout: React.FC = () => {
 };
 
 function App() {
-  const router = createBrowserRouter(
-    [
-      {
-        path: "/",
-        element: <Layout />,
-        children: [
-          { path: "/", element: <Home /> },
-          { path: "experience", element: <Experience /> },
-          { path: "about", element: <About /> },
-          { path: "projects", element: <Project /> },
-          { path: "contact", element: <Contact /> },
-          { path: "/*", element: <NotFound /> },
-        ],
-      },
-    ]
-    // {
-    //   basename: "/portfolio-react",
-    // }
+  return (
+    <div className="h-screen overflow-y-auto scroll-smooth">
+      {/* Navbar */}
+      <Navbar />
+      {/* Sections */}
+      <div id="home" className="section">
+        <Home />
+      </div>
+      <div id="about" className="section">
+        <About />
+      </div>
+      <div id="experience" className="section">
+        <Experience />
+      </div>
+      <div id="projects" className="section">
+        <Project />
+      </div>
+      <div id="contact" className="section">
+        <Contact />
+      </div>
+    </div>
   );
-  return <RouterProvider router={router} />;
 }
 
 export default App;

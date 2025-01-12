@@ -14,20 +14,25 @@ const Navbar: React.FC = () => {
   return (
     <nav className="flex bg-zinc-800 text-white p-10 mb-5 md:mb-0 md:px-10 lg:px-40 md:py-10 justify-between">
       <h2 className="text-3xl flex-1 min-w-7">
-        <Link to={"/"}>Deep Sharma</Link>
+        <a href="#home">Deep Sharma</a>
+        {/* <Link to={"/"}>Deep Sharma</Link> */}
       </h2>
       <ul className="item-center hidden md:flex">
         <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
-          <Link to={"/about"}>About</Link>
+          <a href="#about">About</a>
+          {/* <Link to={"/about"}>About</Link> */}
         </li>
         <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
-          <Link to={"/projects"}>Projects</Link>
+          <a href="#prjects">Projects</a>
+          {/* <Link to={"/projects"}>Projects</Link> */}
         </li>
         <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
-          <Link to={"/experience"}>Experience</Link>
+          <a href="#experience">Experience</a>
+          {/* <Link to={"/experience"}>Experience</Link> */}
         </li>
         <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
-          <Link to={"/contact"}>Contact</Link>
+          <a href="#contact">Contact</a>
+          {/* <Link to={"/contact"}>Contact</Link> */}
         </li>
       </ul>
 
@@ -54,27 +59,31 @@ const Navbar: React.FC = () => {
           className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
           onClick={toggleMenu}
         >
-          <Link to={"/about"}>About</Link>
+          <a href="#about">About</a>
+          {/* <Link to={"/about"}>About</Link> */}
         </li>
 
         <li
           className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
           onClick={toggleMenu}
         >
-          <Link to={"/projects"}>Projects</Link>
+          <a href="#prjects">Projects</a>
+          {/* <Link to={"/projects"}>Projects</Link> */}
         </li>
         <li
           className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
           onClick={toggleMenu}
         >
-          <Link to={"/experience"}>Experience</Link>
+          <a href="#experience">Experience</a>
+          {/* <Link to={"/experience"}>Experience</Link> */}
         </li>
 
         <li
           className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
           onClick={toggleMenu}
         >
-          <Link to={"./contact"}>Contact</Link>
+          <a href="#contact">Contact</a>
+          {/* <Link to={"./contact"}>Contact</Link> */}
         </li>
       </ul>
     </nav>
