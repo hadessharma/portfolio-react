@@ -57,7 +57,7 @@ const ProjectCard: React.FC<CardProps> = ({
       {/* Card */}
       {/* Info Button */}
       <button
-        className={`absolute top-2 right-2 flex items-center justify-center font-baskerville italic font-bold text-2xl bg-white border border-black w-8 h-8 rounded-full transition-transform duration-300 ease-in-out transform hover:scale-110 hover:bg-black hover:text-white hover:border-white z-10
+        className={`absolute top-2 right-2 flex items-center justify-center font-baskerville italic font-bold text-2xl bg-white border border-black w-8 h-8 rounded-full transition-transform duration-300 ease-in-out transform hover:scale-110 hover:bg-black hover:text-white hover:border-white z-20
             ${info ? "" : " "}`}
         onMouseEnter={toggleHover}
         onMouseLeave={toggleHover}
@@ -68,7 +68,7 @@ const ProjectCard: React.FC<CardProps> = ({
       </button>
       <>
         {isInfo && (
-          <div className="border border-black p-2 px-4 rounded-2xl absolute top-16 -left-5 -right-5 z-10 bg-white">
+          <div className="border border-black p-2 px-4 rounded-2xl absolute top-4 z-10 right-4 bg-zinc-800 text-white w-80">
             {info.map((item, index) => (
               <p key={index} className="text-center">
                 {item}
