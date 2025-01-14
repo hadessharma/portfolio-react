@@ -53,7 +53,7 @@ const ProjectCard: React.FC<CardProps> = ({
   }, []);
 
   return (
-    <div className="transition-transform duration-300 ease-in-out transform hover:scale-105 shadow-lg flex flex-col border border-gray-500 rounded-3xl p-4 md:m-4">
+    <div className="transition-transform duration-300 ease-in-out transform hover:scale-105 shadow-lg flex flex-col border border-gray-500 rounded-3xl p-4 m-4">
       {/* Card */}
       {/* Info Button */}
       <button
@@ -68,7 +68,7 @@ const ProjectCard: React.FC<CardProps> = ({
       </button>
       <>
         {isInfo && (
-          <div className="border border-black p-2 px-4 rounded-2xl absolute top-4 z-10 right-4 bg-zinc-800 text-white w-80">
+          <div className="border border-white p-2 px-4 rounded-2xl absolute top-4 z-10 right-4 bg-zinc-800 text-white w-80">
             {info.map((item, index) => (
               <p key={index} className="text-center">
                 {item}
