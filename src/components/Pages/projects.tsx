@@ -29,7 +29,7 @@ const Project: React.FC = () => {
             </h2>
           </div>
         </div>
-        <div className="flex flex-col w-screen flex-wrap sm:flex-row md:space-x-14 md:space-y-0 sm:space-x-5 space-y-5 justify-center items-center px-10 mb-10">
+        <div className="flex flex-col w-screen flex-wrap sm:flex-row justify-center items-center px-10 md:px-0">
           {/* <div className="flex flex-col grow w-screen sm:flex-row md:space-x-10 md:space-y-0 sm:space-x-5 space-y-5 justify-center items-center px-10 overflow-auto hover:overflow-x-scroll"> */}
           {/* card slider */}
           <ProjectCard
@@ -52,21 +52,21 @@ const Project: React.FC = () => {
             ]}
           />
           <ProjectCard
-            name="Phishing Detection"
-            img={[phishingdetectionImage1, phishingdetectionImage2]}
-            app={false}
-            github="https://github.com/shoviknandy/Phishing-detection---ML"
-            info={[
-              "This project aims to detect phishing URLs using advanced machine learning techniques. We compare and contrast different algorithms to identify the most effective approach in phishing detection.",
-            ]}
-          />
-          <ProjectCard
             name="TerraZure"
             img={[terraZureImage1, terraZureImage2, terraZureImage4]}
             app={false}
             github="https://github.com/hadessharma/terraZure"
             info={[
               "TerraZure enables users to easily deploy and manage cloud resources through a user-friendly graphical interface, without needing in-depth knowledge of the underlying Terraform technology. The platform integrates with multiple cloud providers, allowing authenticated deployment across different environments. Users can customize cloud deployments through simple front-end forms, which directly feed into Terraform's automation modules.",
+            ]}
+          />
+          <ProjectCard
+            name="Phishing Detection"
+            img={[phishingdetectionImage1, phishingdetectionImage2]}
+            app={false}
+            github="https://github.com/shoviknandy/Phishing-detection---ML"
+            info={[
+              "This project aims to detect phishing URLs using advanced machine learning techniques. We compare and contrast different algorithms to identify the most effective approach in phishing detection.",
             ]}
           />
         </div>
