@@ -101,7 +101,7 @@ const ProjectCard: React.FC<CardProps> = ({
         <h3 className="text-center text-2xl font-semibold md:px-10">{name}</h3>
         <div className="flex justify-evenly">
           {/* GitHub Button */}
-          <div className="border min-w-28 border-gray-500 rounded-2xl bg-zinc-800 text-white hover:bg-black transition delay-150 hover:delay-75">
+          <div className="border min-w-28 border-black rounded-2xl bg-zinc-800 text-white hover:bg-black transition delay-150 hover:delay-75">
             <button
               onClick={() => window.open(github)}
               className="w-full text-center p-3 text-sm"

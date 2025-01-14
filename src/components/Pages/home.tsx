@@ -32,7 +32,7 @@ const Home: React.FC = () => {
           </h2>
           <div className="flex justify-center items-center">
             <button
-              className="px-4 h-full w-full min-w-36 min-h-14 border border-black rounded-2xl mr-2 hover:bg-black hover:text-white transition delay-150 hover:delay-75"
+              className="px-4 h-full w-full min-w-36 min-h-14 border border-black rounded-2xl mr-2 hover:bg-black hover:scale-105 hover:text-white transition duration-400"
               onClick={handleDownloadCV}
             >
               Download CV
