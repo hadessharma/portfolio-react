@@ -126,7 +126,7 @@ const ProjectCard: React.FC<CardProps> = ({
                 </button>
               </div>
               {isDropdownOpen && (
-                <ul className="absolute mt-1 w-48 bg-white border border-gray-800 rounded-xl shadow-lg z-10">
+                <ul className="absolute mt-1 w-48 bg-white border border-gray-800 rounded-xl shadow-lg z-10 -top-5">
                   {demo.map((item, index) => (
                     <li
                       key={index}

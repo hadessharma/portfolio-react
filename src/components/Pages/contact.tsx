@@ -30,6 +30,8 @@ const Contact: React.FC = () => {
             <a
               className="text-xl m-2 transition ease-in-out duration-75 hover:scale-105"
               href="https://www.linkedin.com/in/deepsharma993/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               LinkedIn
             </a>
