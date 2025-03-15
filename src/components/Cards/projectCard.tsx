@@ -57,8 +57,7 @@ const ProjectCard: React.FC<CardProps> = ({
       {/* Card */}
       {/* Info Button */}
       <button
-        className={`absolute top-2 right-2 flex items-center justify-center font-baskerville italic font-bold text-2xl bg-white border border-black w-8 h-8 rounded-full transition-transform duration-300 ease-in-out transform hover:scale-110 hover:bg-black hover:text-white hover:border-white z-20
-            ${info ? "" : " "}`}
+        className={`absolute top-2 right-2 flex items-center justify-center font-baskerville italic font-bold text-2xl bg-white border border-black w-8 h-8 rounded-full transition-transform duration-300 ease-in-out transform hover:scale-110 hover:bg-black hover:text-white hover:border-white z-20 hidden sm:block`}
         onMouseEnter={toggleHover}
         onMouseLeave={toggleHover}
         onClick={handleClick}
