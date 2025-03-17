@@ -30,28 +30,34 @@ import docker from "../../assets/skill-icons/docker.png";
 export interface ImageData {
   img: string;
   title: string;
+  showLabel?: boolean;
 }
 
 export const programmingLanguages: ImageData[] = [
   {
     img: java,
     title: "Java",
+    showLabel: true,
   },
   {
     img: javaScript,
     title: "JavaScript",
+    showLabel: true,
   },
   {
     img: python,
     title: "Python",
+    showLabel: true,
   },
   {
     img: cpp,
     title: "CPP",
+    showLabel: true,
   },
   {
     img: kotlin,
     title: "Kotlin",
+    showLabel: true,
   },
 ];
 
@@ -67,6 +73,7 @@ export const toolsDatabase: ImageData[] = [
   {
     img: express,
     title: "Express",
+    showLabel: true,
   },
   {
     img: mysql,
@@ -79,6 +86,7 @@ export const toolsDatabase: ImageData[] = [
   {
     img: k8s,
     title: "Kubernetes",
+    showLabel: true,
   },
   // {
   //   img: git,
@@ -90,6 +98,7 @@ export const frontend: ImageData[] = [
   {
     img: html,
     title: "HTML",
+    showLabel: true,
   },
   {
     img: react,
@@ -98,6 +107,7 @@ export const frontend: ImageData[] = [
   {
     img: tailwind,
     title: "Tailwind",
+    showLabel: true,
   },
   {
     img: redux,
@@ -105,7 +115,8 @@ export const frontend: ImageData[] = [
   },
   {
     img: compose,
-    title: "Compose",
+    title: "Jetpack Compose",
+    showLabel: true,
   },
 ];
 
@@ -113,21 +124,26 @@ export const cloudDevOps: ImageData[] = [
   {
     img: azure,
     title: "Azure",
+    showLabel: true,
   },
   {
     img: aws,
     title: "AWS",
+    showLabel: true,
   },
   {
     img: jenkins,
     title: "Jenkins",
+    showLabel: true,
   },
   {
     img: terraform,
     title: "Terraform",
+    showLabel: true,
   },
   {
     img: docker,
     title: "Docker",
+    showLabel: true,
   },
 ];
