@@ -72,7 +72,7 @@ export const toolsDatabase: ImageData[] = [
   },
   {
     img: express,
-    title: "Express",
+    title: "Express.js",
     showLabel: true,
   },
   {
@@ -106,7 +106,7 @@ export const frontend: ImageData[] = [
   },
   {
     img: tailwind,
-    title: "Tailwind",
+    title: "Tailwind CSS",
     showLabel: true,
   },
   {
