@@ -12,17 +12,17 @@ const Navbar: React.FC = () => {
       <h2 className="text-3xl flex-1 min-w-7">
         <a href="#home">Deep Sharma</a>
       </h2>
-      <ul className="item-center hidden md:flex">
-        <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
+      <ul className="items-center hidden md:flex">
+        <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110 underline-effect">
           <a href="#about">About</a>
         </li>
-        <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
+        <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110 underline-effect">
           <a href="#projects">Projects</a>
         </li>
-        <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
+        <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110 underline-effect">
           <a href="#experience">Experience</a>
         </li>
-        <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
+        <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110 underline-effect">
           <a href="#contact">Contact</a>
         </li>
       </ul>
@@ -47,25 +47,25 @@ const Navbar: React.FC = () => {
           <div className="w-6 h-1 -rotate-45 absolute bg-white"></div>
         </button>
         <li
-          className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
+          className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg underline-effect"
           onClick={toggleMenu}
         >
           <a href="#about">About</a>
         </li>
         <li
-          className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
+          className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg underline-effect"
           onClick={toggleMenu}
         >
           <a href="#projects">Projects</a>
         </li>
         <li
-          className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
+          className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg underline-effect"
           onClick={toggleMenu}
         >
           <a href="#experience">Experience</a>
         </li>
         <li
-          className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
+          className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg underline-effect"
           onClick={toggleMenu}
         >
           <a href="#contact">Contact</a>

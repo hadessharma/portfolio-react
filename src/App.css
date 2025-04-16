@@ -5,3 +5,25 @@ html {
 body {
   font-family: "Poppins", sans-serif;
 }
+
+.underline-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.underline-effect::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: center;
+  width: 0;
+  height: 1px; /* Thinner line for a subtle effect */
+  background-color: rgba(255, 255, 255, 0.4); /* Very light underline */
+  transition: width 0.35s ease;
+}
+
+.underline-effect:hover::after {
+  width: 80%; /* Adjust this value to control the final underline length */
+}
