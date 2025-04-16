@@ -5,9 +5,14 @@ import { useMediaQuery } from "react-responsive";
 
 const About: React.FC = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
   return (
-    <>
-      <div className="flex flex-col flex-wrap pb-4 md:flex-row items-center w-full h-auto md:h-5/6 md:px-40">
+    <div
+      id="about"
+      className="flex flex-col items-center justify-center h-screen px-4 md:px-40"
+    >
+      <div className="flex flex-col md:flex-row items-center w-full max-w-6xl">
+        {/* Left Section */}
         <div className="flex flex-col md:flex-1 items-center px-10 mb-8 md:mb-0">
           <p className="text-base pb-5 font-light">Get to Know More</p>
           <h2 className="text-5xl font-bold">About Me</h2>
@@ -19,6 +24,8 @@ const About: React.FC = () => {
             designing automated cloud infrastructure deployment platforms.
           </p>
         </div>
+
+        {/* Right Section */}
         <div className="flex md:flex-1 flex-col justify-center px-10 space-y-4 w-full md:m-0 max-w-2xl">
           <div className="flex flex-col items-center border border-black rounded-2xl p-4">
             <div className="pt-2">
@@ -38,7 +45,7 @@ const About: React.FC = () => {
             <div className="pt-2">
               <img
                 src={educationIcon}
-                alt="Experience Icon"
+                alt="Education Icon"
                 className="w-8 h-8"
               />
             </div>
@@ -52,11 +59,11 @@ const About: React.FC = () => {
                 </p>
               </div>
             ) : (
-              <div className="flex items-center">
-                <p className="text-sm md:text-lg px-4 font-semibold">
+              <div className="flex items-center justify-between gap-x-4 w-fit">
+                <p className="text-sm md:text-lg font-semibold whitespace-nowrap">
                   M.S. Computer Science
                 </p>
-                <p className="text-sm md:text-lg font-light">
+                <p className="text-sm md:text-lg font-light whitespace-nowrap">
                   Arizona State University, USA
                 </p>
               </div>
@@ -81,7 +88,7 @@ const About: React.FC = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
