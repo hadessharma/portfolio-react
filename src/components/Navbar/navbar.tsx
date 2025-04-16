@@ -1,8 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-// interface NavbarState {
-//   isOpen: boolean;
-// }
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -14,20 +10,20 @@ const Navbar: React.FC = () => {
   return (
     <nav className="flex bg-zinc-800 text-white p-10 mb-5 md:mb-0 md:px-10 lg:px-40 md:py-10 justify-between">
       <h2 className="text-3xl flex-1 min-w-7">
-        <Link to={"/"}>Deep Sharma</Link>
+        <a href="#home">Deep Sharma</a>
       </h2>
       <ul className="item-center hidden md:flex">
         <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
-          <Link to={"/about"}>About</Link>
+          <a href="#about">About</a>
         </li>
         <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
-          <Link to={"/projects"}>Projects</Link>
+          <a href="#projects">Projects</a>
         </li>
         <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
-          <Link to={"/experience"}>Experience</Link>
+          <a href="#experience">Experience</a>
         </li>
         <li className="text-xl px-5 transition ease-in-out duration-300 hover:scale-110">
-          <Link to={"/contact"}>Contact</Link>
+          <a href="#contact">Contact</a>
         </li>
       </ul>
 
@@ -37,7 +33,7 @@ const Navbar: React.FC = () => {
         <div className="w-6 h-[2px] bg-white"></div>
         <div className="w-6 h-[2px] bg-white"></div>
       </button>
-      {/* menus */}
+      {/* Mobile Menu */}
       <ul
         className={`bg-zinc-800 flex flex-col w-screen absolute right-0 duration-150 space-y-2 justify-end md:hidden p-2 ${
           isOpen ? "top-0" : "-top-full"
@@ -54,27 +50,25 @@ const Navbar: React.FC = () => {
           className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
           onClick={toggleMenu}
         >
-          <Link to={"/about"}>About</Link>
-        </li>
-
-        <li
-          className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
-          onClick={toggleMenu}
-        >
-          <Link to={"/projects"}>Projects</Link>
+          <a href="#about">About</a>
         </li>
         <li
           className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
           onClick={toggleMenu}
         >
-          <Link to={"/experience"}>Experience</Link>
+          <a href="#projects">Projects</a>
         </li>
-
         <li
           className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
           onClick={toggleMenu}
         >
-          <Link to={"./contact"}>Contact</Link>
+          <a href="#experience">Experience</a>
+        </li>
+        <li
+          className="flex justify-center w-full px-5 hover:bg-[#71717a] text-lg"
+          onClick={toggleMenu}
+        >
+          <a href="#contact">Contact</a>
         </li>
       </ul>
     </nav>
