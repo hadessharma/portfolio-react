@@ -13,16 +13,16 @@ const Layout: React.FC = () => {
       <div id="home" className="h-screen">
         <Home />
       </div>
-      <div id="about" className="h-screen">
+      <div id="about" className="min-h-screen">
         <About />
       </div>
-      <div id="experience" className="h-screen">
+      <div id="experience" className="min-h-screen">
         <Experience />
       </div>
-      <div id="projects" className="h-screen">
+      <div id="projects" className="min-h-screen">
         <Project />
       </div>
-      <div id="contact" className="h-screen">
+      <div id="contact" className="min-h-screen">
         <Contact />
       </div>
     </div>
