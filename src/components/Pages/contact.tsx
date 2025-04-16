@@ -8,9 +8,8 @@ const Contact: React.FC = () => {
     <div id="contact" className="flex flex-col h-screen">
       {/*
         1) Top section: 
-           - Grow to fill available space with flex-1.
-           - Use flex-col, justify-center, and items-center
-             to center the content vertically and horizontally.
+           - Grows to fill available space with flex-1.
+           - Centers content both vertically and horizontally.
       */}
       <div className="flex-1 flex flex-col justify-center items-center">
         <p className="cursor-default">Get in Touch</p>
@@ -48,34 +47,32 @@ const Contact: React.FC = () => {
 
       {/*
         2) Bottom section (footer):
-           - Put your navigation links and copyright here.
-           - Since the parent uses flex-col, this bottom part
-             will naturally sit below the top section. 
-           - "items-center" to center the footer content horizontally.
+           - Contains navigation links and copyright.
+           - Uses "underline-effect" for custom hover underline effect.
       */}
       <div className="flex flex-col items-center pb-4">
         <div className="flex justify-center mt-10">
           <a
             href="#about"
-            className="px-3 md:px-4 md:text-2xl transition duration-75 hover:scale-105"
+            className="underline-effect px-3 md:px-4 md:text-2xl transition duration-75 hover:scale-105"
           >
             About
           </a>
           <a
             href="#experience"
-            className="px-3 md:px-4 md:text-2xl transition duration-75 hover:scale-105"
+            className="underline-effect px-3 md:px-4 md:text-2xl transition duration-75 hover:scale-105"
           >
             Experience
           </a>
           <a
             href="#projects"
-            className="px-3 md:px-4 md:text-2xl transition duration-75 hover:scale-105"
+            className="underline-effect px-3 md:px-4 md:text-2xl transition duration-75 hover:scale-105"
           >
             Projects
           </a>
           <a
             href="#contact"
-            className="px-3 md:px-4 md:text-2xl transition duration-75 hover:scale-105"
+            className="underline-effect px-3 md:px-4 md:text-2xl transition duration-75 hover:scale-105"
           >
             Contact
           </a>
