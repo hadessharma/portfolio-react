@@ -11,17 +11,17 @@ const Experience: React.FC = () => {
   return (
     <div
       id="experience"
-      className="flex flex-col items-center justify-center min-h-screen px-5 md:px-20"
+      className="flex flex-col items-center justify-center min-h-screen px-5 md:px-20 py-16"
     >
-      <div className="flex flex-col items-center py-4">
-        <h2 className="text-center text-base font-semibold text-zinc-500">
+      <div className="flex flex-col items-center py-4 mb-8">
+        <h2 className="text-center text-lg font-semibold text-gray-400">
           Explore My
         </h2>
-        <h2 className="text-center text-5xl font-semibold text-zinc-950">
-          Experiences
+        <h2 className="text-center text-5xl font-bold font-baskerville text-gray-100">
+          Experience
         </h2>
       </div>
-      <div className="flex flex-col sm:flex-row flex-wrap justify-evenly items-center w-full space-y-5 sm:space-y-0">
+      <div className="flex flex-col sm:flex-row flex-wrap justify-center items-stretch w-full gap-8">
         <ExperienceCard
           name="Programming Languages"
           logos={programmingLanguages}
