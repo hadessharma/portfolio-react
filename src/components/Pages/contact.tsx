@@ -4,37 +4,36 @@ import linkedinIcon from "../../assets/linkedin.png";
 
 const Contact: React.FC = () => {
   return (
-    // Use flex-col + h-screen to fill the viewport's height
-    <div id="contact" className="flex flex-col h-screen">
-      {/*
-        1) Top section: 
-           - Grows to fill available space with flex-1.
-           - Centers content both vertically and horizontally.
-      */}
-      <div className="flex-1 flex flex-col justify-center items-center">
-        <p className="cursor-default">Get in Touch</p>
-        <h3 className="text-5xl font-semibold mb-4 cursor-default">
-          Contact Me
-        </h3>
+    <div
+      id="contact"
+      className="flex flex-col h-screen justify-center items-center text-center px-4"
+    >
+      <div className="mb-auto pt-24">
+        <p className="text-lg text-slate-400">Get in Touch</p>
+        <h3 className="text-5xl font-bold text-slate-100 mb-8">Contact Me</h3>
 
-        <div className="flex mt-4 border-0 md:border flex-col md:flex-row justify-center items-center rounded-2xl border-black p-1">
-          <div className="flex m-3 items-center border md:border-0 border-black rounded-2xl">
-            <img src={mailIcon} alt="Email Icon" className="w-12 h-12 m-2" />
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 rounded-full border border-gray-800 bg-gray-900 px-8 py-4 shadow-lg">
+          <div className="flex items-center">
+            <img
+              src={mailIcon}
+              alt="Email Icon"
+              className="w-8 h-8 mr-3 filter invert"
+            />
             <a
-              className="md:text-xl m-2 transition ease-in-out duration-75 hover:scale-105"
+              className="text-lg text-slate-300 hover:text-indigo-400 hover:underline transition-colors"
               href="mailto:de.sharma993@gmail.com"
             >
               de.sharma993@gmail.com
             </a>
           </div>
-          <div className="flex m-3 items-center border md:border-0 border-black rounded-2xl">
+          <div className="flex items-center">
             <img
               src={linkedinIcon}
               alt="LinkedIn Icon"
-              className="w-10 h-10 m-2"
+              className="w-8 h-8 mr-3 filter invert"
             />
             <a
-              className="text-xl m-2 transition ease-in-out duration-75 hover:scale-105"
+              className="text-lg text-slate-300 hover:text-indigo-400 hover:underline transition-colors"
               href="https://www.linkedin.com/in/deepsharma993/"
               target="_blank"
               rel="noopener noreferrer"
@@ -45,42 +44,16 @@ const Contact: React.FC = () => {
         </div>
       </div>
 
-      {/*
-        2) Bottom section (footer):
-           - Contains navigation links and copyright.
-           - Uses "underline-effect" for custom hover underline effect.
-      */}
-      <div className="flex flex-col items-center pb-4">
-        <div className="flex justify-center mt-10">
-          <a
-            href="#about"
-            className="underline-effect px-3 md:px-4 md:text-2xl transition duration-75 hover:scale-105"
-          >
-            About
-          </a>
-          <a
-            href="#experience"
-            className="underline-effect px-3 md:px-4 md:text-2xl transition duration-75 hover:scale-105"
-          >
-            Experience
-          </a>
-          <a
-            href="#projects"
-            className="underline-effect px-3 md:px-4 md:text-2xl transition duration-75 hover:scale-105"
-          >
-            Projects
-          </a>
-          <a
-            href="#contact"
-            className="underline-effect px-3 md:px-4 md:text-2xl transition duration-75 hover:scale-105"
-          >
-            Contact
-          </a>
-        </div>
-        <div className="flex justify-center mt-10 font-light">
-          Deep Sharma <span>&copy;</span> 2024
-        </div>
-      </div>
+      <footer className="w-full py-8">
+        <nav className="flex justify-center mb-4 gap-4 md:gap-8">
+          <a href="#about" className="text-slate-400 hover:text-indigo-400 transition-colors">About</a>
+          <a href="#experience" className="text-slate-400 hover:text-indigo-400 transition-colors">Experience</a>
+          <a href="#projects" className="text-slate-400 hover:text-indigo-400 transition-colors">Projects</a>
+        </nav>
+        <p className="text-slate-500 text-sm">
+          Copyright &copy; {new Date().getFullYear()} Deep Sharma. All Rights Reserved.
+        </p>
+      </footer>
     </div>
   );
 };

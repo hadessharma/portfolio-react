@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 
 interface CardProps {
   name: string;
-  img: string[]; // Updated to accept a list of images
+  img: string[];
   app: boolean;
   github: string;
   demo?: { title: string; link: string }[];
@@ -19,22 +19,11 @@ const ProjectCard: React.FC<CardProps> = ({
   demo,
   info,
 }) => {
-  const [isInfo, setIsInfo] = useState<boolean>(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [emblaRef] = useEmblaCarousel({ loop: true }, [
-    Autoplay({ delay: 4000 }),
+    Autoplay({ delay: 3000, stopOnInteraction: false }),
   ]);
-
-  const toggleHover = () => {
-    setIsInfo(!isInfo);
-  };
-
-  const handleClick = () => {
-    if (typeof window !== "undefined" && window.innerWidth < 640) {
-      toggleHover();
-    }
-  };
 
   const handleOutsideClick = (event: MouseEvent) => {
     if (
@@ -46,49 +35,24 @@ const ProjectCard: React.FC<CardProps> = ({
   };
 
   useEffect(() => {
-    document.addEventListener("click", handleOutsideClick);
+    document.addEventListener("mousedown", handleOutsideClick);
     return () => {
-      document.removeEventListener("click", handleOutsideClick);
+      document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
 
   return (
-    <div className="transition-transform duration-300 ease-in-out transform hover:scale-105 shadow-lg flex flex-col border border-gray-500 rounded-3xl p-4 m-4">
-      {/* Card */}
-      {/* Info Button */}
-      <button
-        className={`absolute top-2 right-2 flex items-center justify-center font-baskerville italic font-bold text-2xl bg-white border border-black w-8 h-8 rounded-full transition-transform duration-300 ease-in-out transform hover:scale-110 hover:bg-black hover:text-white hover:border-white z-20 hidden sm:block`}
-        onMouseEnter={toggleHover}
-        onMouseLeave={toggleHover}
-        onClick={handleClick}
-        disabled={isInfo}
-      >
-        i
-      </button>
-      <>
-        {isInfo && (
-          <div className="border border-white p-2 px-4 rounded-2xl absolute top-4 z-10 right-4 bg-zinc-800 text-white w-80">
-            {info.map((item, index) => (
-              <p key={index} className="text-center">
-                {item}
-              </p>
-            ))}
-          </div>
-        )}
-      </>
-      <div
-        className="embla border border-gray-500 rounded-3xl relative overflow-hidden"
-        ref={emblaRef}
-      >
+    <div className="flex flex-col flex-1 basis-1/3 max-w-lg min-w-[300px] border-gray-800 border p-6 rounded-3xl bg-gray-900 shadow-xl transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 hover:border-indigo-500/30">
+      <div className="embla rounded-2xl relative overflow-hidden" ref={emblaRef}>
         <div
-          className={`embla__container flex rounded-3xl ${
-            app ? "sm:max-w-52 md:max-w-72" : "sm:max-w-lg md:max-w-lg"
+          className={`embla__container flex rounded-2xl ${
+            app ? "sm:max-w-52 md:max-w-72" : ""
           }`}
         >
           {img.map((value, index) => (
             <img
               key={index + value}
-              className={`w-full embla__slide `}
+              className="w-full embla__slide object-cover"
               src={img[index]}
               alt={`${name} - ${index + 1}`}
             />
@@ -96,18 +60,23 @@ const ProjectCard: React.FC<CardProps> = ({
         </div>
       </div>
 
-      <div className="flex flex-col space-y-2 pt-2">
-        <h3 className="text-center text-2xl font-semibold md:px-10">{name}</h3>
-        <div className="flex justify-evenly">
+      <div className="flex flex-col space-y-4 pt-4 grow">
+        <h3 className="text-center text-2xl font-semibold text-indigo-400">
+          {name}
+        </h3>
+        <div className="text-slate-300 text-center text-sm grow">
+          {info.map((item, index) => (
+            <p key={index}>{item}</p>
+          ))}
+        </div>
+        <div className="flex justify-center space-x-4 pt-2">
           {/* GitHub Button */}
-          <div className="border min-w-28 border-black rounded-2xl bg-zinc-800 text-white hover:bg-black transition delay-150 hover:delay-75">
-            <button
-              onClick={() => window.open(github)}
-              className="w-full text-center p-3 text-sm"
-            >
-              GitHub
-            </button>
-          </div>
+          <button
+            onClick={() => window.open(github)}
+            className="min-w-28 text-center p-3 text-sm font-semibold border-2 border-slate-300 rounded-full text-slate-300 hover:bg-slate-300 hover:text-gray-950 transition-all duration-300"
+          >
+            GitHub
+          </button>
           {/* Dropdown Menu */}
           {demo && (
             <div
@@ -115,21 +84,15 @@ const ProjectCard: React.FC<CardProps> = ({
               ref={dropdownRef}
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
-              <div
-                className={`border border-black rounded-2xl min-w-28 bg-white hover:bg-black hover:text-white transition delay-150 hover:delay-75 cursor-pointer ${
-                  isDropdownOpen ? "bg-gray-800" : " "
-                }`}
-              >
-                <button className="w-full text-center p-3 text-sm">
-                  Live Demo
-                </button>
-              </div>
+              <button className="min-w-28 text-center p-3 text-sm font-semibold border-2 border-indigo-500 rounded-full bg-indigo-500 text-white hover:bg-indigo-600 hover:border-indigo-600 transition-all duration-300">
+                Live Demo
+              </button>
               {isDropdownOpen && (
-                <ul className="absolute mt-1 w-48 bg-white border border-gray-800 rounded-xl shadow-lg z-10 -top-5">
+                <ul className="absolute bottom-full mb-2 w-48 bg-gray-800 border border-gray-700 rounded-xl shadow-lg z-10">
                   {demo.map((item, index) => (
                     <li
                       key={index}
-                      className="px-4 py-2 text-sm text-gray-700 hover:bg-black hover:text-white cursor-pointer rounded-xl text-center"
+                      className="px-4 py-2 text-sm text-slate-200 hover:bg-indigo-500 cursor-pointer rounded-xl text-center"
                       onClick={() => window.open(item.link)}
                     >
                       {item.title}

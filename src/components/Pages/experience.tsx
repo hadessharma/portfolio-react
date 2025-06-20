@@ -14,10 +14,10 @@ const Experience: React.FC = () => {
       className="flex flex-col items-center justify-center min-h-screen px-5 md:px-20 py-16"
     >
       <div className="flex flex-col items-center py-4 mb-8">
-        <h2 className="text-center text-lg font-semibold text-gray-400">
+        <h2 className="text-center text-lg font-semibold text-slate-400">
           Explore My
         </h2>
-        <h2 className="text-center text-5xl font-bold font-baskerville text-gray-100">
+        <h2 className="text-center text-5xl font-bold text-slate-100">
           Experience
         </h2>
       </div>

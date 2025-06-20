@@ -8,7 +8,7 @@ import Contact from "./components/Pages/contact";
 
 const Layout: React.FC = () => {
   return (
-    <div className="min-h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth bg-gray-900">
+    <div className="min-h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth bg-gray-950 font-sans text-slate-200">
       <Navbar />
       <div id="home" className="h-screen snap-center">
         <Home />

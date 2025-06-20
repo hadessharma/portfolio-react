@@ -21,15 +21,15 @@ const Project: React.FC = () => {
       id="projects"
       className="flex flex-col items-center justify-center min-h-screen px-4 md:px-20"
     >
-      <div className="flex flex-col items-center py-4">
-        <h2 className="text-center text-base font-semibold text-zinc-500">
+      <div className="flex flex-col items-center py-4 mb-8">
+        <h2 className="text-center text-lg font-semibold text-slate-400">
           Browse My Recent
         </h2>
-        <h2 className="text-center text-5xl font-semibold text-zinc-950">
+        <h2 className="text-center text-5xl font-bold text-slate-100">
           Projects
         </h2>
       </div>
-      <div className="flex flex-col sm:flex-row flex-wrap justify-evenly items-center w-full space-y-5 sm:space-y-0 sm:space-x-5">
+      <div className="flex flex-col lg:flex-row flex-wrap justify-center items-stretch w-full gap-8">
         <ProjectCard
           name="Tic Tac Toe"
           img={[tictacttoeImage1, tictacttoeImage2, tictacttoeImage3]}

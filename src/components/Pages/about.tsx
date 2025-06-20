@@ -9,15 +9,17 @@ const About: React.FC = () => {
   return (
     <div
       id="about"
-      className="flex flex-col items-center justify-center h-screen px-4 md:px-40"
+      className="flex flex-col items-center justify-center min-h-screen px-4 md:px-40"
     >
-      <div className="flex flex-col md:flex-row items-center w-full max-w-6xl">
-        {/* Left Section */}
-        <div className="flex flex-col md:flex-1 items-center px-10 mb-8 md:mb-0">
-          <p className="text-base pb-5 font-light">Get to Know More</p>
-          <h2 className="text-5xl font-bold">About Me</h2>
-          <br />
-          <p className="md:text-lg text-center font-light">
+      <div className="flex flex-col items-center py-4 mb-8 text-center">
+        <h2 className="text-lg font-semibold text-slate-400">Get To Know More</h2>
+        <h2 className="text-5xl font-bold text-slate-100">About Me</h2>
+      </div>
+
+      <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-6xl">
+        {/* Left Section (Description) */}
+        <div className="md:flex-1 max-w-xl text-center md:text-left md:pr-12 mb-8 md:mb-0">
+          <p className="md:text-lg text-slate-300">
             I am a graduate student at Arizona State University with three years
             of work experience in Software Development and DevOps in the
             industry. I'm also passionate about building web applications and
@@ -25,66 +27,42 @@ const About: React.FC = () => {
           </p>
         </div>
 
-        {/* Right Section */}
-        <div className="flex md:flex-1 flex-col justify-center px-10 space-y-4 w-full md:m-0 max-w-2xl">
-          <div className="flex flex-col items-center border border-black rounded-2xl p-4">
-            <div className="pt-2">
-              <img
-                src={experienceIcon}
-                alt="Experience Icon"
-                className="w-8 h-8"
-              />
+        {/* Right Section (Cards) */}
+        <div className="flex md:flex-1 flex-col justify-center space-y-4 w-full max-w-md">
+          <div className="flex items-center border border-gray-800 rounded-2xl p-4 bg-gray-900 shadow-lg">
+            <img
+              src={experienceIcon}
+              alt="Experience Icon"
+              className="w-8 h-8 mr-4 filter invert"
+            />
+            <div>
+              <h3 className="text-lg font-semibold text-indigo-400">
+                Experience
+              </h3>
+              <p className="text-slate-300">3 years, Software Engineer</p>
             </div>
-            <h3 className="text-sm md:text-lg font-semibold pb-2">
-              Experience
-            </h3>
-            <p className="font-light">3 years</p>
-            <p className="font-light">Software Engineer</p>
           </div>
-          <div className="flex flex-col items-center border border-black rounded-2xl p-4">
-            <div className="pt-2">
+          <div className="flex flex-col border border-gray-800 rounded-2xl p-4 bg-gray-900 shadow-lg">
+            <div className="flex items-center mb-2">
               <img
                 src={educationIcon}
                 alt="Education Icon"
-                className="w-8 h-8"
+                className="w-8 h-8 mr-4 filter invert"
               />
+              <h3 className="text-lg font-semibold text-indigo-400">Education</h3>
             </div>
-            <h3 className="text-sm md:text-lg font-semibold pb-2">Education</h3>
-
-            {isMobile ? (
-              <div className="flex items-center">
-                <p className="text-sm md:text-lg px-4 font-semibold">M.S. CS</p>
-                <p className="text-sm md:text-lg font-light">
-                  Arizona State University
-                </p>
-              </div>
-            ) : (
-              <div className="flex items-center justify-between gap-x-4 w-fit">
-                <p className="text-sm md:text-lg font-semibold whitespace-nowrap">
-                  M.S. Computer Science
-                </p>
-                <p className="text-sm md:text-lg font-light whitespace-nowrap">
-                  Arizona State University, USA
-                </p>
-              </div>
-            )}
-            {isMobile ? (
-              <div className="flex items-center">
-                <p className="text-sm md:text-lg px-4 font-semibold">
-                  B.Tech. CS
-                </p>
-                <p className="text-sm md:text-lg font-light">SRM University</p>
-              </div>
-            ) : (
-              <div className="flex items-center">
-                <p className="text-sm md:text-lg px-4 font-semibold">
-                  B.Tech. Computer Science
-                </p>
-                <p className="text-sm md:text-lg font-light">
-                  SRM University, India
-                </p>
-              </div>
-            )}
+            <div className="pl-12">
+              <p className="font-semibold text-slate-200">
+                M.S. Computer Science
+              </p>
+              <p className="text-sm text-slate-400">
+                Arizona State University, USA
+              </p>
+              <p className="mt-2 font-semibold text-slate-200">
+                B.Tech. Computer Science
+              </p>
+              <p className="text-sm text-slate-400">SRM University, India</p>
+            </div>
           </div>
         </div>
       </div>

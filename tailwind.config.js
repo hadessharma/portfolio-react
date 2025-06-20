@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        baskerville: ['"Baskerville"'],
+        sans: ['"Roboto"', "sans-serif"],
       },
     },
   },
