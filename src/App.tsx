@@ -8,21 +8,21 @@ import Contact from "./components/Pages/contact";
 
 const Layout: React.FC = () => {
   return (
-    <div className="min-h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth bg-gray-950 font-sans text-slate-200">
+    <div className="min-h-screen md:h-screen md:snap-y md:snap-mandatory overflow-y-scroll scroll-smooth bg-gray-950 font-sans text-slate-200">
       <Navbar />
-      <div id="home" className="h-screen snap-center">
+      <div id="home" className="min-h-screen md:h-screen md:snap-center">
         <Home />
       </div>
-      <div id="about" className="min-h-screen snap-center">
+      <div id="about" className="min-h-screen md:h-screen md:snap-center">
         <About />
       </div>
-      <div id="experience" className="min-h-screen snap-center">
+      <div id="experience" className="min-h-screen md:h-screen md:snap-center">
         <Experience />
       </div>
-      <div id="projects" className="min-h-screen snap-center">
+      <div id="projects" className="min-h-screen md:h-screen md:snap-center">
         <Project />
       </div>
-      <div id="contact" className="min-h-screen snap-center">
+      <div id="contact" className="min-h-screen md:h-screen md:snap-center">
         <Contact />
       </div>
     </div>

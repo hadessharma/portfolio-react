@@ -65,10 +65,12 @@ export const toolsDatabase: ImageData[] = [
   {
     img: nodejs,
     title: "NodeJs",
+    showLabel: true,
   },
   {
     img: mongodb,
     title: "MongoDB",
+    showLabel: true,
   },
   {
     img: express,
@@ -78,10 +80,12 @@ export const toolsDatabase: ImageData[] = [
   {
     img: mysql,
     title: "MySQL",
+    showLabel: true,
   },
   {
     img: postgre,
     title: "PostgreSQL",
+    showLabel: true,
   },
   {
     img: k8s,
@@ -102,7 +106,8 @@ export const frontend: ImageData[] = [
   },
   {
     img: react,
-    title: "REACT",
+    title: "React",
+    showLabel: true,
   },
   {
     img: tailwind,
@@ -112,6 +117,7 @@ export const frontend: ImageData[] = [
   {
     img: redux,
     title: "Redux",
+    showLabel: true,
   },
   {
     img: compose,
