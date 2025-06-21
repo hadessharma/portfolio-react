@@ -17,7 +17,7 @@ const Experience: React.FC = () => {
         <h2 className="text-center text-lg font-semibold text-slate-400">
           Explore My
         </h2>
-        <h2 className="text-center text-5xl font-bold text-slate-100">
+        <h2 className="text-center text-6xl font-bold text-slate-100">
           Experience
         </h2>
       </div>

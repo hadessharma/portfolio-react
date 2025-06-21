@@ -3,20 +3,6 @@ import ProjectCard from "../Cards/projectCard";
 import ProjectModal from "../Cards/projectModal";
 import { projects, Project as ProjectType } from "../data/projectData";
 
-// importing tictactoe
-import tictacttoeImage1 from "../../assets/project/tictactoe/1.jpg";
-import tictacttoeImage2 from "../../assets/project/tictactoe/2.jpg";
-import tictacttoeImage3 from "../../assets/project/tictactoe/3.jpg";
-
-// importing phishing detection
-import phishingdetectionImage1 from "../../assets/project/phishing/1.png";
-import phishingdetectionImage2 from "../../assets/project/phishing/2.png";
-
-// importing terraZure
-import terraZureImage1 from "../../assets/project/terraZure/1.png";
-import terraZureImage2 from "../../assets/project/terraZure/2.png";
-import terraZureImage4 from "../../assets/project/terraZure/4.png";
-
 const Project: React.FC = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(
@@ -42,7 +28,7 @@ const Project: React.FC = () => {
         <h2 className="text-lg font-semibold text-slate-400">
           Browse My Recent
         </h2>
-        <h2 className="text-5xl font-bold text-slate-100">Projects</h2>
+        <h2 className="text-6xl font-bold text-slate-100">Projects</h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl">
         {projects.map((project, index) => (
