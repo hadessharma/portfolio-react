@@ -1,3 +1,4 @@
+import React, { useRef } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar/navbar";
 import About from "./components/Pages/about";
@@ -7,9 +8,14 @@ import Project from "./components/Pages/projects";
 import Contact from "./components/Pages/contact";
 
 const Layout: React.FC = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="min-h-screen md:h-screen md:snap-y md:snap-mandatory overflow-y-scroll scroll-smooth bg-gray-950 font-sans text-slate-200 scrollbar-thin scrollbar-track-gray-900 scrollbar-thumb-cyan-600 hover:scrollbar-thumb-cyan-500 scrollbar-thumb-rounded-md">
-      <Navbar />
+    <div
+      ref={scrollContainerRef}
+      className="min-h-screen md:h-screen md:snap-y md:snap-mandatory overflow-y-scroll scroll-smooth bg-gray-950 font-sans text-slate-200 scrollbar-thin scrollbar-track-gray-900 scrollbar-thumb-cyan-600 hover:scrollbar-thumb-cyan-500 scrollbar-thumb-rounded-md"
+    >
+      <Navbar scrollContainerRef={scrollContainerRef} />
       <div id="home" className="min-h-screen md:h-screen md:snap-center">
         <Home />
       </div>

@@ -24,7 +24,7 @@ const About: React.FC = () => {
       <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto w-full">
         {/* Experience Card */}
         <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-8 hover:border-cyan-400/50 transition-all duration-300 hover:bg-gray-800/70">
-          <div className="flex items-center mb-6">
+          <div className="flex items-center justify-center mb-6">
             <div className="w-12 h-12 bg-cyan-600/20 rounded-lg flex items-center justify-center mr-4">
               <img
                 src={experienceIcon}
@@ -34,7 +34,7 @@ const About: React.FC = () => {
             </div>
             <h3 className="text-2xl font-bold text-cyan-400">Experience</h3>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-4 text-center">
             <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
               <h4 className="text-lg font-semibold text-gray-100 mb-1">Software Engineer</h4>
               <p className="text-gray-400">3 years of industry experience</p>
@@ -44,7 +44,7 @@ const About: React.FC = () => {
 
         {/* Education Card */}
         <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-8 hover:border-cyan-400/50 transition-all duration-300 hover:bg-gray-800/70">
-          <div className="flex items-center mb-6">
+          <div className="flex items-center justify-center mb-6">
             <div className="w-12 h-12 bg-cyan-600/20 rounded-lg flex items-center justify-center mr-4">
               <img
                 src={educationIcon}
@@ -54,7 +54,7 @@ const About: React.FC = () => {
             </div>
             <h3 className="text-2xl font-bold text-cyan-400">Education</h3>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-4 text-center">
             <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
               <h4 className="text-lg font-semibold text-gray-100 mb-1">M.S. Computer Science</h4>
               <p className="text-gray-400">Arizona State University, USA</p>
