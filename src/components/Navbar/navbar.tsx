@@ -8,74 +8,114 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="flex bg-gray-950/70 backdrop-blur-md text-slate-200 p-6 md:px-10 lg:px-40 md:py-6 justify-between items-center shadow-lg shadow-black/20 sticky top-0 z-50 border-b border-gray-800">
-      <h2 className="text-3xl font-semibold flex-1 min-w-7">
-        <a
-          href="#home"
-          className="text-indigo-400 hover:text-indigo-300 transition-colors"
-        >
-          Deep Sharma
-        </a>
-      </h2>
-      <ul className="items-center hidden md:flex">
-        <li className="text-lg px-5 transition-colors duration-300 hover:text-indigo-400">
-          <a href="#about">About</a>
-        </li>
-        <li className="text-lg px-5 transition-colors duration-300 hover:text-indigo-400">
-          <a href="#projects">Projects</a>
-        </li>
-        <li className="text-lg px-5 transition-colors duration-300 hover:text-indigo-400">
-          <a href="#experience">Experience</a>
-        </li>
-        <li className="text-lg px-5 transition-colors duration-300 hover:text-indigo-400">
-          <a href="#contact">Contact</a>
-        </li>
-      </ul>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <a
+              href="#home"
+              className="text-xl font-mono font-bold text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
+            >
+              &lt;Deep /&gt;
+            </a>
+          </div>
 
-      {/* HAMBURGER */}
-      <button className="space-y-1.5 group md:hidden" onClick={toggleMenu}>
-        <div className="w-6 h-0.5 bg-slate-200 group-hover:bg-indigo-400 transition-colors"></div>
-        <div className="w-6 h-0.5 bg-slate-200 group-hover:bg-indigo-400 transition-colors"></div>
-        <div className="w-6 h-0.5 bg-slate-200 group-hover:bg-indigo-400 transition-colors"></div>
-      </button>
-      {/* Mobile Menu */}
-      <ul
-        className={`bg-gray-900/90 backdrop-blur-md text-slate-200 flex flex-col w-screen h-screen fixed inset-0 duration-300 space-y-4 items-center justify-center md:hidden transition-transform transform ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <button
-          className="px-10 py-4 absolute right-4 top-4"
-          onClick={toggleMenu}
-        >
-          <div className="w-6 h-1 rotate-45 absolute bg-slate-200"></div>
-          <div className="w-6 h-1 -rotate-45 absolute bg-slate-200"></div>
-        </button>
-        <li
-          className="text-2xl hover:text-indigo-400 transition-colors"
-          onClick={toggleMenu}
-        >
-          <a href="#about">About</a>
-        </li>
-        <li
-          className="text-2xl hover:text-indigo-400 transition-colors"
-          onClick={toggleMenu}
-        >
-          <a href="#projects">Projects</a>
-        </li>
-        <li
-          className="text-2xl hover:text-indigo-400 transition-colors"
-          onClick={toggleMenu}
-        >
-          <a href="#experience">Experience</a>
-        </li>
-        <li
-          className="text-2xl hover:text-indigo-400 transition-colors"
-          onClick={toggleMenu}
-        >
-          <a href="#contact">Contact</a>
-        </li>
-      </ul>
+          {/* Desktop Navigation */}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-8">
+              <a
+                href="#about"
+                className="text-gray-300 hover:text-cyan-400 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50 rounded-md"
+              >
+                About
+              </a>
+              <a
+                href="#projects"
+                className="text-gray-300 hover:text-cyan-400 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50 rounded-md"
+              >
+                Projects
+              </a>
+              <a
+                href="#experience"
+                className="text-gray-300 hover:text-cyan-400 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50 rounded-md"
+              >
+                Experience
+              </a>
+              <a
+                href="#contact"
+                className="text-gray-300 hover:text-cyan-400 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-gray-800/50 rounded-md"
+              >
+                Contact
+              </a>
+            </div>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={toggleMenu}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-cyan-400 hover:bg-gray-800/50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-400 transition-colors duration-200"
+            >
+              <span className="sr-only">Open main menu</span>
+              {/* Icon when menu is closed */}
+              <svg
+                className={`${isOpen ? 'hidden' : 'block'} h-6 w-6`}
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              {/* Icon when menu is open */}
+              <svg
+                className={`${isOpen ? 'block' : 'hidden'} h-6 w-6`}
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      <div className={`${isOpen ? 'block' : 'hidden'} md:hidden bg-gray-900/95 backdrop-blur-sm border-b border-gray-800/50`}>
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a
+            href="#about"
+            className="text-gray-300 hover:text-cyan-400 block px-3 py-2 text-base font-medium transition-colors duration-200 hover:bg-gray-800/50 rounded-md"
+            onClick={toggleMenu}
+          >
+            About
+          </a>
+          <a
+            href="#projects"
+            className="text-gray-300 hover:text-cyan-400 block px-3 py-2 text-base font-medium transition-colors duration-200 hover:bg-gray-800/50 rounded-md"
+            onClick={toggleMenu}
+          >
+            Projects
+          </a>
+          <a
+            href="#experience"
+            className="text-gray-300 hover:text-cyan-400 block px-3 py-2 text-base font-medium transition-colors duration-200 hover:bg-gray-800/50 rounded-md"
+            onClick={toggleMenu}
+          >
+            Experience
+          </a>
+          <a
+            href="#contact"
+            className="text-gray-300 hover:text-cyan-400 block px-3 py-2 text-base font-medium transition-colors duration-200 hover:bg-gray-800/50 rounded-md"
+            onClick={toggleMenu}
+          >
+            Contact
+          </a>
+        </div>
+      </div>
     </nav>
   );
 };

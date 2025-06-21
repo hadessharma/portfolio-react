@@ -6,53 +6,86 @@ const Contact: React.FC = () => {
   return (
     <div
       id="contact"
-      className="flex flex-col h-screen justify-center items-center text-center px-4"
+      className="min-h-screen flex flex-col justify-center items-center px-4 py-16 bg-gray-900"
     >
-      <div className="mb-auto pt-24">
-        <p className="text-lg text-slate-400">Get in Touch</p>
-        <h3 className="text-5xl font-bold text-slate-100 mb-8">Contact Me</h3>
+      {/* Main Content */}
+      <div className="text-center max-w-4xl mx-auto">
+        <h2 className="text-4xl md:text-6xl font-bold text-gray-100 mb-4">
+          Let's Connect
+        </h2>
+        <p className="text-xl text-gray-400 mb-16 max-w-2xl mx-auto">
+          I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
+        </p>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 rounded-full border border-gray-800 bg-gray-900 px-8 py-4 shadow-lg">
-          <div className="flex items-center">
-            <img
-              src={mailIcon}
-              alt="Email Icon"
-              className="w-8 h-8 mr-3 filter invert"
-            />
+        {/* Contact Cards */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto mb-16">
+          {/* Email Card */}
+          <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-8 hover:border-cyan-400/50 transition-all duration-300 hover:bg-gray-800/70">
+            <div className="flex items-center justify-center mb-4">
+              <img
+                src={mailIcon}
+                alt="Email"
+                className="w-12 h-12 filter invert opacity-80"
+              />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-100 mb-2">Email</h3>
             <a
-              className="text-lg text-slate-300 hover:text-indigo-400 hover:underline transition-colors"
               href="mailto:de.sharma993@gmail.com"
+              className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200 break-all"
             >
               de.sharma993@gmail.com
             </a>
           </div>
-          <div className="flex items-center">
-            <img
-              src={linkedinIcon}
-              alt="LinkedIn Icon"
-              className="w-8 h-8 mr-3 filter invert"
-            />
+
+          {/* LinkedIn Card */}
+          <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-8 hover:border-cyan-400/50 transition-all duration-300 hover:bg-gray-800/70">
+            <div className="flex items-center justify-center mb-4">
+              <img
+                src={linkedinIcon}
+                alt="LinkedIn"
+                className="w-12 h-12 filter invert opacity-80"
+              />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-100 mb-2">LinkedIn</h3>
             <a
-              className="text-lg text-slate-300 hover:text-indigo-400 hover:underline transition-colors"
               href="https://www.linkedin.com/in/deepsharma993/"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200"
             >
-              LinkedIn
+              Connect with me
             </a>
           </div>
         </div>
       </div>
 
-      <footer className="w-full py-8">
-        <nav className="flex justify-center mb-4 gap-4 md:gap-8">
-          <a href="#about" className="text-slate-400 hover:text-indigo-400 transition-colors">About</a>
-          <a href="#experience" className="text-slate-400 hover:text-indigo-400 transition-colors">Experience</a>
-          <a href="#projects" className="text-slate-400 hover:text-indigo-400 transition-colors">Projects</a>
-        </nav>
-        <p className="text-slate-500 text-sm">
-          Copyright &copy; {new Date().getFullYear()} Deep Sharma. All Rights Reserved.
-        </p>
+      {/* Footer */}
+      <footer className="w-full text-center mt-auto pt-16">
+        <div className="max-w-4xl mx-auto">
+          <nav className="flex justify-center mb-6 gap-8">
+            <a 
+              href="#about" 
+              className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+            >
+              About
+            </a>
+            <a 
+              href="#experience" 
+              className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+            >
+              Experience
+            </a>
+            <a 
+              href="#projects" 
+              className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+            >
+              Projects
+            </a>
+          </nav>
+          <p className="text-gray-500 text-sm">
+            © {new Date().getFullYear()} Deep Sharma. All rights reserved.
+          </p>
+        </div>
       </footer>
     </div>
   );

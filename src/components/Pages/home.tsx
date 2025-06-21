@@ -18,27 +18,27 @@ const Home: React.FC = () => {
           <img
             src={profilePic}
             alt="profile pic"
-            className="p-2 rounded-full bg-gradient-to-br from-indigo-900 to-gray-950 shadow-2xl shadow-indigo-500/10"
+            className="p-2 rounded-full bg-gradient-to-br from-cyan-900 to-gray-950 shadow-2xl shadow-cyan-500/10"
           />
         </div>
         <div className="flex flex-col md:px-10 size-96 min-w-max justify-center items-center cursor-default">
-          <h3 className="pt-2 text-lg text-slate-400">Hello I'm</h3>
-          <h1 className="py-2 text-6xl font-bold text-slate-100">
+          <h3 className="pt-2 text-lg text-gray-400">Hello I'm</h3>
+          <h1 className="py-2 text-6xl font-bold text-gray-100">
             Deep Sharma
           </h1>
-          <h2 className="py-2 text-3xl font-semibold text-indigo-400 mb-4">
+          <h2 className="py-2 text-3xl font-semibold text-cyan-400 mb-4">
             Software Developer
           </h2>
           <div className="flex justify-center items-center space-x-4">
             <button
-              className="px-6 py-3 w-full min-w-36 border-2 border-slate-300 rounded-full text-slate-300 font-semibold hover:bg-slate-300 hover:text-gray-950 transition-all duration-300 transform hover:scale-105"
+              className="px-6 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-gray-300 font-medium hover:bg-gray-800 hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-200"
               onClick={handleDownloadCV}
             >
               Download CV
             </button>
             <a
               href="#contact"
-              className="px-6 py-3 w-full min-w-36 border-2 border-indigo-500 rounded-full bg-indigo-500 text-white font-semibold flex items-center justify-center hover:bg-indigo-600 hover:border-indigo-600 hover:scale-105 transition-all duration-300"
+              className="px-6 py-3 bg-cyan-600 border border-cyan-600 rounded-lg text-white font-medium hover:bg-cyan-700 hover:border-cyan-700 transition-all duration-200"
             >
               Contact Info
             </a>

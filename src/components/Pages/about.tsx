@@ -1,68 +1,102 @@
 import React from "react";
 import experienceIcon from "../../assets/experience.png";
 import educationIcon from "../../assets/education.png";
-import { useMediaQuery } from "react-responsive";
 
 const About: React.FC = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
-
   return (
     <div
       id="about"
-      className="flex flex-col items-center justify-center min-h-screen px-4 md:px-40"
+      className="min-h-screen flex flex-col justify-center items-center px-4 py-16 bg-gray-900"
     >
-      <div className="flex flex-col items-center py-4 mb-8 text-center">
-        <h2 className="text-lg font-semibold text-slate-400">Get To Know More</h2>
-        <h2 className="text-5xl font-bold text-slate-100">About Me</h2>
+      {/* Header */}
+      <div className="text-center mb-16 max-w-4xl mx-auto">
+        <h2 className="text-lg font-medium text-gray-400 mb-2">Get To Know More</h2>
+        <h1 className="text-4xl md:text-6xl font-bold text-gray-100 mb-8">About Me</h1>
+        <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          I am a graduate student at Arizona State University with three years
+          of work experience in Software Development and DevOps in the
+          industry. I'm passionate about building web applications and
+          designing automated cloud infrastructure deployment platforms.
+        </p>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-6xl">
-        {/* Left Section (Description) */}
-        <div className="md:flex-1 max-w-xl text-center md:text-left md:pr-12 mb-8 md:mb-0">
-          <p className="md:text-lg text-slate-300">
-            I am a graduate student at Arizona State University with three years
-            of work experience in Software Development and DevOps in the
-            industry. I'm also passionate about building web applications and
-            designing automated cloud infrastructure deployment platforms.
-          </p>
-        </div>
-
-        {/* Right Section (Cards) */}
-        <div className="flex md:flex-1 flex-col justify-center space-y-4 w-full max-w-md">
-          <div className="flex items-center border border-gray-800 rounded-2xl p-4 bg-gray-900 shadow-lg">
-            <img
-              src={experienceIcon}
-              alt="Experience Icon"
-              className="w-8 h-8 mr-4 filter invert"
-            />
-            <div>
-              <h3 className="text-lg font-semibold text-indigo-400">
-                Experience
-              </h3>
-              <p className="text-slate-300">3 years, Software Engineer</p>
+      {/* Cards Section */}
+      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto w-full">
+        {/* Experience Card */}
+        <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-8 hover:border-cyan-400/50 transition-all duration-300 hover:bg-gray-800/70">
+          <div className="flex items-center mb-6">
+            <div className="w-12 h-12 bg-cyan-600/20 rounded-lg flex items-center justify-center mr-4">
+              <img
+                src={experienceIcon}
+                alt="Experience"
+                className="w-6 h-6 filter invert opacity-80"
+              />
+            </div>
+            <h3 className="text-2xl font-bold text-cyan-400">Experience</h3>
+          </div>
+          <div className="space-y-4">
+            <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
+              <h4 className="text-lg font-semibold text-gray-100 mb-1">Software Engineer</h4>
+              <p className="text-gray-400">3 years of industry experience</p>
+              <p className="text-sm text-gray-500 mt-2">
+                Specialized in full-stack development and DevOps practices
+              </p>
             </div>
           </div>
-          <div className="flex flex-col border border-gray-800 rounded-2xl p-4 bg-gray-900 shadow-lg">
-            <div className="flex items-center mb-2">
+        </div>
+
+        {/* Education Card */}
+        <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-8 hover:border-cyan-400/50 transition-all duration-300 hover:bg-gray-800/70">
+          <div className="flex items-center mb-6">
+            <div className="w-12 h-12 bg-cyan-600/20 rounded-lg flex items-center justify-center mr-4">
               <img
                 src={educationIcon}
-                alt="Education Icon"
-                className="w-8 h-8 mr-4 filter invert"
+                alt="Education"
+                className="w-6 h-6 filter invert opacity-80"
               />
-              <h3 className="text-lg font-semibold text-indigo-400">Education</h3>
             </div>
-            <div className="pl-12">
-              <p className="font-semibold text-slate-200">
-                M.S. Computer Science
+            <h3 className="text-2xl font-bold text-cyan-400">Education</h3>
+          </div>
+          <div className="space-y-4">
+            <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
+              <h4 className="text-lg font-semibold text-gray-100 mb-1">M.S. Computer Science</h4>
+              <p className="text-gray-400">Arizona State University, USA</p>
+              <p className="text-sm text-gray-500 mt-2">
+                Currently pursuing advanced studies in computer science
               </p>
-              <p className="text-sm text-slate-400">
-                Arizona State University, USA
-              </p>
-              <p className="mt-2 font-semibold text-slate-200">
-                B.Tech. Computer Science
-              </p>
-              <p className="text-sm text-slate-400">SRM University, India</p>
             </div>
+            <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
+              <h4 className="text-lg font-semibold text-gray-100 mb-1">B.Tech. Computer Science</h4>
+              <p className="text-gray-400">SRM University, India</p>
+              <p className="text-sm text-gray-500 mt-2">
+                Foundation in computer science and software engineering
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Skills Preview */}
+      <div className="mt-16 text-center max-w-4xl mx-auto">
+        <h3 className="text-2xl font-bold text-gray-100 mb-8">What I Do</h3>
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-gray-800/30 border border-gray-700 rounded-lg p-6 hover:border-cyan-400/50 transition-all duration-300">
+            <h4 className="text-lg font-semibold text-cyan-400 mb-2">Full-Stack Development</h4>
+            <p className="text-gray-300 text-sm">
+              Building modern web applications with React, Node.js, and cloud technologies
+            </p>
+          </div>
+          <div className="bg-gray-800/30 border border-gray-700 rounded-lg p-6 hover:border-cyan-400/50 transition-all duration-300">
+            <h4 className="text-lg font-semibold text-cyan-400 mb-2">DevOps & Cloud</h4>
+            <p className="text-gray-300 text-sm">
+              Designing automated deployment pipelines and cloud infrastructure
+            </p>
+          </div>
+          <div className="bg-gray-800/30 border border-gray-700 rounded-lg p-6 hover:border-cyan-400/50 transition-all duration-300">
+            <h4 className="text-lg font-semibold text-cyan-400 mb-2">Problem Solving</h4>
+            <p className="text-gray-300 text-sm">
+              Creating efficient solutions for complex technical challenges
+            </p>
           </div>
         </div>
       </div>
