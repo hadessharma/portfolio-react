@@ -4,13 +4,36 @@ interface NavbarProps {
   scrollContainerRef: React.RefObject<HTMLDivElement>;
 }
 
+const bracketPairs = [
+  { open: "<", close: " />" },
+  { open: "[", close: "]" },
+  { open: "{", close: "}" },
+  { open: "(", close: ")" },
+];
+
 const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("home");
+  const [currentBracketIndex, setCurrentBracketIndex] = useState(0);
+  const [isFadingLogo, setIsFadingLogo] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsFadingLogo(true);
+      setTimeout(() => {
+        setCurrentBracketIndex(
+          (prevIndex) => (prevIndex + 1) % bracketPairs.length
+        );
+        setIsFadingLogo(false);
+      }, 500); // Half second for fade-out
+    }, 3000); // 3 seconds per style
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,17 +74,17 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
   }, [scrollContainerRef]);
 
   const navLinkClasses = (section: string) =>
-    `px-4 py-2 text-base font-medium transition-all duration-300 rounded-lg ${
+    `px-4 py-2 text-base transition-all duration-300 rounded-lg ${
       activeSection === section
-        ? "bg-cyan-600 text-white"
-        : "text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50"
+        ? "text-cyan-400 font-semibold"
+        : "text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 font-medium"
     }`;
 
   const mobileNavLinkClasses = (section: string) =>
-    `block px-3 py-3 text-lg font-medium transition-colors duration-300 rounded-lg ${
+    `block px-3 py-3 text-lg transition-colors duration-300 rounded-lg ${
       activeSection === section
-        ? "bg-cyan-600 text-white"
-        : "text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50"
+        ? "text-cyan-400 font-semibold"
+        : "text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 font-medium"
     }`;
 
   return (
@@ -74,7 +97,10 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
               href="#home"
               className="text-2xl font-bold font-mono tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors duration-300"
             >
-              &lt;Deep /&gt;
+              <span>&lt;</span>
+              <span>Deep</span>
+              <span> /&gt;</span>
+              <span className="animate-blink">_</span>
             </a>
           </div>
 

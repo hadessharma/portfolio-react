@@ -44,7 +44,7 @@ export const projects: Project[] = [
     info: [
       "This project develops a Tic-Tac-Toe app for Android, featuring an AI opponent that uses the Minimax algorithm with alpha-beta pruning for optimized gameplay across three difficulty levels: Easy, Medium, and Hard.",
     ],
-    stack: ["Android", "Java", "XML", "Minimax"],
+    stack: ["Android", "Kotlin", "XML", "Minimax"],
   },
   {
     name: "TerraZure",
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     info: [
       "TerraZure enables users to easily deploy and manage cloud resources through a user-friendly graphical interface, without needing in-depth knowledge of the underlying Terraform technology. The platform integrates with multiple cloud providers, allowing authenticated deployment across different environments. Users can customize cloud deployments through simple front-end forms, which directly feed into Terraform's automation modules.",
     ],
-    stack: ["React", "Node.js", "Express", "MongoDB", "Terraform", "Azure"],
+    stack: ["React", "Node.js", "Express", "MongoDB", "Terraform", "Azure", "AWS"],
   },
   {
     name: "Phishing Detection",

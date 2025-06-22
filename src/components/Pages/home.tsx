@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import profilePic from "../../assets/profile-pic.png";
 
 // importing icons
@@ -6,7 +6,29 @@ import githubIcon from "../../assets/github.png";
 import linkedinIcon from "../../assets/linkedin.png";
 import cvPDF from "../../assets/resume_DeepSharma.pdf";
 
+const titles = [
+  "Software Developer",
+  "DevOps Engineer",
+  "Full-Stack Developer",
+  "Cloud Engineer",
+];
+
 const Home: React.FC = () => {
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [isFading, setIsFading] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsFading(true);
+      setTimeout(() => {
+        setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % titles.length);
+        setIsFading(false);
+      }, 500); // Half second for fade-out
+    }, 3000); // 3 seconds per title
+
+    return () => clearInterval(interval);
+  }, []);
+
   const handleDownloadCV = () => {
     window.open(cvPDF);
   };
@@ -26,8 +48,12 @@ const Home: React.FC = () => {
           <h1 className="py-2 text-6xl font-bold text-gray-100">
             Deep Sharma
           </h1>
-          <h2 className="py-2 text-3xl font-semibold text-cyan-400 mb-4">
-            Software Developer
+          <h2
+            className={`py-2 text-3xl font-semibold text-cyan-400 mb-4 transition-opacity duration-500 ${
+              isFading ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            {titles[currentTitleIndex]}
           </h2>
           <div className="flex justify-center items-center space-x-4">
             <button
