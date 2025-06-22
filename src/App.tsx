@@ -16,19 +16,34 @@ const Layout: React.FC = () => {
       className="min-h-screen md:h-screen md:snap-y md:snap-mandatory overflow-y-scroll scroll-smooth bg-gray-950 font-sans text-slate-200 scrollbar-thin scrollbar-track-gray-900 scrollbar-thumb-cyan-600 hover:scrollbar-thumb-cyan-500 scrollbar-thumb-rounded-md"
     >
       <Navbar scrollContainerRef={scrollContainerRef} />
-      <div id="home" className="min-h-screen md:h-screen md:snap-center">
+      <div
+        id="home"
+        className="min-h-screen md:h-screen md:snap-center pt-20"
+      >
         <Home />
       </div>
-      <div id="about" className="min-h-screen md:h-screen md:snap-center">
+      <div
+        id="about"
+        className="min-h-screen md:h-screen md:snap-center pt-20"
+      >
         <About />
       </div>
-      <div id="experience" className="min-h-screen md:h-screen md:snap-center">
+      <div
+        id="experience"
+        className="min-h-screen md:h-screen md:snap-center pt-20"
+      >
         <Experience />
       </div>
-      <div id="projects" className="min-h-screen md:h-screen md:snap-center">
+      <div
+        id="projects"
+        className="min-h-screen md:h-screen md:snap-center pt-20"
+      >
         <Project />
       </div>
-      <div id="contact" className="min-h-screen md:h-screen md:snap-center">
+      <div
+        id="contact"
+        className="min-h-screen md:h-screen md:snap-center pt-20"
+      >
         <Contact />
       </div>
     </div>

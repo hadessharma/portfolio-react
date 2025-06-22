@@ -81,7 +81,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
     }`;
 
   const mobileNavLinkClasses = (section: string) =>
-    `block px-3 py-3 text-lg transition-colors duration-300 rounded-lg ${
+    `block px-3 py-3 text-lg transition-colors duration-300 rounded-lg text-center ${
       activeSection === section
         ? "text-cyan-400 font-semibold"
         : "text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 font-medium"
@@ -170,7 +170,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
           isOpen ? "max-h-screen" : "max-h-0"
         }`}
       >
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="px-2 pt-2 pb-3 space-y-2 sm:px-3">
           <a
             href="#about"
             className={mobileNavLinkClasses("about")}
