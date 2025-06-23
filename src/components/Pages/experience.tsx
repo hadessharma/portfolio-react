@@ -10,8 +10,7 @@ import ExperienceCard from "../Cards/experienceCard";
 const Experience: React.FC = () => {
   return (
     <div
-      id="experience"
-      className="flex flex-col items-center justify-center min-h-screen px-5 md:px-20 py-16"
+      className="flex flex-col items-center justify-center min-h-full px-5 md:px-20 py-16"
     >
       <div className="flex flex-col items-center py-4 mb-8">
         <h2 className="text-center text-lg font-semibold text-slate-400">

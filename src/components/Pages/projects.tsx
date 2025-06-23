@@ -21,8 +21,7 @@ const Project: React.FC = () => {
 
   return (
     <div
-      id="projects"
-      className="flex flex-col h-screen w-full items-center justify-center px-4 md:px-20 py-16"
+      className="flex flex-col h-full w-full items-center justify-center px-4 md:px-20 py-16"
     >
       <div className="text-center mb-12">
         <h2 className="text-lg font-semibold text-slate-400">

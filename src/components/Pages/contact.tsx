@@ -5,8 +5,7 @@ import linkedinIcon from "../../assets/linkedin.png";
 const Contact: React.FC = () => {
   return (
     <div
-      id="contact"
-      className="min-h-screen flex flex-col items-center px-4 py-16 bg-gray-900"
+      className="min-h-full flex flex-col items-center px-4 py-16 bg-gray-900"
     >
       {/* Main Content Wrapper */}
       <div className="flex-grow flex flex-col justify-center items-center w-full">

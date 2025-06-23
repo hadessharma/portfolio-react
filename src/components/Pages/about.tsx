@@ -5,8 +5,7 @@ import educationIcon from "../../assets/education.png";
 const About: React.FC = () => {
   return (
     <div
-      id="about"
-      className="min-h-screen flex flex-col justify-center items-center px-4 py-16 bg-gray-900"
+      className="min-h-full flex flex-col justify-center items-center px-4 py-16 bg-gray-900"
     >
       {/* Header */}
       <div className="text-center mb-16 max-w-4xl mx-auto">
@@ -38,6 +37,10 @@ const About: React.FC = () => {
             <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
               <h4 className="text-lg font-semibold text-gray-100 mb-1">Software Engineer</h4>
               <p className="text-gray-400">3 years of industry experience</p>
+            </div>
+            <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
+              <h4 className="text-lg font-semibold text-gray-100 mb-1">Core Competencies</h4>
+              <p className="text-gray-400">Full-Stack Dev, DevOps & Cloud</p>
             </div>
           </div>
         </div>

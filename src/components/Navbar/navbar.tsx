@@ -4,36 +4,13 @@ interface NavbarProps {
   scrollContainerRef: React.RefObject<HTMLDivElement>;
 }
 
-const bracketPairs = [
-  { open: "<", close: " />" },
-  { open: "[", close: "]" },
-  { open: "{", close: "}" },
-  { open: "(", close: ")" },
-];
-
 const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("home");
-  const [currentBracketIndex, setCurrentBracketIndex] = useState(0);
-  const [isFadingLogo, setIsFadingLogo] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsFadingLogo(true);
-      setTimeout(() => {
-        setCurrentBracketIndex(
-          (prevIndex) => (prevIndex + 1) % bracketPairs.length
-        );
-        setIsFadingLogo(false);
-      }, 500); // Half second for fade-out
-    }, 3000); // 3 seconds per style
-
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
