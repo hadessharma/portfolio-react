@@ -13,6 +13,9 @@ import terraZureImage1 from "../../assets/project/terraZure/1.png";
 import terraZureImage2 from "../../assets/project/terraZure/2.png";
 import terraZureImage4 from "../../assets/project/terraZure/4.png";
 
+// Elastic Face Recognition
+import elasticFaceRecognitionImage1 from "../../assets/project/ElasticFaceRecognition/1.png";
+
 // Project Data Structure
 export interface Project {
   name: string;
@@ -65,5 +68,15 @@ export const projects: Project[] = [
       "This project aims to detect phishing URLs using advanced machine learning techniques. We compare and contrast different algorithms to identify the most effective approach in phishing detection.",
     ],
     stack: ["Python", "Scikit-learn", "Flask", "Machine Learning"],
+  },
+  {
+    name: "Elastic Face Recognition",
+    img: [elasticFaceRecognitionImage1],
+    app: false,
+    github: "https://github.com/hadessharma/Elastic-Face-Recognition-Service-on-AWS",
+    info: [
+      "A scalable, cloud-native face recognition service built on AWS infrastructure that automatically scales based on demand. The system processes uploaded images to identify faces using a pre-trained machine learning model and returns results in real-time.",
+    ],
+    stack: ["Python", "FastAPI", "AWS", "EC2", "S3", "SQS"],
   },
 ]; 
