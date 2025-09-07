@@ -4,7 +4,6 @@ import Navbar from "./components/Navbar/navbar";
 import About from "./components/Pages/about";
 import Experience from "./components/Pages/experience";
 import Home from "./components/Pages/home";
-import Project from "./components/Pages/projects";
 import Contact from "./components/Pages/contact";
 
 const Layout: React.FC = () => {
@@ -29,16 +28,10 @@ const Layout: React.FC = () => {
         <About />
       </div>
       <div
-        id="experience"
+        id="skills"
         className="min-h-screen md:h-screen md:snap-center pt-20"
       >
         <Experience />
-      </div>
-      <div
-        id="projects"
-        className="min-h-screen md:h-screen md:snap-center pt-20"
-      >
-        <Project />
       </div>
       <div
         id="contact"

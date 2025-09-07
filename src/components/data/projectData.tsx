@@ -30,26 +30,6 @@ export interface Project {
 // Project Data Array
 export const projects: Project[] = [
   {
-    name: "Tic Tac Toe",
-    img: [tictacttoeImage1, tictacttoeImage2, tictacttoeImage3],
-    app: true,
-    github: "https://github.com/hadessharma/TicTacToe",
-    demo: [
-      {
-        title: "Bluetooth Multiplayer",
-        link: "https://www.youtube.com/watch?v=TWcV-bMbiUk",
-      },
-      {
-        title: "vs AI",
-        link: "https://www.youtube.com/watch?v=8V81xjbQjyY",
-      },
-    ],
-    info: [
-      "This project develops a Tic-Tac-Toe app for Android, featuring an AI opponent that uses the Minimax algorithm with alpha-beta pruning for optimized gameplay across three difficulty levels: Easy, Medium, and Hard.",
-    ],
-    stack: ["Android", "Kotlin", "XML", "Minimax"],
-  },
-  {
     name: "TerraZure",
     img: [terraZureImage1, terraZureImage2, terraZureImage4],
     app: false,
@@ -78,5 +58,25 @@ export const projects: Project[] = [
       "A scalable, cloud-native face recognition service built on AWS infrastructure that automatically scales based on demand. The system processes uploaded images to identify faces using a pre-trained machine learning model and returns results in real-time.",
     ],
     stack: ["Python", "FastAPI", "AWS", "EC2", "S3", "SQS"],
+  },
+  {
+    name: "Tic Tac Toe",
+    img: [tictacttoeImage1, tictacttoeImage2, tictacttoeImage3],
+    app: true,
+    github: "https://github.com/hadessharma/TicTacToe",
+    demo: [
+      {
+        title: "Bluetooth Multiplayer",
+        link: "https://www.youtube.com/watch?v=TWcV-bMbiUk",
+      },
+      {
+        title: "vs AI",
+        link: "https://www.youtube.com/watch?v=8V81xjbQjyY",
+      },
+    ],
+    info: [
+      "This project develops a Tic-Tac-Toe app for Android, featuring an AI opponent that uses the Minimax algorithm with alpha-beta pruning for optimized gameplay across three difficulty levels: Easy, Medium, and Hard.",
+    ],
+    stack: ["Android", "Kotlin", "XML", "Minimax"],
   },
 ]; 

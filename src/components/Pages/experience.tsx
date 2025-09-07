@@ -17,7 +17,7 @@ const Experience: React.FC = () => {
           Explore My
         </h2>
         <h2 className="text-center text-6xl font-bold text-slate-100">
-          Experience
+          Skills
         </h2>
       </div>
       <div className="flex flex-col sm:flex-row flex-wrap justify-center items-stretch w-full gap-8">

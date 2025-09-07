@@ -146,15 +146,15 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 </span>
               ))}
             </div>
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-4">
               <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 border border-gray-700 rounded-lg text-gray-300 hover:bg-gray-800 hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-200"
+                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-800 border-2 border-gray-600 rounded-xl text-white font-semibold hover:from-gray-600 hover:to-gray-700 hover:border-gray-500 hover:shadow-lg transform hover:scale-105 transition-all duration-200"
               >
                 <FiGithub className="w-5 h-5" />
-                <span className="font-medium">Code</span>
+                <span>View Code</span>
               </a>
               {/* --- Live Demo Button/Dropdown --- */}
               {project.demo && project.demo.length > 0 && (
@@ -163,10 +163,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                     <div className="relative" ref={dropdownRef}>
                       <button
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        className="flex items-center gap-2 px-4 py-2 bg-cyan-600 border border-cyan-600 rounded-lg text-white hover:bg-cyan-700 hover:border-cyan-700 transition-all duration-200"
+                        className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-600 to-cyan-700 border-2 border-cyan-500 rounded-xl text-white font-semibold hover:from-cyan-500 hover:to-cyan-600 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/25 transform hover:scale-105 transition-all duration-200"
                       >
                         <FiExternalLink className="w-5 h-5" />
-                        <span className="font-medium">Live Demo</span>
+                        <span>Live Demo</span>
                       </button>
                       {isDropdownOpen && (
                         <ul className="absolute bottom-full mb-2 w-48 bg-gray-800 border border-gray-700 rounded-lg shadow-lg z-20">
@@ -190,10 +190,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                       href={project.demo[0].link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-cyan-600 border border-cyan-600 rounded-lg text-white hover:bg-cyan-700 hover:border-cyan-700 transition-all duration-200"
+                      className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-600 to-cyan-700 border-2 border-cyan-500 rounded-xl text-white font-semibold hover:from-cyan-500 hover:to-cyan-600 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/25 transform hover:scale-105 transition-all duration-200"
                     >
                       <FiExternalLink className="w-5 h-5" />
-                      <span className="font-medium">Live Demo</span>
+                      <span>Live Demo</span>
                     </a>
                   )}
                 </>
