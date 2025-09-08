@@ -71,7 +71,7 @@ src/content/blog/
 
 Write your content in standard markdown:
 
-````markdown
+```markdown
 # Your Blog Post Title
 
 Your introduction paragraph...
@@ -92,7 +92,7 @@ More content...
 **Bold text** and _italic text_
 
 `code blocks`
-````
+```
 
 ## Quick Editing Guide
 
