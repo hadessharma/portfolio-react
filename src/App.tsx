@@ -1,10 +1,13 @@
 import React, { useRef } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar/navbar";
 import About from "./components/Pages/about";
 import Experience from "./components/Pages/experience";
 import Home from "./components/Pages/home";
 import Contact from "./components/Pages/contact";
+import Blog from "./components/Pages/blog";
+import BlogPost from "./components/Pages/blogPost";
 
 const Layout: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -44,7 +47,15 @@ const Layout: React.FC = () => {
 };
 
 function App() {
-  return <Layout />;
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;

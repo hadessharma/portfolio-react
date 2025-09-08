@@ -68,16 +68,22 @@ const Contact: React.FC = () => {
               About
             </a>
             <a 
-              href="#experience" 
+              href="#skills" 
               className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
             >
-              Experience
+              Skills
             </a>
             <a 
               href="#projects" 
               className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
             >
               Projects
+            </a>
+            <a 
+              href="/blog" 
+              className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+            >
+              Blog
             </a>
           </nav>
           <p className="text-gray-500 text-sm">

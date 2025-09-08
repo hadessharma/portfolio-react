@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import cvPDF from "../../assets/resume_DeepSharma.pdf";
 import githubIcon from "../../assets/github.png";
 import linkedinIcon from "../../assets/linkedin.png";
 
 interface NavbarProps {
-  scrollContainerRef: React.RefObject<HTMLDivElement>;
+  scrollContainerRef?: React.RefObject<HTMLDivElement>;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("home");
+  
+  const isBlogPage = location.pathname.startsWith('/blog');
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -22,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["home", "about", "skills", "contact"];
-      const scrollContainer = scrollContainerRef.current;
+      const scrollContainer = scrollContainerRef?.current;
 
       if (!scrollContainer) return;
 
@@ -46,30 +51,34 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
       }
     };
 
-    if (scrollContainerRef.current) {
+    if (scrollContainerRef?.current) {
       scrollContainerRef.current.addEventListener("scroll", handleScroll);
     }
 
     return () => {
-      if (scrollContainerRef.current) {
+      if (scrollContainerRef?.current) {
         scrollContainerRef.current.removeEventListener("scroll", handleScroll);
       }
     };
   }, [scrollContainerRef]);
 
-  const navLinkClasses = (section: string) =>
-    `px-4 py-2 text-base transition-all duration-300 rounded-lg border border-transparent ${
-      activeSection === section
+  const navLinkClasses = (section: string) => {
+    const isActive = isBlogPage ? section === "blog" : activeSection === section;
+    return `px-4 py-2 text-base transition-all duration-300 rounded-lg border border-transparent ${
+      isActive
         ? "text-cyan-400 font-semibold bg-cyan-400/10 border-cyan-400/30"
         : "text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 hover:border-gray-600/50 font-medium"
     }`;
+  };
 
-  const mobileNavLinkClasses = (section: string) =>
-    `block px-3 py-3 text-lg transition-all duration-300 rounded-lg text-center border border-transparent ${
-      activeSection === section
+  const mobileNavLinkClasses = (section: string) => {
+    const isActive = isBlogPage ? section === "blog" : activeSection === section;
+    return `block px-3 py-3 text-lg transition-all duration-300 rounded-lg text-center border border-transparent ${
+      isActive
         ? "text-cyan-400 font-semibold bg-cyan-400/10 border-cyan-400/30"
         : "text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 hover:border-gray-600/50 font-medium"
     }`;
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800/50">
@@ -77,29 +86,66 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a
-              href="#home"
-              className="text-2xl font-bold font-mono tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors duration-300"
-            >
-              <span>&lt;</span>
-              <span>Deep</span>
-              <span> /&gt;</span>
-              <span className="animate-blink">_</span>
-            </a>
+            {isBlogPage ? (
+              <button
+                onClick={() => navigate("/")}
+                className="text-2xl font-bold font-mono tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors duration-300"
+              >
+                <span>&lt;</span>
+                <span>Deep</span>
+                <span> /&gt;</span>
+                <span className="animate-blink">_</span>
+              </button>
+            ) : (
+              <a
+                href="#home"
+                className="text-2xl font-bold font-mono tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors duration-300"
+              >
+                <span>&lt;</span>
+                <span>Deep</span>
+                <span> /&gt;</span>
+                <span className="animate-blink">_</span>
+              </a>
+            )}
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
-              <a href="#about" className={navLinkClasses("about")}>
-                About
-              </a>
-              <a href="#skills" className={navLinkClasses("skills")}>
-                Skills
-              </a>
-              <a href="#contact" className={navLinkClasses("contact")}>
-                Contact
-              </a>
+              {isBlogPage ? (
+                <>
+                  <button
+                    onClick={() => navigate("/")}
+                    className={navLinkClasses("home")}
+                  >
+                    Home
+                  </button>
+                  <button
+                    onClick={() => navigate("/blog")}
+                    className={navLinkClasses("blog")}
+                  >
+                    Blog
+                  </button>
+                </>
+              ) : (
+                <>
+                  <a href="#about" className={navLinkClasses("about")}>
+                    About
+                  </a>
+                  <a href="#skills" className={navLinkClasses("skills")}>
+                    Skills
+                  </a>
+                  <a href="#contact" className={navLinkClasses("contact")}>
+                    Contact
+                  </a>
+                  <button
+                    onClick={() => navigate("/blog")}
+                    className={navLinkClasses("blog")}
+                  >
+                    Blog
+                  </button>
+                </>
+              )}
               <button
                 onClick={handleDownloadCV}
                 className="px-5 py-2.5 bg-gradient-to-r from-cyan-600 to-cyan-700 border border-cyan-500 rounded-xl text-white font-semibold hover:from-cyan-500 hover:to-cyan-600 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/30 transform hover:scale-105 transition-all duration-200"
@@ -184,27 +230,61 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
         }`}
       >
         <div className="px-2 pt-2 pb-3 space-y-2 sm:px-3">
-          <a
-            href="#about"
-            className={mobileNavLinkClasses("about")}
-            onClick={toggleMenu}
-          >
-            About
-          </a>
-          <a
-            href="#skills"
-            className={mobileNavLinkClasses("skills")}
-            onClick={toggleMenu}
-          >
-            Skills
-          </a>
-          <a
-            href="#contact"
-            className={mobileNavLinkClasses("contact")}
-            onClick={toggleMenu}
-          >
-            Contact
-          </a>
+          {isBlogPage ? (
+            <>
+              <button
+                onClick={() => {
+                  navigate("/");
+                  toggleMenu();
+                }}
+                className={mobileNavLinkClasses("home")}
+              >
+                Home
+              </button>
+              <button
+                onClick={() => {
+                  navigate("/blog");
+                  toggleMenu();
+                }}
+                className={mobileNavLinkClasses("blog")}
+              >
+                Blog
+              </button>
+            </>
+          ) : (
+            <>
+              <a
+                href="#about"
+                className={mobileNavLinkClasses("about")}
+                onClick={toggleMenu}
+              >
+                About
+              </a>
+              <a
+                href="#skills"
+                className={mobileNavLinkClasses("skills")}
+                onClick={toggleMenu}
+              >
+                Skills
+              </a>
+              <a
+                href="#contact"
+                className={mobileNavLinkClasses("contact")}
+                onClick={toggleMenu}
+              >
+                Contact
+              </a>
+              <button
+                onClick={() => {
+                  navigate("/blog");
+                  toggleMenu();
+                }}
+                className={mobileNavLinkClasses("blog")}
+              >
+                Blog
+              </button>
+            </>
+          )}
           <button
             onClick={() => {
               handleDownloadCV();
