@@ -1,8 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import mailIcon from "../../assets/email.png";
 import linkedinIcon from "../../assets/linkedin.png";
 
 const Contact: React.FC = () => {
+  const navigate = useNavigate();
+  const [showBlogPrompt, setShowBlogPrompt] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = (event: Event) => {
+      const target = event.target as HTMLElement;
+      if (!target) return;
+
+      const { scrollTop, scrollHeight, clientHeight } = target;
+      const scrollPercentage = (scrollTop + clientHeight) / scrollHeight;
+      
+      // Show blog prompt when user has scrolled 90% of the contact section
+      if (scrollPercentage > 0.9) {
+        setShowBlogPrompt(true);
+      } else {
+        setShowBlogPrompt(false);
+      }
+    };
+
+    // Add listener to the parent scroll container
+    const scrollContainer = document.querySelector('.min-h-screen.md\\:h-screen.md\\:snap-y');
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (scrollContainer) {
+        scrollContainer.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, []);
+
+  const handleBlogNavigation = () => {
+    navigate('/blog');
+  };
+
   return (
     <div
       className="min-h-full flex flex-col items-center px-4 py-16 bg-gray-900"
@@ -91,6 +128,35 @@ const Contact: React.FC = () => {
           </p>
         </div>
       </footer>
+
+      {/* Floating Blog Navigation Prompt */}
+      {showBlogPrompt && (
+        <div className="fixed bottom-8 right-8 z-50 animate-bounce">
+          <button
+            onClick={handleBlogNavigation}
+            className="bg-cyan-600 hover:bg-cyan-700 text-white rounded-full shadow-lg transition-all duration-500 hover:scale-110 group animate-pulse"
+          >
+            <div className="flex items-center gap-3 px-6 py-4">
+              <span className="text-sm font-medium whitespace-nowrap animate-fade-in">
+                Explore my blog
+              </span>
+              <svg 
+                className="w-5 h-5" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M9 5l7 7-7 7" 
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
+      )}
     </div>
   );
 };

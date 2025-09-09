@@ -120,12 +120,6 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
                   >
                     Home
                   </button>
-                  <button
-                    onClick={() => navigate("/blog")}
-                    className={navLinkClasses("blog")}
-                  >
-                    Blog
-                  </button>
                 </>
               ) : (
                 <>
@@ -138,20 +132,26 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
                   <a href="#contact" className={navLinkClasses("contact")}>
                     Contact
                   </a>
-                  <button
-                    onClick={() => navigate("/blog")}
-                    className={navLinkClasses("blog")}
-                  >
-                    Blog
-                  </button>
                 </>
               )}
-              <button
-                onClick={handleDownloadCV}
-                className="px-5 py-2.5 bg-gradient-to-r from-cyan-600 to-cyan-700 border border-cyan-500 rounded-xl text-white font-semibold hover:from-cyan-500 hover:to-cyan-600 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/30 transform hover:scale-105 transition-all duration-200"
-              >
-                Download CV
-              </button>
+              <div className="flex items-center space-x-3 ml-8">
+                <button
+                  onClick={handleDownloadCV}
+                  className="px-5 py-2.5 bg-gradient-to-r from-cyan-600 to-cyan-700 border border-cyan-500 rounded-xl text-white font-semibold hover:from-cyan-500 hover:to-cyan-600 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/30 transform hover:scale-105 transition-all duration-200"
+                >
+                  Download CV
+                </button>
+                <button
+                  onClick={() => navigate("/blog")}
+                  className={`px-4 py-2 text-base transition-all duration-300 rounded-lg border font-medium ${
+                    isBlogPage
+                      ? "text-cyan-400 bg-cyan-400/10 border-cyan-400/30"
+                      : "border-gray-600 text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 hover:border-cyan-400/50"
+                  }`}
+                >
+                  Blog
+                </button>
+              </div>
               <div className="flex items-center space-x-2 ml-4">
                 <div
                   className="p-2 rounded-lg bg-gray-800/50 border border-gray-700/50 hover:bg-gray-700/50 hover:border-gray-600 hover:scale-105 transition-all duration-200 cursor-pointer"
@@ -241,15 +241,6 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
               >
                 Home
               </button>
-              <button
-                onClick={() => {
-                  navigate("/blog");
-                  toggleMenu();
-                }}
-                className={mobileNavLinkClasses("blog")}
-              >
-                Blog
-              </button>
             </>
           ) : (
             <>
@@ -274,26 +265,34 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
               >
                 Contact
               </a>
-              <button
-                onClick={() => {
-                  navigate("/blog");
-                  toggleMenu();
-                }}
-                className={mobileNavLinkClasses("blog")}
-              >
-                Blog
-              </button>
             </>
           )}
-          <button
-            onClick={() => {
-              handleDownloadCV();
-              toggleMenu();
-            }}
-            className="block w-full px-4 py-3 text-lg font-semibold bg-gradient-to-r from-cyan-600 to-cyan-700 border border-cyan-500 rounded-xl text-white hover:from-cyan-500 hover:to-cyan-600 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-200 text-center"
-          >
-            Download CV
-          </button>
+          
+          {/* Action buttons section */}
+          <div className="border-t border-gray-700 pt-4 mt-4">
+            <button
+              onClick={() => {
+                handleDownloadCV();
+                toggleMenu();
+              }}
+              className="block w-full px-4 py-3 mb-3 text-lg font-semibold bg-gradient-to-r from-cyan-600 to-cyan-700 border border-cyan-500 rounded-xl text-white hover:from-cyan-500 hover:to-cyan-600 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-200 text-center"
+            >
+              Download CV
+            </button>
+            <button
+              onClick={() => {
+                navigate("/blog");
+                toggleMenu();
+              }}
+              className={`block w-full px-4 py-3 text-lg font-medium border rounded-xl transition-all duration-200 text-center ${
+                isBlogPage
+                  ? "text-cyan-400 bg-cyan-400/10 border-cyan-400/30"
+                  : "border-gray-600 text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 hover:border-cyan-400/50"
+              }`}
+            >
+              Blog
+            </button>
+          </div>
           <div className="flex justify-center space-x-4 mt-4">
             <div
               className="p-3 rounded-lg bg-gray-800/50 border border-gray-700/50 hover:bg-gray-700/50 hover:border-gray-600 hover:scale-105 transition-all duration-200 cursor-pointer"

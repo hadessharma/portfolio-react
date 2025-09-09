@@ -18,6 +18,7 @@ const Blog: React.FC = () => {
     setAllTags(getAllTags());
   }, []);
 
+
   const filteredPosts = selectedTag
     ? blogPosts.filter(post => post.tags.includes(selectedTag))
     : blogPosts;
