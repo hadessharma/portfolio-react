@@ -157,21 +157,21 @@ const BlogPost: React.FC = () => {
         </header>
 
         {/* Article Content */}
-        <article className="prose prose-lg prose-invert max-w-none">
+        <article className="prose prose-base prose-invert max-w-none">
           <div 
-            className="text-gray-300 leading-relaxed"
+            className="text-gray-400 leading-relaxed text-sm font-light"
             dangerouslySetInnerHTML={{ 
               __html: post.content
                 .replace(/^# /gm, '<h1 class="text-3xl font-bold text-gray-100 mb-6 mt-8">')
-                .replace(/^## /gm, '<h2 class="text-2xl font-bold text-gray-100 mb-4 mt-6">')
-                .replace(/^### /gm, '<h3 class="text-xl font-bold text-gray-100 mb-3 mt-5">')
-                .replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-100">$1</strong>')
-                .replace(/\*(.*?)\*/g, '<em class="text-gray-300">$1</em>')
+                .replace(/^## /gm, '<h2 class="text-xl font-semibold text-gray-100 mb-4 mt-6">')
+                .replace(/^### /gm, '<h3 class="text-lg font-medium text-gray-100 mb-3 mt-5">')
+                .replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-200 font-medium">$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em class="text-gray-400">$1</em>')
                 .replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre class="bg-gray-800 border border-gray-700 rounded-lg p-4 my-6 overflow-x-auto"><code class="text-cyan-400">$2</code></pre>')
                 .replace(/`(.*?)`/g, '<code class="bg-gray-800 text-cyan-400 px-2 py-1 rounded">$1</code>')
-                .replace(/\n\n/g, '</p><p class="mb-4">')
-                .replace(/^(.+)$/gm, '<p class="mb-4">$1</p>')
-                .replace(/^- (.+)$/gm, '<li class="mb-2">$1</li>')
+                .replace(/\n\n/g, '</p><p class="mb-3 text-sm font-light leading-relaxed">')
+                .replace(/^(.+)$/gm, '<p class="mb-3 text-sm font-light leading-relaxed">$1</p>')
+                .replace(/^- (.+)$/gm, '<li class="mb-2 text-sm font-light">$1</li>')
                 .replace(/(<li.*<\/li>)/s, '<ul class="list-disc list-inside mb-6 space-y-2">$1</ul>')
             }}
           />
