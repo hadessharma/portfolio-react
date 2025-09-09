@@ -33,6 +33,4 @@ Four days after the interview, I received an email saying I had cleared the inte
 
 Unfortunately, I did not get the position in the end, but it was a valuable experience.
 
----
-
-_Even though I didn't land the internship, the interview process taught me a lot about technical problem-solving and gave me insight into Amazon's hiring process._
+Even though I didn't land the internship, the interview process taught me a lot about technical problem-solving and gave me insight into Amazon's hiring process.

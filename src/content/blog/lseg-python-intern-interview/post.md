@@ -49,6 +49,4 @@ Two weeks later, I received a rejection email. While it was disheartening, the e
 
 The biggest learning from this experience was about confidence during interviews. Sometimes knowing the answer isn't enough and that you also need to present it with conviction and confidence.
 
----
-
-_Despite the rejection, this interview process was valuable in highlighting areas for improvement and teaching me about the importance of confidence in technical interviews._
+Despite the rejection, this interview process was valuable in highlighting areas for improvement and teaching me about the importance of confidence in technical interviews.
