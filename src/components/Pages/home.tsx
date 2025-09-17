@@ -10,6 +10,8 @@ const Home: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(
     null
   );
+  
+  const featuredProjects = getFeaturedProjects();
 
   const openModal = (project: ProjectType) => {
     setSelectedProject(project);
@@ -19,6 +21,20 @@ const Home: React.FC = () => {
   const closeModal = () => {
     setModalIsOpen(false);
     setSelectedProject(null);
+  };
+
+  // Dynamic grid classes based on number of featured projects
+  const getGridClasses = () => {
+    const count = featuredProjects.length;
+    if (count === 1) {
+      return "grid grid-cols-1 gap-6 w-full max-w-md";
+    } else if (count === 2) {
+      return "grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl";
+    } else if (count === 3) {
+      return "grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl";
+    } else {
+      return "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl";
+    }
   };
 
   return (
@@ -50,8 +66,8 @@ const Home: React.FC = () => {
           <h2 className="text-lg font-semibold text-slate-400">Featured</h2>
           <h2 className="text-4xl font-bold text-slate-100">Projects</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl">
-          {getFeaturedProjects().map((project, index) => (
+        <div className={getGridClasses()}>
+          {featuredProjects.map((project, index) => (
             <ProjectCard key={index} project={project} onOpenModal={openModal} />
           ))}
         </div>
