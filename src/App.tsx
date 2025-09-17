@@ -8,6 +8,7 @@ import Home from "./components/Pages/home";
 import Contact from "./components/Pages/contact";
 import Blog from "./components/Pages/blog";
 import BlogPost from "./components/Pages/blogPost";
+import Projects from "./components/Pages/projects";
 
 const Layout: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -29,6 +30,12 @@ const Layout: React.FC = () => {
         className="min-h-screen md:h-screen md:snap-center pt-20"
       >
         <About />
+      </div>
+      <div
+        id="projects"
+        className="min-h-screen md:h-screen md:snap-center pt-20"
+      >
+        <Projects />
       </div>
       <div
         id="skills"

@@ -25,6 +25,7 @@ export interface Project {
   demo?: { title: string; link: string }[];
   info: string[];
   stack: string[];
+  featured?: boolean; // Add featured flag for top projects
 }
 
 // Project Data Array
@@ -38,6 +39,7 @@ export const projects: Project[] = [
       "TerraZure enables users to easily deploy and manage cloud resources through a user-friendly graphical interface, without needing in-depth knowledge of the underlying Terraform technology. The platform integrates with multiple cloud providers, allowing authenticated deployment across different environments. Users can customize cloud deployments through simple front-end forms, which directly feed into Terraform's automation modules.",
     ],
     stack: ["React", "Node.js", "Express", "MongoDB", "Terraform", "Azure", "AWS"],
+    featured: true,
   },
   {
     name: "Phishing Detection",
@@ -58,6 +60,7 @@ export const projects: Project[] = [
       "A scalable, cloud-native face recognition service built on AWS infrastructure that automatically scales based on demand. The system processes uploaded images to identify faces using a pre-trained machine learning model and returns results in real-time.",
     ],
     stack: ["Python", "FastAPI", "AWS", "EC2", "S3", "SQS"],
+    featured: true,
   },
   {
     name: "Tic Tac Toe",
@@ -79,4 +82,9 @@ export const projects: Project[] = [
     ],
     stack: ["Android", "Kotlin", "XML", "Minimax"],
   },
-]; 
+];
+
+// Helper function to get featured projects
+export const getFeaturedProjects = (): Project[] => {
+  return projects.filter(project => project.featured === true);
+};

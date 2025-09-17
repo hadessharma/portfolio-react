@@ -2,7 +2,7 @@ import React from "react";
 import profilePic from "../../assets/profile-pic.png";
 import ProjectCard from "../Cards/projectCard";
 import ProjectModal from "../Cards/projectModal";
-import { projects, Project as ProjectType } from "../data/projectData";
+import { getFeaturedProjects, Project as ProjectType } from "../data/projectData";
 import { useState } from "react";
 
 const Home: React.FC = () => {
@@ -44,13 +44,41 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Projects Section */}
+      {/* Featured Projects Section */}
       <div className="flex flex-col items-center justify-center px-4 md:px-20 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl">
-          {projects.map((project, index) => (
+        <div className="text-center mb-8">
+          <h2 className="text-lg font-semibold text-slate-400">Featured</h2>
+          <h2 className="text-4xl font-bold text-slate-100">Projects</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl">
+          {getFeaturedProjects().map((project, index) => (
             <ProjectCard key={index} project={project} onOpenModal={openModal} />
           ))}
         </div>
+        
+        {/* Explore All Projects Button */}
+        <div className="mt-8">
+          <a
+            href="#projects"
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          >
+            <span>Explore All Projects</span>
+            <svg 
+              className="w-5 h-5 ml-2" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M17 8l4 4m0 0l-4 4m4-4H3" 
+              />
+            </svg>
+          </a>
+        </div>
+        
         {selectedProject && (
           <ProjectModal
             isOpen={modalIsOpen}

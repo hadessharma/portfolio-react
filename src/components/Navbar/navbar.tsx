@@ -26,7 +26,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "skills", "contact"];
+      const sections = ["home", "about", "projects", "skills", "contact"];
       const scrollContainer = scrollContainerRef?.current;
 
       if (!scrollContainer) return;
@@ -125,6 +125,9 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
                 <>
                   <a href="#about" className={navLinkClasses("about")}>
                     About
+                  </a>
+                  <a href="#projects" className={navLinkClasses("projects")}>
+                    Projects
                   </a>
                   <a href="#skills" className={navLinkClasses("skills")}>
                     Skills
@@ -250,6 +253,13 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
                 onClick={toggleMenu}
               >
                 About
+              </a>
+              <a
+                href="#projects"
+                className={mobileNavLinkClasses("projects")}
+                onClick={toggleMenu}
+              >
+                Projects
               </a>
               <a
                 href="#skills"
