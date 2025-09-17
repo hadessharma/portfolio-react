@@ -42,7 +42,7 @@ const Contact: React.FC = () => {
 
   return (
     <div
-      className="min-h-full flex flex-col items-center px-4 py-16 bg-gray-900"
+      className="min-h-full flex flex-col items-center px-4 py-8 bg-gray-900"
     >
       {/* Main Content Wrapper */}
       <div className="flex-grow flex flex-col justify-center items-center w-full">

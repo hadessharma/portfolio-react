@@ -5,7 +5,7 @@ import educationIcon from "../../assets/education.png";
 const About: React.FC = () => {
   return (
     <div
-      className="min-h-full flex flex-col justify-center items-center px-4 py-16 bg-gray-900"
+      className="min-h-full flex flex-col justify-center items-center px-4 py-8 bg-gray-900"
     >
       {/* Header */}
       <div className="text-center mb-16 max-w-4xl mx-auto">

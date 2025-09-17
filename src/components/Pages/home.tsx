@@ -45,7 +45,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* Featured Projects Section */}
-      <div className="flex flex-col items-center justify-center px-4 md:px-20 py-8">
+      <div className="flex flex-col items-center justify-center px-4 md:px-20 py-4">
         <div className="text-center mb-8">
           <h2 className="text-lg font-semibold text-slate-400">Featured</h2>
           <h2 className="text-4xl font-bold text-slate-100">Projects</h2>
