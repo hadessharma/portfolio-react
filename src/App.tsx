@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar/navbar";
@@ -12,43 +12,49 @@ import Projects from "./components/Pages/projects";
 
 const Layout: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isDevMode, setIsDevMode] = useState(false);
 
   return (
     <div
       ref={scrollContainerRef}
       className="min-h-screen md:h-screen md:snap-y md:snap-mandatory overflow-y-scroll scroll-smooth bg-gray-950 font-sans text-slate-200 scrollbar-thin scrollbar-track-gray-900 scrollbar-thumb-cyan-600 hover:scrollbar-thumb-cyan-500 scrollbar-thumb-rounded-md"
     >
-      <Navbar scrollContainerRef={scrollContainerRef} />
+      {!isDevMode && <Navbar scrollContainerRef={scrollContainerRef} />}
       <div
         id="home"
-        className="min-h-screen md:snap-start pt-20"
+        className={`min-h-screen ${!isDevMode ? 'md:snap-start pt-20' : ''}`}
       >
-        <Home />
+        <Home isDevMode={isDevMode} setIsDevMode={setIsDevMode} />
       </div>
-      <div
-        id="about"
-        className="min-h-screen md:h-screen md:snap-center pt-20"
-      >
-        <About />
-      </div>
-      <div
-        id="projects"
-        className="min-h-screen md:h-screen md:snap-center pt-20"
-      >
-        <Projects />
-      </div>
-      <div
-        id="skills"
-        className="min-h-screen md:h-screen md:snap-center pt-20"
-      >
-        <Experience />
-      </div>
-      <div
-        id="contact"
-        className="min-h-screen md:h-screen md:snap-center pt-20"
-      >
-        <Contact />
-      </div>
+
+      {!isDevMode && (
+        <>
+          <div
+            id="about"
+            className="min-h-screen md:h-screen md:snap-center pt-20"
+          >
+            <About />
+          </div>
+          <div
+            id="projects"
+            className="min-h-screen md:h-screen md:snap-center pt-20"
+          >
+            <Projects />
+          </div>
+          <div
+            id="skills"
+            className="min-h-screen md:h-screen md:snap-center pt-20"
+          >
+            <Experience />
+          </div>
+          <div
+            id="contact"
+            className="min-h-screen md:h-screen md:snap-center pt-20"
+          >
+            <Contact />
+          </div>
+        </>
+      )}
     </div>
   );
 };

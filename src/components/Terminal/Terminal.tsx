@@ -6,23 +6,127 @@ interface CommandHistory {
     output: React.ReactNode;
 }
 
+import { projects } from '../data/projectData';
+
+interface FileSystemNode {
+    type: 'file' | 'directory';
+    name: string;
+    content?: string | React.ReactNode;
+    children?: { [key: string]: FileSystemNode };
+    parent?: FileSystemNode | null;
+}
+
 const Terminal: React.FC = () => {
     const [input, setInput] = useState('');
     const [history, setHistory] = useState<CommandHistory[]>([]);
+    const [currentPath, setCurrentPath] = useState<string[]>(['~']);
+    const [fileSystem, setFileSystem] = useState<FileSystemNode | null>(null);
     const [isBooting, setIsBooting] = useState(true);
     const [bootLines, setBootLines] = useState<string[]>([]);
     const scrollRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
 
+    // Initialize File System
+    useEffect(() => {
+        const linkify = (text: string) => {
+            const urlRegex = /(https?:\/\/[^\s"]+)/g;
+            return text.split(urlRegex).map((part, i) => {
+                if (part.match(urlRegex)) {
+                    return (
+                        <a
+                            key={i}
+                            href={part}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-cyan-400 hover:underline cursor-pointer relative z-50"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            {part}
+                        </a>
+                    );
+                }
+                return part;
+            });
+        };
+        const root: FileSystemNode = {
+            type: 'directory',
+            name: '~',
+            children: {},
+            parent: null // Root has no parent
+        };
+
+        // Create Projects Directory
+        const projectsDir: FileSystemNode = {
+            type: 'directory',
+            name: 'projects',
+            children: {},
+            parent: root
+        };
+        root.children!['projects'] = projectsDir;
+
+        projects.forEach(project => {
+            const projectDir: FileSystemNode = {
+                type: 'directory',
+                name: project.name.toLowerCase().replace(/\s+/g, '-'),
+                children: {},
+                parent: projectsDir
+            };
+
+            // details.json
+            projectDir.children!['details.json'] = {
+                type: 'file',
+                name: 'details.json',
+                content: linkify(JSON.stringify(project, null, 2)),
+                parent: projectDir
+            };
+
+            // readme.md (using info as content)
+            projectDir.children!['readme.md'] = {
+                type: 'file',
+                name: 'readme.md',
+                content: project.info.join('\n\n'),
+                parent: projectDir
+            };
+
+            projectsDir.children![projectDir.name] = projectDir;
+        });
+
+        // Add root files
+        root.children!['about.md'] = {
+            type: 'file',
+            name: 'about.md',
+            content: "CS Grad Student @ ASU | Software Engineer. I build resilient cloud infrastructure and full-stack apps. Focused on automating the boring stuff.",
+            parent: root
+        };
+
+        root.children!['contact.json'] = {
+            type: 'file',
+            name: 'contact.json',
+            content: linkify(JSON.stringify({
+                email: "de.sharma993@gmail.com",
+                github: "https://github.com/hadessharma",
+                linkedin: "https://www.linkedin.com/in/deepsharma993/"
+            }, null, 2)),
+            parent: root
+        };
+
+        root.children!['skills.md'] = {
+            type: 'file',
+            name: 'skills.md',
+            content: "Languages: Java, JavaScript, Python, C++, Kotlin\nCloud/DevOps: AWS, Azure, Docker, Kubernetes, Terraform\nFrontend: React, TypeScript, Tailwind CSS\nBackend: Node.js, Express, MongoDB, PostgreSQL",
+            parent: root
+        };
+
+        setFileSystem(root);
+    }, []);
+
     const bootSequence = [
         "Initializing system kernel...",
-        "Loading user profile: deep_sharma",
         "Mounting file systems...",
-        "Loading profile image...",
-        "Checking dependencies...",
-        "System checks passed.",
-        "Welcome to DeepOS v1.0.0",
-        "Type 'help' for available commands."
+        "Loading user profile: deep_sharma",
+        "Starting shell session...",
+        "Welcome to DeepOS v2.0 (Developer Edition)",
+        "Type 'help' or 'hint' to see available commands."
     ];
 
     const initialized = useRef(false);
@@ -49,98 +153,150 @@ const Terminal: React.FC = () => {
         }
     }, [history, bootLines]);
 
+
+
+    const resolvePath = (pathStr: string): FileSystemNode | null => {
+        if (!fileSystem) return null;
+        if (pathStr === '/' || pathStr === '~') return fileSystem;
+
+
+
+        // For now, let's just support relative navigation from current location or absolute from root if starts with ~
+        // Actually, simpler: just traverse from current node
+
+        // Improve Path Resolution
+        // 1. Get current directory node
+        let startNode = fileSystem;
+        for (let i = 1; i < currentPath.length; i++) {
+            startNode = startNode.children![currentPath[i]] as FileSystemNode;
+        }
+
+        if (pathStr.startsWith('~') || pathStr.startsWith('/')) {
+            startNode = fileSystem; // Absolute path
+            pathStr = pathStr.replace(/^[~/]/, '');
+        }
+
+        const parts = pathStr.split('/').filter(p => p && p !== '.');
+        let node = startNode;
+
+        for (const part of parts) {
+            if (part === '..') {
+                if (node.parent) node = node.parent;
+            } else if (node.children && node.children[part]) {
+                node = node.children[part];
+            } else {
+                return null; // Path not found
+            }
+        }
+        return node;
+    };
+
     const handleCommand = (cmd: string) => {
-        const trimmedCmd = cmd.trim().toLowerCase();
+        const trimmedCmd = cmd.trim();
+        const [command, ...args] = trimmedCmd.split(/\s+/);
         let output: React.ReactNode = '';
 
-        switch (trimmedCmd) {
+        if (!command) { // Handle empty input
+            setHistory(prev => [...prev, { cmd, output: '' }]);
+            return;
+        }
+
+        switch (command.toLowerCase()) {
             case 'help':
+            case 'hint':
                 output = (
                     <div className="space-y-1 text-gray-300">
                         <p>Available commands:</p>
                         <div className="grid grid-cols-[100px_1fr] gap-2">
-                            <span className="text-cyan-400">about</span>
-                            <span>- Get to know me</span>
-                            <span className="text-cyan-400">skills</span>
-                            <span>- View technical expertise</span>
-                            <span className="text-cyan-400">projects</span>
-                            <span>- View featured work</span>
-                            <span className="text-cyan-400">contact</span>
-                            <span>- Social links & email</span>
-                            <span className="text-cyan-400">clear</span>
-                            <span>- Clear terminal</span>
-                            <span className="text-cyan-400">resume</span>
-                            <span>- Download PDF resume</span>
+                            <span className="text-cyan-400">ls</span><span>List directory contents</span>
+                            <span className="text-cyan-400">cd &lt;dir&gt;</span><span>Change directory</span>
+                            <span className="text-cyan-400">cat &lt;file&gt;</span><span>Read file content</span>
+                            <span className="text-cyan-400">pwd</span><span>Print working directory</span>
+                            <span className="text-cyan-400">clear</span><span>Clear terminal</span>
+                            <span className="text-cyan-400">whoami</span><span>Print current user</span>
                         </div>
                     </div>
                 );
                 break;
-            case 'about':
-                output = "CS Grad Student @ ASU | Software Engineer. I build resilient cloud infrastructure and full-stack apps. Focused on automating the boring stuff.";
+            case 'ls':
+                // Get current directory node
+                let currentNode = fileSystem;
+                for (let i = 1; i < currentPath.length; i++) {
+                    if (currentNode && currentNode.children) {
+                        currentNode = currentNode.children[currentPath[i]];
+                    }
+                }
+
+                const targetNode = args[0] ? resolvePath(args[0]) : currentNode;
+
+                if (!targetNode) {
+                    output = <span className="text-red-400">ls: cannot access '{args[0]}': No such file or directory</span>;
+                } else if (targetNode.type === 'file') {
+                    output = targetNode.name;
+                } else {
+                    const items = Object.values(targetNode.children || {}).map(child => {
+                        const isDir = child.type === 'directory';
+                        return (
+                            <span key={child.name} className={`mr-4 ${isDir ? 'text-blue-400 font-bold' : 'text-gray-300'}`}>
+                                {child.name}{isDir ? '/' : ''}
+                            </span>
+                        );
+                    });
+                    output = <div className="flex flex-wrap">{items}</div>;
+                }
                 break;
-            case 'skills':
-                output = (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        <div>
-                            <span className="text-yellow-400">Languages:</span> Java, JavaScript, Python, C++, Kotlin
-                        </div>
-                        <div>
-                            <span className="text-blue-400">Cloud/DevOps:</span> AWS, Azure, Docker, Kubernetes, Terraform
-                        </div>
-                        <div>
-                            <span className="text-green-400">Frontend:</span> React, TypeScript, Tailwind CSS
-                        </div>
-                        <div>
-                            <span className="text-purple-400">Backend:</span> Node.js, Express, MongoDB, PostgreSQL
-                        </div>
-                    </div>
-                );
+            case 'cd':
+                if (!args[0]) {
+                    setCurrentPath(['~']); // cd goes home
+                } else {
+                    const target = resolvePath(args[0]);
+                    if (!target) {
+                        output = <span className="text-red-400">cd: {args[0]}: No such file or directory</span>;
+                    } else if (target.type !== 'directory') {
+                        output = <span className="text-red-400">cd: {args[0]}: Not a directory</span>;
+                    } else {
+                        // Build new path stack
+                        // This is a bit tricky with ".." and absolute paths in a simple stack
+                        // Easier: Rebuild stack from target node up to root
+                        const newPath: string[] = [];
+                        let temp: FileSystemNode | null | undefined = target;
+                        while (temp) {
+                            newPath.unshift(temp.name);
+                            temp = temp.parent;
+                        }
+                        setCurrentPath(newPath);
+                    }
+                }
                 break;
-            case 'projects':
-                output = "Check out the projects section below! Or try 'cat terrazure' (coming soon)";
-                setTimeout(() => {
-                    const projectsSection = document.getElementById('projects');
-                    projectsSection?.scrollIntoView({ behavior: 'smooth' });
-                }, 1000);
+            case 'cat':
+                if (!args[0]) {
+                    output = <span className="text-red-400">cat: missing operand</span>;
+                } else {
+                    const targetFile = resolvePath(args[0]);
+                    if (!targetFile) {
+                        output = <span className="text-red-400">cat: {args[0]}: No such file or directory</span>;
+                    } else if (targetFile.type === 'directory') {
+                        output = <span className="text-red-400">cat: {args[0]}: Is a directory</span>;
+                    } else {
+                        output = <pre className="whitespace-pre-wrap text-gray-300 font-mono text-sm">{targetFile.content}</pre>;
+                    }
+                }
                 break;
-            case 'contact':
-                output = (
-                    <div className="space-y-1">
-                        <p>Email: <a href="mailto:de.sharma993@gmail.com" className="text-cyan-400 hover:underline">de.sharma993@gmail.com</a></p>
-                        <p>LinkedIn: <a href="https://www.linkedin.com/in/deepsharma993/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">linkedin.com/in/deepsharma993</a></p>
-                        <p>GitHub: <a href="https://github.com/hadessharma" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">github.com/hadessharma</a></p>
-                    </div>
-                );
+            case 'pwd':
+                output = currentPath.join('/').replace('~', '/home/visitor');
                 break;
             case 'clear':
                 setHistory([]);
                 return;
-            case 'sudo':
-                output = <span className="text-red-500 font-bold">Permission denied: You are not root! Nice try though 😉</span>;
-                break;
             case 'whoami':
-                output = "guest_user@portfolio-visitor";
+                output = "visitor";
                 break;
-            case 'ls':
-                output = "projects/  skills/  about.md  contact.json  resume.pdf";
-                break;
-            case 'resume':
-                output = "Downloading resume...";
-                // Trigger download
-                const link = document.createElement('a');
-                link.href = '/src/assets/resume_DeepSharma.pdf'; // Verify this path
-                link.download = 'Resume_DeepSharma.pdf';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                break;
-            case '':
-                output = '';
+            case 'sudo':
+                output = <span className="text-red-500 font-bold">Permission denied: You are not root!</span>;
                 break;
             default:
-                output = <span className="text-red-400">Command not found: {trimmedCmd}. Type 'help' for assistance.</span>;
+                output = <span className="text-red-400">Command not found: {command}</span>;
         }
-
         setHistory(prev => [...prev, { cmd, output }]);
     };
 
@@ -207,7 +363,7 @@ const Terminal: React.FC = () => {
                         <div className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 transition-colors"></div>
                     </div>
                     <div className="flex-1 text-center text-gray-400 text-xs md:text-sm select-none">
-                        visitor@deep-portfolio: ~
+                        visitor@deep-portfolio: {currentPath.join('/').replace(/^~/, '~') || '/'}
                     </div>
                 </div>
 
@@ -215,7 +371,12 @@ const Terminal: React.FC = () => {
                 <div
                     ref={scrollRef}
                     className="flex-1 p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500 scrollbar-track-transparent"
-                    onClick={() => inputRef.current?.focus()}
+                    onClick={() => {
+                        const selection = window.getSelection();
+                        if (!selection || selection.toString().length === 0) {
+                            inputRef.current?.focus();
+                        }
+                    }}
                 >
                     {/* Boot Sequence */}
                     <div className="text-gray-400 mb-4">
@@ -234,7 +395,7 @@ const Terminal: React.FC = () => {
                                 <div key={i} className="mb-2">
                                     <div className="flex items-center text-gray-300">
                                         <span className="text-green-400 mr-2">➜</span>
-                                        <span className="text-cyan-400 mr-2">~</span>
+                                        <span className="text-cyan-400 mr-2">{currentPath[currentPath.length - 1]}</span>
                                         <span className="text-gray-100">{item.cmd}</span>
                                     </div>
                                     {item.output && (
@@ -248,7 +409,7 @@ const Terminal: React.FC = () => {
                             {/* Input Line */}
                             <div className="flex items-center">
                                 <span className="text-green-400 mr-2">➜</span>
-                                <span className="text-cyan-400 mr-2">~</span>
+                                <span className="text-cyan-400 mr-2">{currentPath[currentPath.length - 1]}</span>
                                 <input
                                     ref={inputRef}
                                     type="text"

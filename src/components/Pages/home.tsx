@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import Terminal from "../Terminal/Terminal";
 import StandardHome from "./StandardHome";
 
-const Home: React.FC = () => {
-  const [isDevMode, setIsDevMode] = useState(false);
+interface HomeProps {
+  isDevMode: boolean;
+  setIsDevMode: (value: boolean) => void;
+}
 
+const Home: React.FC<HomeProps> = ({ isDevMode, setIsDevMode }) => {
   return (
     <>
       {/* Developer Mode Toggle */}
@@ -24,7 +27,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-col items-center justify-center py-8 px-4 min-h-[90vh] w-full">
+      <div className={`flex flex-col items-center justify-center py-8 px-4 w-full ${isDevMode ? 'h-screen' : 'min-h-[90vh]'}`}>
         {isDevMode ? <Terminal /> : <StandardHome />}
       </div>
     </>
