@@ -13,7 +13,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("home");
-  
+
   const isBlogPage = location.pathname.startsWith('/blog');
 
   const toggleMenu = () => {
@@ -25,6 +25,41 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
   };
 
   useEffect(() => {
+    const scrollToSection = (sectionId: string) => {
+      const section = document.getElementById(sectionId);
+      const scrollContainer = scrollContainerRef?.current;
+
+      if (section && scrollContainer) {
+        const targetPosition = section.offsetTop;
+        const startPosition = scrollContainer.scrollTop;
+        const distance = targetPosition - startPosition;
+        const duration = 700; // Matches App.tsx duration
+        let start: number | null = null;
+
+        const step = (timestamp: number) => {
+          if (!start) start = timestamp;
+          const progress = timestamp - start;
+          const percentage = Math.min(progress / duration, 1);
+
+          // easeInOutCubic matches App.tsx
+          const ease = percentage < 0.5
+            ? 4 * percentage * percentage * percentage
+            : 1 - Math.pow(-2 * percentage + 2, 3) / 2;
+
+          scrollContainer.scrollTop = startPosition + distance * ease;
+
+          if (progress < duration) {
+            window.requestAnimationFrame(step);
+          } else {
+            // Update active section after scroll completes for accuracy
+            if (!isBlogPage) setActiveSection(sectionId);
+          }
+        };
+
+        window.requestAnimationFrame(step);
+      }
+    };
+
     const handleScroll = () => {
       const sections = ["home", "about", "projects", "skills", "contact"];
       const scrollContainer = scrollContainerRef?.current;
@@ -60,24 +95,22 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
         scrollContainerRef.current.removeEventListener("scroll", handleScroll);
       }
     };
-  }, [scrollContainerRef]);
+  }, [scrollContainerRef, isBlogPage]); // Added isBlogPage to dependencies
 
   const navLinkClasses = (section: string) => {
     const isActive = isBlogPage ? section === "blog" : activeSection === section;
-    return `px-4 py-2 text-base transition-all duration-300 rounded-lg border border-transparent ${
-      isActive
-        ? "text-cyan-400 font-semibold bg-cyan-400/10 border-cyan-400/30"
-        : "text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 hover:border-gray-600/50 font-medium"
-    }`;
+    return `px-4 py-2 text-base transition-all duration-300 rounded-lg border border-transparent ${isActive
+      ? "text-cyan-400 font-semibold bg-cyan-400/10 border-cyan-400/30"
+      : "text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 hover:border-gray-600/50 font-medium"
+      }`;
   };
 
   const mobileNavLinkClasses = (section: string) => {
     const isActive = isBlogPage ? section === "blog" : activeSection === section;
-    return `block px-3 py-3 text-lg transition-all duration-300 rounded-lg text-center border border-transparent ${
-      isActive
-        ? "text-cyan-400 font-semibold bg-cyan-400/10 border-cyan-400/30"
-        : "text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 hover:border-gray-600/50 font-medium"
-    }`;
+    return `block px-3 py-3 text-lg transition-all duration-300 rounded-lg text-center border border-transparent ${isActive
+      ? "text-cyan-400 font-semibold bg-cyan-400/10 border-cyan-400/30"
+      : "text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 hover:border-gray-600/50 font-medium"
+      }`;
   };
 
   return (
@@ -146,11 +179,10 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
                 </button>
                 <button
                   onClick={() => navigate("/blog")}
-                  className={`px-4 py-2 text-base transition-all duration-300 rounded-lg border font-medium ${
-                    isBlogPage
-                      ? "text-cyan-400 bg-cyan-400/10 border-cyan-400/30"
-                      : "border-gray-600 text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 hover:border-cyan-400/50"
-                  }`}
+                  className={`px-4 py-2 text-base transition-all duration-300 rounded-lg border font-medium ${isBlogPage
+                    ? "text-cyan-400 bg-cyan-400/10 border-cyan-400/30"
+                    : "border-gray-600 text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 hover:border-cyan-400/50"
+                    }`}
                 >
                   Blog
                 </button>
@@ -228,9 +260,8 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden bg-gray-900/95 backdrop-blur-sm border-b border-gray-800/50 transition-all duration-300 ease-in-out overflow-hidden ${
-          isOpen ? "max-h-screen" : "max-h-0"
-        }`}
+        className={`md:hidden bg-gray-900/95 backdrop-blur-sm border-b border-gray-800/50 transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-screen" : "max-h-0"
+          }`}
       >
         <div className="px-2 pt-2 pb-3 space-y-2 sm:px-3">
           {isBlogPage ? (
@@ -277,7 +308,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
               </a>
             </>
           )}
-          
+
           {/* Action buttons section */}
           <div className="border-t border-gray-700 pt-4 mt-4">
             <button
@@ -294,11 +325,10 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
                 navigate("/blog");
                 toggleMenu();
               }}
-              className={`block w-full px-4 py-3 text-lg font-medium border rounded-xl transition-all duration-200 text-center ${
-                isBlogPage
-                  ? "text-cyan-400 bg-cyan-400/10 border-cyan-400/30"
-                  : "border-gray-600 text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 hover:border-cyan-400/50"
-              }`}
+              className={`block w-full px-4 py-3 text-lg font-medium border rounded-xl transition-all duration-200 text-center ${isBlogPage
+                ? "text-cyan-400 bg-cyan-400/10 border-cyan-400/30"
+                : "border-gray-600 text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 hover:border-cyan-400/50"
+                }`}
             >
               Blog
             </button>

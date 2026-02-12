@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar/navbar";
@@ -13,16 +13,70 @@ import Projects from "./components/Pages/projects";
 const Layout: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isDevMode, setIsDevMode] = useState(false);
+  const isScrolling = useRef(false);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container || isDevMode) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      if (isScrolling.current) return;
+
+      const direction = e.deltaY > 0 ? 1 : -1;
+      const height = container.clientHeight;
+      const currentScroll = container.scrollTop;
+      // Use a small threshold to determine current section more accurately during partial scrolls
+      const currentSectionIndex = Math.round(currentScroll / height);
+
+      const nextSectionIndex = currentSectionIndex + direction;
+      const sectionsCount = 5; // Home, About, Projects, Skills, Contact
+
+      if (nextSectionIndex >= 0 && nextSectionIndex < sectionsCount) {
+        isScrolling.current = true;
+        const targetScroll = nextSectionIndex * height;
+
+        const start = container.scrollTop;
+        const change = targetScroll - start;
+        const duration = 700; // ms
+        const startTime = performance.now();
+
+        const animateScroll = (currentTime: number) => {
+          const timeElapsed = currentTime - startTime;
+          const progress = Math.min(timeElapsed / duration, 1);
+
+          // easeInOutCubic for smoother start/end
+          const ease = progress < 0.5
+            ? 4 * progress * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+          container.scrollTop = start + change * ease;
+
+          if (timeElapsed < duration) {
+            requestAnimationFrame(animateScroll);
+          } else {
+            isScrolling.current = false;
+          }
+        };
+
+        requestAnimationFrame(animateScroll);
+      }
+    };
+
+    container.addEventListener('wheel', handleWheel, { passive: false });
+    return () => container.removeEventListener('wheel', handleWheel);
+  }, [isDevMode]);
 
   return (
     <div
       ref={scrollContainerRef}
-      className="min-h-screen md:h-screen md:snap-y md:snap-mandatory overflow-y-scroll scroll-smooth bg-gray-950 font-sans text-slate-200 scrollbar-thin scrollbar-track-gray-900 scrollbar-thumb-cyan-600 hover:scrollbar-thumb-cyan-500 scrollbar-thumb-rounded-md"
+      className={`min-h-screen md:h-screen overflow-hidden bg-gray-950 font-sans text-slate-200 ${isDevMode ? 'overflow-y-auto' : ''
+        }`}
     >
       {!isDevMode && <Navbar scrollContainerRef={scrollContainerRef} />}
       <div
         id="home"
-        className={`min-h-screen ${!isDevMode ? 'md:snap-start pt-20' : ''}`}
+        className={`min-h-screen ${!isDevMode ? 'h-screen pt-20' : ''}`}
       >
         <Home isDevMode={isDevMode} setIsDevMode={setIsDevMode} />
       </div>
@@ -31,25 +85,25 @@ const Layout: React.FC = () => {
         <>
           <div
             id="about"
-            className="min-h-screen md:h-screen md:snap-center pt-20"
+            className="min-h-screen h-screen pt-20"
           >
             <About />
           </div>
           <div
             id="projects"
-            className="min-h-screen md:h-screen md:snap-center pt-20"
+            className="min-h-screen h-screen pt-20"
           >
             <Projects />
           </div>
           <div
             id="skills"
-            className="min-h-screen md:h-screen md:snap-center pt-20"
+            className="min-h-screen h-screen pt-20"
           >
             <Experience />
           </div>
           <div
             id="contact"
-            className="min-h-screen md:h-screen md:snap-center pt-20"
+            className="min-h-screen h-screen pt-20"
           >
             <Contact />
           </div>
