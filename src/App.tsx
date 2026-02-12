@@ -21,7 +21,7 @@ const Layout: React.FC = () => {
       <Navbar scrollContainerRef={scrollContainerRef} />
       <div
         id="home"
-        className="min-h-screen md:h-screen md:snap-center pt-20"
+        className="min-h-screen md:snap-start pt-20"
       >
         <Home />
       </div>
