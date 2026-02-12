@@ -3,15 +3,31 @@ import profilePic from "../../assets/profile-pic.png";
 import ProjectCard from "../Cards/projectCard";
 import ProjectModal from "../Cards/projectModal";
 import { getFeaturedProjects, Project as ProjectType } from "../data/projectData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 
 const Home: React.FC = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(
     null
   );
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  
+  const roles = [
+    "DevOps Enthusiast",
+    "Cloud Engineer", 
+    "Problem Solver"
+  ];
   
   const featuredProjects = getFeaturedProjects();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+    }, 2500); // Change every 2.5 seconds
+
+    return () => clearInterval(interval);
+  }, [roles.length]);
 
   const openModal = (project: ProjectType) => {
     setSelectedProject(project);
@@ -47,16 +63,26 @@ const Home: React.FC = () => {
             alt="Deep Sharma"
             className="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-900 to-gray-950 shadow-xl shadow-cyan-500/10"
           />
-          <div>
+          <div className="w-[28rem]">
             <h1 className="text-4xl font-bold text-gray-100">Deep Sharma</h1>
-            <h2 className="text-xl font-semibold text-cyan-400">Software Developer</h2>
+            <h2 className="text-xl font-semibold text-cyan-400">
+              Software Developer <span className="text-gray-400">and</span>{" "}
+              <span className="transition-all duration-700 ease-in-out">
+                {roles[currentRoleIndex]}
+              </span>
+            </h2>
           </div>
-          <a
-            href="#about"
-            className="hidden md:flex items-center px-4 py-2 bg-gray-800/30 border border-gray-700/50 rounded-lg text-gray-300 text-sm font-medium hover:bg-gray-800/50 hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-200"
-          >
-            Know more →
-          </a>
+        </div>
+      </div>
+
+      {/* Brief Introduction Section */}
+      <div className="flex flex-col items-center justify-center px-4 py-8">
+        <div className="max-w-4xl text-center">
+          <p className="text-lg text-gray-300 leading-relaxed mb-8">
+            Graduate student at <span className="text-cyan-400 font-medium">Arizona State University</span> with{" "}
+            <span className="text-cyan-400 font-medium">3+ years</span> of industry experience in software development and DevOps.
+            Passionate about building scalable web applications and automated cloud infrastructure.
+          </p>
         </div>
       </div>
 
