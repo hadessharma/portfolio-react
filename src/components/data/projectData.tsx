@@ -50,7 +50,7 @@ export const projects: Project[] = [
       "This project aims to detect phishing URLs using advanced machine learning techniques. We compare and contrast different algorithms to identify the most effective approach in phishing detection.",
     ],
     stack: ["Python", "Scikit-learn", "Flask", "Machine Learning"],
-    featured: true,
+    featured: false,
   },
   {
     name: "Elastic Face Recognition",

@@ -12,10 +12,11 @@ const About: React.FC = () => {
         <h2 className="text-lg font-medium text-gray-400 mb-2">Get To Know More</h2>
         <h1 className="text-6xl font-bold text-gray-100 mb-8">About Me</h1>
         <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          I am a graduate student at Arizona State University with three years
-          of work experience in Software Development and DevOps in the
-          industry. I'm passionate about building web applications and
-          designing automated cloud infrastructure deployment platforms.
+          I am a <strong>Computer Science Graduate Student at ASU</strong> and a <strong>Software Engineer</strong> with over
+          three years of experience in automating and scaling cloud infrastructure.
+          <br /><br />
+          I specialize in <span className="text-cyan-400">bridging the gap</span> between full-stack development and DevOps
+          to build resilient, cost-effective solutions.
         </p>
       </div>
 

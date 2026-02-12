@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import profilePic from '../../assets/profile-pic.png';
 
 interface CommandHistory {
@@ -14,7 +13,6 @@ const Terminal: React.FC = () => {
     const [bootLines, setBootLines] = useState<string[]>([]);
     const scrollRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
-    const navigate = useNavigate();
 
     const bootSequence = [
         "Initializing system kernel...",
@@ -27,7 +25,12 @@ const Terminal: React.FC = () => {
         "Type 'help' for available commands."
     ];
 
+    const initialized = useRef(false);
+
     useEffect(() => {
+        if (initialized.current) return;
+        initialized.current = true;
+
         let delay = 0;
         bootSequence.forEach((line, index) => {
             setTimeout(() => {
@@ -73,7 +76,7 @@ const Terminal: React.FC = () => {
                 );
                 break;
             case 'about':
-                output = "Software Engineer with 3+ years of experience in Full Stack Development and DevOps. Passionate about building scalable cloud infrastructure and clean, efficient code.";
+                output = "CS Grad Student @ ASU | Software Engineer. I build resilient cloud infrastructure and full-stack apps. Focused on automating the boring stuff.";
                 break;
             case 'skills':
                 output = (
