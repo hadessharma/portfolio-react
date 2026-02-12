@@ -37,7 +37,7 @@ const StandardHome: React.FC = () => {
 
     return (
         <>
-            <div className="flex flex-col xl:flex-row items-center justify-center min-h-[85vh] px-4 gap-8 md:gap-16 w-full max-w-7xl mx-auto">
+            <div className="flex flex-col xl:flex-row items-center justify-center min-h-[85vh] px-4 py-8 xl:py-0 gap-12 md:gap-16 w-full max-w-7xl mx-auto">
 
                 {/* Left Side: Profile & Intro */}
                 <div className="flex flex-col items-center xl:items-start text-center xl:text-left space-y-6 max-w-xl shrink-0">
@@ -45,7 +45,7 @@ const StandardHome: React.FC = () => {
                         <img
                             src={profilePic}
                             alt="Deep Sharma"
-                            className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-cyan-900 to-gray-950 shadow-xl shadow-cyan-500/10 border-2 border-cyan-500/20"
+                            className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-cyan-900 to-gray-950 shadow-xl shadow-cyan-500/10 border-2 border-cyan-500/20"
                         />
                         <div>
                             <h1 className="text-3xl md:text-5xl font-bold text-gray-100 tracking-tight">Deep Sharma</h1>
@@ -63,16 +63,16 @@ const StandardHome: React.FC = () => {
                         Specializing in Cloud Automation, DevOps, and Full Stack Development.
                     </p>
 
-                    <div className="flex gap-4">
+                    <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                         <a
                             href="#contact"
-                            className="px-6 py-2 md:py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-cyan-500/20 transition-all duration-300"
+                            className="px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 text-center"
                         >
                             Contact Me
                         </a>
                         <a
                             href="#projects"
-                            className="px-6 py-2 md:py-3 border border-gray-600 hover:border-cyan-500 text-gray-300 hover:text-cyan-400 font-semibold rounded-lg transition-all duration-300 bg-gray-900/50"
+                            className="px-6 py-3 border border-gray-600 hover:border-cyan-500 text-gray-300 hover:text-cyan-400 font-semibold rounded-lg transition-all duration-300 bg-gray-900/50 text-center"
                         >
                             View Work
                         </a>

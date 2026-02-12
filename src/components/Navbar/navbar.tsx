@@ -24,41 +24,42 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
     window.open(cvPDF);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    const scrollContainer = scrollContainerRef?.current;
+
+    if (section && scrollContainer) {
+      const targetPosition = section.offsetTop;
+      const startPosition = scrollContainer.scrollTop;
+      const distance = targetPosition - startPosition;
+      const duration = 700; // Matches App.tsx duration
+      let start: number | null = null;
+
+      const step = (timestamp: number) => {
+        if (!start) start = timestamp;
+        const progress = timestamp - start;
+        const percentage = Math.min(progress / duration, 1);
+
+        // easeInOutCubic matches App.tsx
+        const ease = percentage < 0.5
+          ? 4 * percentage * percentage * percentage
+          : 1 - Math.pow(-2 * percentage + 2, 3) / 2;
+
+        scrollContainer.scrollTop = startPosition + distance * ease;
+
+        if (progress < duration) {
+          window.requestAnimationFrame(step);
+        } else {
+          // Update active section after scroll completes for accuracy
+          if (!isBlogPage) setActiveSection(sectionId);
+        }
+      };
+
+      window.requestAnimationFrame(step);
+    }
+  };
+
   useEffect(() => {
-    const scrollToSection = (sectionId: string) => {
-      const section = document.getElementById(sectionId);
-      const scrollContainer = scrollContainerRef?.current;
-
-      if (section && scrollContainer) {
-        const targetPosition = section.offsetTop;
-        const startPosition = scrollContainer.scrollTop;
-        const distance = targetPosition - startPosition;
-        const duration = 700; // Matches App.tsx duration
-        let start: number | null = null;
-
-        const step = (timestamp: number) => {
-          if (!start) start = timestamp;
-          const progress = timestamp - start;
-          const percentage = Math.min(progress / duration, 1);
-
-          // easeInOutCubic matches App.tsx
-          const ease = percentage < 0.5
-            ? 4 * percentage * percentage * percentage
-            : 1 - Math.pow(-2 * percentage + 2, 3) / 2;
-
-          scrollContainer.scrollTop = startPosition + distance * ease;
-
-          if (progress < duration) {
-            window.requestAnimationFrame(step);
-          } else {
-            // Update active section after scroll completes for accuracy
-            if (!isBlogPage) setActiveSection(sectionId);
-          }
-        };
-
-        window.requestAnimationFrame(step);
-      }
-    };
 
     const handleScroll = () => {
       const sections = ["home", "about", "projects", "skills", "contact"];
@@ -130,15 +131,15 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
                 <span className="animate-blink">_</span>
               </button>
             ) : (
-              <a
-                href="#home"
+              <button
+                onClick={() => scrollToSection("home")}
                 className="text-2xl font-bold font-mono tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors duration-300"
               >
                 <span>&lt;</span>
                 <span>Deep</span>
                 <span> /&gt;</span>
                 <span className="animate-blink">_</span>
-              </a>
+              </button>
             )}
           </div>
 
@@ -156,18 +157,18 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
                 </>
               ) : (
                 <>
-                  <a href="#about" className={navLinkClasses("about")}>
+                  <button onClick={() => scrollToSection("about")} className={navLinkClasses("about")}>
                     About
-                  </a>
-                  <a href="#projects" className={navLinkClasses("projects")}>
+                  </button>
+                  <button onClick={() => scrollToSection("projects")} className={navLinkClasses("projects")}>
                     Projects
-                  </a>
-                  <a href="#skills" className={navLinkClasses("skills")}>
+                  </button>
+                  <button onClick={() => scrollToSection("skills")} className={navLinkClasses("skills")}>
                     Skills
-                  </a>
-                  <a href="#contact" className={navLinkClasses("contact")}>
+                  </button>
+                  <button onClick={() => scrollToSection("contact")} className={navLinkClasses("contact")}>
                     Contact
-                  </a>
+                  </button>
                 </>
               )}
               <div className="flex items-center space-x-3 ml-8">
@@ -278,34 +279,42 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
             </>
           ) : (
             <>
-              <a
-                href="#about"
+              <button
+                onClick={() => {
+                  scrollToSection("about");
+                  toggleMenu();
+                }}
                 className={mobileNavLinkClasses("about")}
-                onClick={toggleMenu}
               >
                 About
-              </a>
-              <a
-                href="#projects"
+              </button>
+              <button
+                onClick={() => {
+                  scrollToSection("projects");
+                  toggleMenu();
+                }}
                 className={mobileNavLinkClasses("projects")}
-                onClick={toggleMenu}
               >
                 Projects
-              </a>
-              <a
-                href="#skills"
+              </button>
+              <button
+                onClick={() => {
+                  scrollToSection("skills");
+                  toggleMenu();
+                }}
                 className={mobileNavLinkClasses("skills")}
-                onClick={toggleMenu}
               >
                 Skills
-              </a>
-              <a
-                href="#contact"
+              </button>
+              <button
+                onClick={() => {
+                  scrollToSection("contact");
+                  toggleMenu();
+                }}
                 className={mobileNavLinkClasses("contact")}
-                onClick={toggleMenu}
               >
                 Contact
-              </a>
+              </button>
             </>
           )}
 

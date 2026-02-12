@@ -309,15 +309,15 @@ const Terminal: React.FC = () => {
     };
 
     return (
-        <div className="w-full max-w-4xl mx-auto bg-gray-900/90 rounded-lg border border-gray-700 shadow-2xl overflow-hidden font-mono text-sm md:text-base my-8 backdrop-blur-sm flex flex-col md:flex-row h-[500px] md:h-[600px]">
+        <div className="w-full max-w-4xl mx-auto bg-gray-900/90 rounded-lg border border-gray-700 shadow-2xl overflow-hidden font-mono text-sm md:text-base my-4 md:my-8 backdrop-blur-sm flex flex-col md:flex-row h-[550px] md:h-[600px]">
 
             {/* Sidebar / Profile Section */}
-            <div className="w-full md:w-1/3 bg-gray-800/50 border-b md:border-b-0 md:border-r border-gray-700 p-6 flex flex-col items-center justify-center text-center space-y-4">
+            <div className="w-full md:w-1/3 bg-gray-800/50 border-b md:border-b-0 md:border-r border-gray-700 p-6 flex flex-col items-center justify-center text-center space-y-4 shrink-0">
                 <div className="relative group">
                     <img
                         src={profilePic}
                         alt="Profile"
-                        className="w-32 h-32 md:w-40 md:h-40 rounded-sm border-2 border-green-500/50 shadow-[0_0_20px_rgba(34,197,94,0.3)] transition-all duration-500"
+                        className="w-24 h-24 md:w-40 md:h-40 rounded-sm border-2 border-green-500/50 shadow-[0_0_20px_rgba(34,197,94,0.3)] transition-all duration-500"
                         style={{ imageRendering: 'pixelated' }}
                     />
                     <div className="absolute inset-0 bg-green-500/10 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
