@@ -12,7 +12,7 @@ const Home: React.FC<HomeProps> = ({ isDevMode, setIsDevMode }) => {
   return (
     <>
       {/* Developer Mode Toggle */}
-      <div className="fixed top-24 right-4 z-50 md:top-28 md:right-8">
+      <div className="hidden md:block fixed top-28 right-8 z-50">
         <button
           onClick={() => setIsDevMode(!isDevMode)}
           className="group relative p-2 rounded-full transition-all duration-300 hover:bg-gray-800/50"
