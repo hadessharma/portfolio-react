@@ -48,8 +48,8 @@ const StandardHome: React.FC = () => {
                             className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-cyan-900 to-gray-950 shadow-xl shadow-cyan-500/10 border-2 border-cyan-500/20"
                         />
                         <div>
-                            <h1 className="text-3xl md:text-5xl font-bold text-gray-100 tracking-tight">Deep Sharma</h1>
-                            <h2 className="text-base md:text-xl font-medium text-cyan-400 mt-1">
+                            <h1 className="text-2xl md:text-5xl font-bold text-gray-100 tracking-tight">Deep Sharma</h1>
+                            <h2 className="text-sm md:text-xl font-medium text-cyan-400 mt-1">
                                 Software Developer <span className="text-gray-500">and</span>{" "}
                                 <span className="block md:inline transition-all duration-700 ease-in-out text-gray-300">
                                     {roles[currentRoleIndex]}
@@ -58,8 +58,8 @@ const StandardHome: React.FC = () => {
                         </div>
                     </div>
 
-                    <p className="text-base md:text-lg text-gray-400 leading-relaxed max-w-lg">
-                        Computer Science Graduate Student at <span className="text-cyan-400 font-medium">ASU</span> and <span className="text-cyan-400 font-medium">a Software Engineer</span>.
+                    <p className="text-sm md:text-lg text-gray-400 leading-relaxed max-w-lg">
+                        Computer Science Graduate Student at <span className="text-cyan-400 font-medium">ASU</span> and <span className="text-cyan-400 font-medium">Software Engineer</span>.
                         Specializing in Cloud Automation, DevOps, and Full Stack Development.
                     </p>
 
@@ -80,9 +80,9 @@ const StandardHome: React.FC = () => {
                 </div>
 
                 {/* Right Side: Featured Projects (Compact) */}
-                <div className="flex flex-col items-center xl:items-start w-full max-w-2xl">
+                <div className="flex flex-col items-center xl:items-start w-full max-w-2xl mt-8 xl:mt-0">
                     <div className="text-center xl:text-left mb-6 w-full">
-                        <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Featured Projects</h2>
+                        <h2 className="text-xs md:text-sm font-semibold text-slate-400 uppercase tracking-wider">Featured Projects</h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">

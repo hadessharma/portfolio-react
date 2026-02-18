@@ -85,7 +85,7 @@ const Layout: React.FC = () => {
       {!isDevMode && <Navbar scrollContainerRef={scrollContainerRef} />}
       <div
         id="home"
-        className={`min-h-screen w-full ${!isDevMode ? 'md:h-screen pt-20' : ''}`}
+        className={`min-h-screen w-full ${!isDevMode ? 'md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent' : ''}`}
       >
         <Home isDevMode={isDevMode} setIsDevMode={setIsDevMode} />
       </div>
@@ -94,25 +94,25 @@ const Layout: React.FC = () => {
         <>
           <div
             id="about"
-            className="min-h-screen w-full md:h-screen pt-20"
+            className="min-h-screen w-full md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent"
           >
             <About />
           </div>
           <div
             id="projects"
-            className="min-h-screen w-full md:h-screen pt-20"
+            className="min-h-screen w-full md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent"
           >
             <Projects />
           </div>
           <div
             id="skills"
-            className="min-h-screen w-full md:h-screen pt-20"
+            className="min-h-screen w-full md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent"
           >
             <Experience />
           </div>
           <div
             id="contact"
-            className="min-h-screen w-full md:h-screen pt-20"
+            className="min-h-screen w-full md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent"
           >
             <Contact />
           </div>

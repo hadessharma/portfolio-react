@@ -14,7 +14,7 @@ const Contact: React.FC = () => {
 
       const { scrollTop, scrollHeight, clientHeight } = target;
       const scrollPercentage = (scrollTop + clientHeight) / scrollHeight;
-      
+
       // Show blog prompt when user has scrolled 90% of the contact section
       if (scrollPercentage > 0.9) {
         setShowBlogPrompt(true);
@@ -45,31 +45,31 @@ const Contact: React.FC = () => {
       className="min-h-full flex flex-col items-center px-4 py-8 bg-gray-900"
     >
       {/* Main Content Wrapper */}
-      <div className="flex-grow flex flex-col justify-center items-center w-full">
+      <div className="flex-grow flex flex-col justify-center items-center w-full pb-20 md:pb-0">
         {/* Main Content */}
-        <div className="text-center max-w-4xl mx-auto">
-          <h2 className="text-6xl font-bold text-gray-100 mb-4">
+        <div className="text-center max-w-4xl mx-auto w-full">
+          <h2 className="text-4xl md:text-6xl font-bold text-gray-100 mb-4">
             Let's Connect
           </h2>
-          <p className="text-xl text-gray-400 mb-16 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-400 mb-12 md:mb-16 max-w-2xl mx-auto leading-relaxed">
             I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
           </p>
 
           {/* Contact Buttons */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 w-full max-w-4xl mx-auto">
             {/* Email Button */}
             <a
               href="mailto:de.sharma993@gmail.com"
-              className="w-full md:w-auto flex-grow bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-cyan-400/50 transition-all duration-300 hover:bg-gray-800/70 text-left flex items-center gap-4"
+              className="w-full md:w-auto flex-grow bg-gray-800/50 border border-gray-700 rounded-xl p-5 md:p-6 hover:border-cyan-400/50 transition-all duration-300 hover:bg-gray-800/70 text-left flex items-center gap-4 group"
             >
               <img
                 src={mailIcon}
                 alt="Email"
-                className="w-12 h-12 filter invert opacity-80"
+                className="w-10 h-10 md:w-12 md:h-12 filter invert opacity-80 group-hover:opacity-100 transition-opacity"
               />
-              <div>
-                <h3 className="text-xl font-semibold text-gray-100 mb-1">Email</h3>
-                <p className="text-cyan-400 break-all">de.sharma993@gmail.com</p>
+              <div className="min-w-0">
+                <h3 className="text-lg md:text-xl font-semibold text-gray-100 mb-1">Email</h3>
+                <p className="text-cyan-400 text-sm md:text-base break-all">de.sharma993@gmail.com</p>
               </div>
             </a>
 
@@ -78,16 +78,16 @@ const Contact: React.FC = () => {
               href="https://www.linkedin.com/in/deepsharma993/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full md:w-auto flex-grow bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-cyan-400/50 transition-all duration-300 hover:bg-gray-800/70 text-left flex items-center gap-4"
+              className="w-full md:w-auto flex-grow bg-gray-800/50 border border-gray-700 rounded-xl p-5 md:p-6 hover:border-cyan-400/50 transition-all duration-300 hover:bg-gray-800/70 text-left flex items-center gap-4 group"
             >
               <img
                 src={linkedinIcon}
                 alt="LinkedIn"
-                className="w-12 h-12 filter invert opacity-80"
+                className="w-10 h-10 md:w-12 md:h-12 filter invert opacity-80 group-hover:opacity-100 transition-opacity"
               />
-              <div>
-                <h3 className="text-xl font-semibold text-gray-100 mb-1">LinkedIn</h3>
-                <p className="text-cyan-400">Connect with me</p>
+              <div className="min-w-0">
+                <h3 className="text-lg md:text-xl font-semibold text-gray-100 mb-1">LinkedIn</h3>
+                <p className="text-cyan-400 text-sm md:text-base">Connect with me</p>
               </div>
             </a>
           </div>
@@ -98,26 +98,26 @@ const Contact: React.FC = () => {
       <footer className="w-full text-center pt-16">
         <div className="max-w-4xl mx-auto">
           <nav className="flex justify-center mb-6 gap-8">
-            <a 
-              href="#about" 
+            <a
+              href="#about"
               className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
             >
               About
             </a>
-            <a 
-              href="#skills" 
+            <a
+              href="#skills"
               className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
             >
               Skills
             </a>
-            <a 
-              href="#projects" 
+            <a
+              href="#projects"
               className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
             >
               Projects
             </a>
-            <a 
-              href="/blog" 
+            <a
+              href="/blog"
               className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
             >
               Blog
@@ -140,17 +140,17 @@ const Contact: React.FC = () => {
               <span className="text-sm font-medium whitespace-nowrap animate-fade-in">
                 Explore my blog
               </span>
-              <svg 
-                className="w-5 h-5" 
-                fill="none" 
-                stroke="currentColor" 
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M9 5l7 7-7 7" 
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
                 />
               </svg>
             </div>

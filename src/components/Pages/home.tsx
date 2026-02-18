@@ -30,6 +30,16 @@ const Home: React.FC<HomeProps> = ({ isDevMode, setIsDevMode }) => {
             {isDevMode ? "Exit Terminal" : "Enter Terminal"}
           </span>
         </button>
+
+        {/* Developer Mode Hint */}
+        {!isDevMode && (
+          <div className="absolute top-16 right-0 mr-2 w-max animate-bounce">
+            <div className="relative bg-gray-800 text-cyan-400 px-4 py-2 rounded-lg border border-cyan-500/30 shadow-lg shadow-cyan-500/20">
+              <span className="text-sm font-medium">Developer? Click here!</span>
+              <div className="absolute -top-1 right-4 w-2 h-2 bg-gray-800 border-t border-l border-cyan-500/30 transform rotate-45"></div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Main Content */}
