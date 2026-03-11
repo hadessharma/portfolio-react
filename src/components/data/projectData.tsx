@@ -13,6 +13,13 @@ import terraZureImage1 from "../../assets/project/terraZure/1.png";
 import terraZureImage2 from "../../assets/project/terraZure/2.png";
 import terraZureImage4 from "../../assets/project/terraZure/4.png";
 
+// FairShare
+import fairShareImage1 from "../../assets/project/FairShare/1.png";
+import fairShareImage2 from "../../assets/project/FairShare/2.png";
+import fairShareImage3 from "../../assets/project/FairShare/3.png";
+import fairShareImage4 from "../../assets/project/FairShare/4.png";
+import fairShareImage5 from "../../assets/project/FairShare/5.png";
+
 // Elastic Face Recognition
 import elasticFaceRecognitionImage1 from "../../assets/project/ElasticFaceRecognition/1.png";
 
@@ -30,6 +37,23 @@ export interface Project {
 
 // Project Data Array
 export const projects: Project[] = [
+  {
+    name: "FairShare",
+    img: [fairShareImage1, fairShareImage2, fairShareImage3, fairShareImage4, fairShareImage5],
+    app: false,
+    github: "https://github.com/satwikm39/FairShare",
+    demo: [
+      {
+        title: "Visit Website",
+        link: "https://fair-share-split.vercel.app/",
+      },
+    ],
+    info: [
+      "A smart bill-splitting web application that allows groups to upload receipt images and automatically extract item prices using OCR. Users can proportionally assign shares for each item rather than splitting evenly, and the app automatically pro-rates taxes and totals based on individual consumption. Features include Receipt OCR, Group Management, Weighted Splitting, and Real-time Balance Tracking.",
+    ],
+    stack: ["React", "Tailwind CSS", "Python", "FastAPI", "PostgreSQL", "Supabase", "AWS Textract", "Render"],
+    featured: true,
+  },
   {
     name: "TerraZure",
     img: [terraZureImage1, terraZureImage2, terraZureImage4],

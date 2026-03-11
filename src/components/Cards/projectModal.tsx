@@ -193,7 +193,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                       className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-600 to-cyan-700 border-2 border-cyan-500 rounded-xl text-white font-semibold hover:from-cyan-500 hover:to-cyan-600 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/25 transform hover:scale-105 transition-all duration-200"
                     >
                       <FiExternalLink className="w-5 h-5" />
-                      <span>Live Demo</span>
+                      <span>{project.demo[0].title}</span>
                     </a>
                   )}
                 </>

@@ -15,7 +15,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
   return (
     <div
       onClick={() => onOpenModal(project)}
-      className="flex flex-col justify-between p-4 sm:p-6 w-full h-48 border-gray-800 border rounded-2xl bg-gray-900 shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10 hover:border-cyan-500/30 hover:-translate-y-1 cursor-pointer overflow-hidden"
+      className="flex flex-col justify-between p-4 sm:p-6 w-full h-full min-h-[14rem] border-gray-800 border rounded-2xl bg-gray-900 shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10 hover:border-cyan-500/30 hover:-translate-y-1 cursor-pointer overflow-hidden"
     >
       <div className="flex-1 min-h-0">
         <h3 className="text-lg sm:text-xl font-bold text-cyan-400 mb-2 sm:mb-3 text-left truncate">
