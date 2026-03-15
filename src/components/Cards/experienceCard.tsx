@@ -16,7 +16,7 @@ const ExperienceCard: React.FC<CardProps> = ({ name, logos }) => {
             key={item.title}
             className="flex items-center flex-col w-24 text-center group"
           >
-            <div className="bg-white rounded-full p-2">
+            <div className="paper-logo-stamp rounded-full p-2">
               <img
                 src={item.img}
                 alt={item.title}

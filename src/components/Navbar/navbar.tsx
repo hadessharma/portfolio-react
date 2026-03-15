@@ -13,11 +13,30 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("home");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   const isBlogPage = location.pathname.startsWith('/blog');
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme: "light" | "dark" =
+      savedTheme === "dark" || (!savedTheme && prefersDark) ? "dark" : "light";
+
+    root.classList.toggle("dark", initialTheme === "dark");
+    setTheme(initialTheme);
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme: "light" | "dark" = theme === "dark" ? "light" : "dark";
+    document.documentElement.classList.toggle("dark", nextTheme === "dark");
+    localStorage.setItem("theme", nextTheme);
+    setTheme(nextTheme);
   };
 
   const handleDownloadCV = () => {
@@ -190,30 +209,49 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
                 </button>
               </div>
               <div className="flex items-center space-x-2 ml-4">
-                <div
-                  className="paper-icon-button h-10 w-10 cursor-pointer"
-                  onClick={() => {
-                    window.open("https://www.linkedin.com/in/deepsharma993/");
-                  }}
+                <a
+                  href="https://www.linkedin.com/in/deepsharma993/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="paper-icon-button paper-logo-stamp h-10 w-10 cursor-pointer"
+                  aria-label="Open LinkedIn profile"
                 >
                   <img
                     src={linkedinIcon}
                     alt="LinkedIn"
                     className="w-5 h-5 paper-icon hover:opacity-100 transition-all duration-200"
                   />
-                </div>
-                <div
-                  className="paper-icon-button h-10 w-10 cursor-pointer"
-                  onClick={() => {
-                    window.open("https://github.com/hadessharma");
-                  }}
+                </a>
+                <a
+                  href="https://github.com/hadessharma"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="paper-icon-button paper-logo-stamp h-10 w-10 cursor-pointer"
+                  aria-label="Open GitHub profile"
                 >
                   <img
                     src={githubIcon}
                     alt="GitHub"
                     className="w-5 h-5 paper-icon hover:opacity-100 transition-all duration-200"
                   />
-                </div>
+                </a>
+                <button
+                  onClick={toggleTheme}
+                  className="paper-icon-button h-10 w-10"
+                  aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+                  title={theme === "dark" ? "Light mode" : "Dark mode"}
+                >
+                  {theme === "dark" ? (
+                    <svg className="h-5 w-5 text-paper-accentDeep" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4.2" />
+                      <path strokeLinecap="round" d="M12 2.6v2.2M12 19.2v2.2M4.8 12H2.6M21.4 12h-2.2M5.8 5.8l1.6 1.6M18.2 18.2l-1.6-1.6M18.2 5.8l-1.6 1.6M5.8 18.2l1.6-1.6" />
+                    </svg>
+                  ) : (
+                    <svg className="h-5 w-5 text-paper-accentDeep" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M21.752 15.002A9.718 9.718 0 0118 16c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                    </svg>
+                  )}
+                </button>
               </div>
             </div>
           </div>
@@ -345,32 +383,51 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
             </button>
           </div>
           <div className="flex justify-center space-x-4 mt-4">
-            <div
-              className="paper-icon-button h-12 w-12 cursor-pointer"
-              onClick={() => {
-                window.open("https://www.linkedin.com/in/deepsharma993/");
-                toggleMenu();
-              }}
+            <button
+              onClick={toggleTheme}
+              className="paper-icon-button h-12 w-12"
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              title={theme === "dark" ? "Light mode" : "Dark mode"}
+            >
+              {theme === "dark" ? (
+                <svg className="h-6 w-6 text-paper-accentDeep" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4.2" />
+                  <path strokeLinecap="round" d="M12 2.6v2.2M12 19.2v2.2M4.8 12H2.6M21.4 12h-2.2M5.8 5.8l1.6 1.6M18.2 18.2l-1.6-1.6M18.2 5.8l-1.6 1.6M5.8 18.2l1.6-1.6" />
+                </svg>
+              ) : (
+                <svg className="h-6 w-6 text-paper-accentDeep" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M21.752 15.002A9.718 9.718 0 0118 16c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                </svg>
+              )}
+            </button>
+            <a
+              href="https://www.linkedin.com/in/deepsharma993/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="paper-icon-button paper-logo-stamp h-12 w-12 cursor-pointer"
+              aria-label="Open LinkedIn profile"
+              onClick={toggleMenu}
             >
               <img
                 src={linkedinIcon}
                 alt="LinkedIn"
                 className="w-6 h-6 paper-icon"
               />
-            </div>
-            <div
-              className="paper-icon-button h-12 w-12 cursor-pointer"
-              onClick={() => {
-                window.open("https://github.com/hadessharma");
-                toggleMenu();
-              }}
+            </a>
+            <a
+              href="https://github.com/hadessharma"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="paper-icon-button paper-logo-stamp h-12 w-12 cursor-pointer"
+              aria-label="Open GitHub profile"
+              onClick={toggleMenu}
             >
               <img
                 src={githubIcon}
                 alt="GitHub"
                 className="w-6 h-6 paper-icon"
               />
-            </div>
+            </a>
           </div>
         </div>
       </div>

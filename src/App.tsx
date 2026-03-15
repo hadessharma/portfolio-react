@@ -78,7 +78,7 @@ const Layout: React.FC = () => {
   return (
     <div
       ref={scrollContainerRef}
-      className={`h-dvh w-full bg-paper-base bg-paper-texture font-sans text-paper-ink 
+      className={`h-dvh w-full bg-paper-base font-sans text-paper-ink 
         ${isDevMode ? 'overflow-y-auto' : 'overflow-y-auto md:overflow-hidden'}
       `}
     >

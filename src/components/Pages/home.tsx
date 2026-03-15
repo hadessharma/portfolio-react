@@ -18,12 +18,14 @@ const Home: React.FC<HomeProps> = ({ isDevMode, setIsDevMode }) => {
           className="group relative flex items-center gap-2 rounded-full border border-paper-edge bg-paper-surface/90 px-3 py-2 shadow-paper-soft transition-all duration-300 hover:border-paper-accent/50 hover:bg-paper-layer"
           aria-label="Toggle Developer Mode"
         >
-          <img
-            src={devIcon}
-            alt="Developer Mode"
-            className={`w-8 h-8 transition-all duration-300 ${isDevMode ? "drop-shadow-[0_0_8px_rgba(74,222,128,0.6)]" : "opacity-90 group-hover:-translate-y-0.5"
-              }`}
-          />
+          <span className="paper-logo-stamp rounded-full p-1">
+            <img
+              src={devIcon}
+              alt="Developer Mode"
+              className={`w-8 h-8 transition-all duration-300 ${isDevMode ? "drop-shadow-[0_0_8px_rgba(74,222,128,0.6)]" : "opacity-90 group-hover:-translate-y-0.5"
+                }`}
+            />
+          </span>
           <span className="text-xs font-semibold tracking-wide text-paper-accentDeep">
             {isDevMode ? "Exit" : "Terminal"}
           </span>

@@ -25,7 +25,7 @@ const About: React.FC = () => {
         {/* Experience Card */}
         <div className="paper-card p-8 transition-all duration-300 hover:border-paper-accent/50 hover:-translate-y-1">
           <div className="flex items-center justify-center mb-6">
-            <div className="w-12 h-12 bg-paper-accentSoft rounded-md flex items-center justify-center mr-4">
+            <div className="paper-logo-stamp w-12 h-12 mr-4">
               <img
                 src={experienceIcon}
                 alt="Experience"
@@ -49,7 +49,7 @@ const About: React.FC = () => {
         {/* Education Card */}
         <div className="paper-card p-8 transition-all duration-300 hover:border-paper-accent/50 hover:-translate-y-1">
           <div className="flex items-center justify-center mb-6">
-            <div className="w-12 h-12 bg-paper-accentSoft rounded-md flex items-center justify-center mr-4">
+            <div className="paper-logo-stamp w-12 h-12 mr-4">
               <img
                 src={educationIcon}
                 alt="Education"

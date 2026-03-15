@@ -34,7 +34,7 @@ const Blog: React.FC = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-paper-base bg-paper-texture pt-20 pb-16">
+      <div className="min-h-screen bg-paper-base pt-20 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14 md:mb-16 space-y-4">

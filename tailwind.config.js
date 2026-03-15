@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -9,23 +10,20 @@ export default {
       },
       colors: {
         paper: {
-          base: "#f6f1e8",
-          surface: "#fcf8f0",
-          layer: "#f1eadf",
-          edge: "#d7ccbb",
-          ink: "#2f2a25",
-          muted: "#5b534a",
-          accent: "#365b82",
-          accentSoft: "#e8edf3",
-          accentDeep: "#27476b",
+          base: "rgb(var(--paper-base) / <alpha-value>)",
+          surface: "rgb(var(--paper-surface) / <alpha-value>)",
+          layer: "rgb(var(--paper-layer) / <alpha-value>)",
+          edge: "rgb(var(--paper-edge) / <alpha-value>)",
+          ink: "rgb(var(--paper-ink) / <alpha-value>)",
+          muted: "rgb(var(--paper-muted) / <alpha-value>)",
+          accent: "rgb(var(--paper-accent) / <alpha-value>)",
+          accentSoft: "rgb(var(--paper-accent-soft) / <alpha-value>)",
+          accentDeep: "rgb(var(--paper-accent-deep) / <alpha-value>)",
         },
       },
       boxShadow: {
-        paper: "0 1px 0 rgba(47,42,37,0.06), 0 8px 24px rgba(47,42,37,0.08)",
-        "paper-soft": "0 1px 0 rgba(47,42,37,0.05), 0 4px 14px rgba(47,42,37,0.07)",
-      },
-      backgroundImage: {
-        "paper-texture": "url('/paper-texture.svg')",
+        paper: "var(--paper-shadow)",
+        "paper-soft": "var(--paper-shadow-soft)",
       },
       keyframes: {
         blink: {

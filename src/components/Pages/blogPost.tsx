@@ -12,7 +12,7 @@ const BlogPost: React.FC = () => {
     return (
       <>
         <Navbar />
-        <div className="min-h-screen bg-paper-base bg-paper-texture pt-20 pb-16 flex items-center justify-center">
+        <div className="min-h-screen bg-paper-base pt-20 pb-16 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-paper-ink mb-4">
             Post Not Found
@@ -48,7 +48,7 @@ const BlogPost: React.FC = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-paper-base bg-paper-texture pt-20 pb-16">
+      <div className="min-h-screen bg-paper-base pt-20 pb-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Button */}
         <div className="mb-8">

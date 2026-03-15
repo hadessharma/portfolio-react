@@ -2,9 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --paper-base: 246 241 232;
+  --paper-surface: 252 248 240;
+  --paper-layer: 241 234 223;
+  --paper-edge: 215 204 187;
+  --paper-ink: 47 42 37;
+  --paper-muted: 91 83 74;
+  --paper-accent: 54 91 130;
+  --paper-accent-soft: 232 237 243;
+  --paper-accent-deep: 39 71 107;
+  --paper-shadow: 0 1px 0 rgba(47, 42, 37, 0.06), 0 8px 24px rgba(47, 42, 37, 0.08);
+  --paper-shadow-soft: 0 1px 0 rgba(47, 42, 37, 0.05), 0 4px 14px rgba(47, 42, 37, 0.07);
+  --paper-underline: rgba(63, 101, 142, 0.16);
+  --paper-divider-border: rgba(215, 204, 187, 0.75);
+  --paper-divider-highlight: rgba(252, 248, 240, 0.9);
+  --paper-stamp-inner-ring: rgba(252, 248, 240, 0.8);
+  --paper-stamp-shadow: 0 1px 0 rgba(47, 42, 37, 0.08);
+  --paper-stamp-shadow-hover: 0 8px 18px rgba(47, 42, 37, 0.12);
+  --paper-logo-stamp-ring: rgba(252, 248, 240, 0.82);
+  --paper-logo-stamp-bg: 241 234 223;
+  --paper-logo-stamp-border: 215 204 187;
+  --paper-texture-image: url("/paper-texture.svg");
+}
+
+.dark {
+  --paper-base: 23 21 19;
+  --paper-surface: 30 28 26;
+  --paper-layer: 40 36 33;
+  --paper-edge: 71 64 56;
+  --paper-ink: 235 226 212;
+  --paper-muted: 188 175 158;
+  --paper-accent: 120 160 205;
+  --paper-accent-soft: 41 51 64;
+  --paper-accent-deep: 158 191 229;
+  --paper-shadow: 0 1px 0 rgba(0, 0, 0, 0.45), 0 10px 24px rgba(0, 0, 0, 0.35);
+  --paper-shadow-soft: 0 1px 0 rgba(0, 0, 0, 0.35), 0 6px 16px rgba(0, 0, 0, 0.28);
+  --paper-underline: rgba(120, 160, 205, 0.28);
+  --paper-divider-border: rgba(71, 64, 56, 0.85);
+  --paper-divider-highlight: rgba(255, 255, 255, 0.04);
+  --paper-stamp-inner-ring: rgba(255, 255, 255, 0.08);
+  --paper-stamp-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+  --paper-stamp-shadow-hover: 0 10px 18px rgba(0, 0, 0, 0.35);
+  --paper-logo-stamp-ring: rgba(255, 255, 255, 0.1);
+  --paper-logo-stamp-bg: 214 204 190;
+  --paper-logo-stamp-border: 166 152 132;
+  --paper-texture-image: url("/paper-texture-dark.svg");
+}
+
 @layer base {
   body {
-    @apply bg-paper-base bg-paper-texture bg-repeat text-paper-ink font-sans;
+    @apply bg-paper-base text-paper-ink font-sans;
+    background-image: var(--paper-texture-image);
+    background-repeat: repeat;
   }
 
   h1,
@@ -51,7 +101,7 @@
     bottom: -0.45rem;
     height: 0.35rem;
     border-radius: 999px;
-    background: rgba(63, 101, 142, 0.16);
+    background: var(--paper-underline);
     transform: rotate(-0.85deg);
   }
 
@@ -66,6 +116,12 @@
     mix-blend-mode: multiply;
   }
 
+  .dark .paper-icon {
+    filter: contrast(1.12) saturate(1.08);
+    mix-blend-mode: normal;
+    opacity: 1;
+  }
+
   .paper-button-primary {
     @apply rounded-md border border-paper-accent bg-paper-accent px-6 py-3 font-semibold text-white transition-all duration-200 hover:bg-paper-accentDeep hover:-translate-y-0.5 hover:shadow-paper;
   }
@@ -76,12 +132,12 @@
 
   .paper-button-stamp {
     @apply inline-flex items-center justify-center gap-2 rounded-md border-2 border-paper-accentDeep bg-paper-surface px-5 py-2.5 font-semibold tracking-wide text-paper-accentDeep transition-all duration-200;
-    box-shadow: 0 1px 0 rgba(47, 42, 37, 0.08), inset 0 0 0 1px rgba(252, 248, 240, 0.8);
+    box-shadow: var(--paper-stamp-shadow), inset 0 0 0 1px var(--paper-stamp-inner-ring);
   }
 
   .paper-button-stamp:hover {
     @apply -translate-y-0.5 bg-paper-accentSoft text-paper-accentDeep;
-    box-shadow: 0 8px 18px rgba(47, 42, 37, 0.12), inset 0 0 0 1px rgba(252, 248, 240, 0.9);
+    box-shadow: var(--paper-stamp-shadow-hover), inset 0 0 0 1px var(--paper-stamp-inner-ring);
   }
 
   .paper-icon-button {
@@ -93,13 +149,24 @@
     @apply -translate-y-0.5 border-paper-accent/50 bg-paper-accentSoft shadow-paper-soft;
   }
 
+  .paper-logo-stamp {
+    @apply inline-flex items-center justify-center rounded-md border p-2 shadow-paper-soft transition-all duration-200;
+    background-color: rgb(var(--paper-logo-stamp-bg));
+    border-color: rgb(var(--paper-logo-stamp-border));
+    box-shadow: var(--paper-shadow-soft), inset 0 0 0 1px var(--paper-logo-stamp-ring);
+  }
+
+  .paper-logo-stamp:hover {
+    @apply -translate-y-0.5 border-paper-accent/40;
+  }
+
   .paper-interactive-lift {
     @apply transition-all duration-300 hover:-translate-y-0.5 hover:shadow-paper;
   }
 
   .paper-section-divider {
-    border-top: 1px solid rgba(215, 204, 187, 0.75);
-    box-shadow: inset 0 1px 0 rgba(252, 248, 240, 0.9);
+    border-top: 1px solid var(--paper-divider-border);
+    box-shadow: inset 0 1px 0 var(--paper-divider-highlight);
   }
 }
 

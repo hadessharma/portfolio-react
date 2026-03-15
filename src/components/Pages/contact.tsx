@@ -62,11 +62,13 @@ const Contact: React.FC = () => {
               href="mailto:de.sharma993@gmail.com"
               className="w-full md:w-auto flex-grow paper-card paper-interactive-lift p-5 md:p-6 hover:border-paper-accent/50 text-left flex items-center gap-4 group"
             >
-              <img
-                src={mailIcon}
-                alt="Email"
-                className="w-10 h-10 md:w-12 md:h-12 paper-icon group-hover:opacity-100 transition-opacity"
-              />
+              <span className="paper-logo-stamp shrink-0">
+                <img
+                  src={mailIcon}
+                  alt="Email"
+                  className="w-10 h-10 md:w-12 md:h-12 paper-icon group-hover:opacity-100 transition-opacity"
+                />
+              </span>
               <div className="min-w-0">
                 <h3 className="text-lg md:text-xl font-semibold text-paper-ink mb-1">Email</h3>
                 <p className="text-paper-accentDeep text-sm md:text-base break-all">de.sharma993@gmail.com</p>
@@ -80,11 +82,13 @@ const Contact: React.FC = () => {
               rel="noopener noreferrer"
               className="w-full md:w-auto flex-grow paper-card paper-interactive-lift p-5 md:p-6 hover:border-paper-accent/50 text-left flex items-center gap-4 group"
             >
-              <img
-                src={linkedinIcon}
-                alt="LinkedIn"
-                className="w-10 h-10 md:w-12 md:h-12 paper-icon group-hover:opacity-100 transition-opacity"
-              />
+              <span className="paper-logo-stamp shrink-0">
+                <img
+                  src={linkedinIcon}
+                  alt="LinkedIn"
+                  className="w-10 h-10 md:w-12 md:h-12 paper-icon group-hover:opacity-100 transition-opacity"
+                />
+              </span>
               <div className="min-w-0">
                 <h3 className="text-lg md:text-xl font-semibold text-paper-ink mb-1">LinkedIn</h3>
                 <p className="text-paper-accentDeep text-sm md:text-base">Connect with me</p>
