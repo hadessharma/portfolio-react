@@ -12,11 +12,11 @@ const Experience: React.FC = () => {
     <div
       className="flex flex-col items-center justify-start min-h-full px-4 md:px-8 py-8 pb-20 md:pb-8"
     >
-      <div className="flex flex-col items-center py-4 mb-8 shrink-0">
-        <h2 className="text-center text-sm md:text-lg font-semibold text-slate-400">
+      <div className="flex flex-col items-center py-4 mb-8 md:mb-10 shrink-0 space-y-3">
+        <h2 className="text-center paper-eyebrow">
           Explore My
         </h2>
-        <h2 className="text-center text-4xl md:text-6xl font-bold text-slate-100">
+        <h2 className="text-center paper-title paper-title-underline">
           Skills
         </h2>
       </div>

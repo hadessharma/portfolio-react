@@ -78,14 +78,14 @@ const Layout: React.FC = () => {
   return (
     <div
       ref={scrollContainerRef}
-      className={`h-dvh w-full bg-gray-950 font-sans text-slate-200 
+      className={`h-dvh w-full bg-paper-base bg-paper-texture font-sans text-paper-ink 
         ${isDevMode ? 'overflow-y-auto' : 'overflow-y-auto md:overflow-hidden'}
       `}
     >
       {!isDevMode && <Navbar scrollContainerRef={scrollContainerRef} />}
       <div
         id="home"
-        className={`min-h-screen w-full ${!isDevMode ? 'md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent' : ''}`}
+        className={`min-h-screen w-full ${!isDevMode ? 'md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent' : ''}`}
       >
         <Home isDevMode={isDevMode} setIsDevMode={setIsDevMode} />
       </div>
@@ -94,25 +94,25 @@ const Layout: React.FC = () => {
         <>
           <div
             id="about"
-            className="min-h-screen w-full md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent"
+            className="paper-section-divider min-h-screen w-full md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent"
           >
             <About />
           </div>
           <div
             id="projects"
-            className="min-h-screen w-full md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent"
+            className="paper-section-divider min-h-screen w-full md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent"
           >
             <Projects />
           </div>
           <div
             id="skills"
-            className="min-h-screen w-full md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent"
+            className="paper-section-divider min-h-screen w-full md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent"
           >
             <Experience />
           </div>
           <div
             id="contact"
-            className="min-h-screen w-full md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-transparent"
+            className="paper-section-divider min-h-screen w-full md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent"
           >
             <Contact />
           </div>

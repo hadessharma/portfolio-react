@@ -42,16 +42,16 @@ const Contact: React.FC = () => {
 
   return (
     <div
-      className="min-h-full flex flex-col items-center px-4 py-8 bg-gray-900"
+      className="min-h-full flex flex-col items-center px-4 py-8 bg-transparent"
     >
       {/* Main Content Wrapper */}
       <div className="flex-grow flex flex-col justify-center items-center w-full pb-20 md:pb-0">
         {/* Main Content */}
         <div className="text-center max-w-4xl mx-auto w-full">
-          <h2 className="text-4xl md:text-6xl font-bold text-gray-100 mb-4">
+          <h2 className="paper-title paper-title-underline mb-5">
             Let's Connect
           </h2>
-          <p className="text-lg md:text-xl text-gray-400 mb-12 md:mb-16 max-w-2xl mx-auto leading-relaxed">
+          <p className="paper-copy text-lg md:text-xl mb-12 md:mb-16 max-w-2xl mx-auto">
             I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
           </p>
 
@@ -60,16 +60,16 @@ const Contact: React.FC = () => {
             {/* Email Button */}
             <a
               href="mailto:de.sharma993@gmail.com"
-              className="w-full md:w-auto flex-grow bg-gray-800/50 border border-gray-700 rounded-xl p-5 md:p-6 hover:border-cyan-400/50 transition-all duration-300 hover:bg-gray-800/70 text-left flex items-center gap-4 group"
+              className="w-full md:w-auto flex-grow paper-card paper-interactive-lift p-5 md:p-6 hover:border-paper-accent/50 text-left flex items-center gap-4 group"
             >
               <img
                 src={mailIcon}
                 alt="Email"
-                className="w-10 h-10 md:w-12 md:h-12 filter invert opacity-80 group-hover:opacity-100 transition-opacity"
+                className="w-10 h-10 md:w-12 md:h-12 paper-icon group-hover:opacity-100 transition-opacity"
               />
               <div className="min-w-0">
-                <h3 className="text-lg md:text-xl font-semibold text-gray-100 mb-1">Email</h3>
-                <p className="text-cyan-400 text-sm md:text-base break-all">de.sharma993@gmail.com</p>
+                <h3 className="text-lg md:text-xl font-semibold text-paper-ink mb-1">Email</h3>
+                <p className="text-paper-accentDeep text-sm md:text-base break-all">de.sharma993@gmail.com</p>
               </div>
             </a>
 
@@ -78,16 +78,16 @@ const Contact: React.FC = () => {
               href="https://www.linkedin.com/in/deepsharma993/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full md:w-auto flex-grow bg-gray-800/50 border border-gray-700 rounded-xl p-5 md:p-6 hover:border-cyan-400/50 transition-all duration-300 hover:bg-gray-800/70 text-left flex items-center gap-4 group"
+              className="w-full md:w-auto flex-grow paper-card paper-interactive-lift p-5 md:p-6 hover:border-paper-accent/50 text-left flex items-center gap-4 group"
             >
               <img
                 src={linkedinIcon}
                 alt="LinkedIn"
-                className="w-10 h-10 md:w-12 md:h-12 filter invert opacity-80 group-hover:opacity-100 transition-opacity"
+                className="w-10 h-10 md:w-12 md:h-12 paper-icon group-hover:opacity-100 transition-opacity"
               />
               <div className="min-w-0">
-                <h3 className="text-lg md:text-xl font-semibold text-gray-100 mb-1">LinkedIn</h3>
-                <p className="text-cyan-400 text-sm md:text-base">Connect with me</p>
+                <h3 className="text-lg md:text-xl font-semibold text-paper-ink mb-1">LinkedIn</h3>
+                <p className="text-paper-accentDeep text-sm md:text-base">Connect with me</p>
               </div>
             </a>
           </div>
@@ -100,30 +100,30 @@ const Contact: React.FC = () => {
           <nav className="flex justify-center mb-6 gap-8">
             <a
               href="#about"
-              className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+              className="paper-link"
             >
               About
             </a>
             <a
               href="#skills"
-              className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+              className="paper-link"
             >
               Skills
             </a>
             <a
               href="#projects"
-              className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+              className="paper-link"
             >
               Projects
             </a>
             <a
               href="/blog"
-              className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+              className="paper-link"
             >
               Blog
             </a>
           </nav>
-          <p className="text-gray-500 text-sm">
+          <p className="text-paper-muted text-sm">
             © {new Date().getFullYear()} Deep Sharma. All rights reserved.
           </p>
         </div>
@@ -134,7 +134,7 @@ const Contact: React.FC = () => {
         <div className="fixed bottom-8 right-8 z-50 animate-bounce">
           <button
             onClick={handleBlogNavigation}
-            className="bg-cyan-600 hover:bg-cyan-700 text-white rounded-full shadow-lg transition-all duration-500 hover:scale-110 group animate-pulse"
+            className="bg-paper-accent hover:bg-paper-accentDeep text-white rounded-full shadow-paper transition-all duration-500 hover:-translate-y-0.5 hover:shadow-paper group animate-pulse"
           >
             <div className="flex items-center gap-3 px-6 py-4">
               <span className="text-sm font-medium whitespace-nowrap animate-fade-in">

@@ -34,14 +34,14 @@ const Blog: React.FC = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gray-900 pt-20 pb-16">
+      <div className="min-h-screen bg-paper-base bg-paper-texture pt-20 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-100 mb-6">
+        <div className="text-center mb-14 md:mb-16 space-y-4">
+          <h1 className="paper-title paper-title-underline">
             My Blog
           </h1>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="paper-copy text-xl max-w-3xl mx-auto pt-2">
             Sharing insights about technology, development, and the latest trends in software engineering.
           </p>
         </div>
@@ -53,8 +53,8 @@ const Blog: React.FC = () => {
               onClick={() => handleTagFilter(null)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 selectedTag === null
-                  ? "bg-cyan-400 text-gray-900"
-                  : "bg-gray-800/50 text-gray-400 hover:bg-gray-700/50 hover:text-cyan-400 border border-gray-700"
+                  ? "bg-paper-accent text-white"
+                  : "bg-paper-layer text-paper-muted hover:bg-paper-surface hover:text-paper-accent border border-paper-edge"
               }`}
             >
               All Posts
@@ -65,8 +65,8 @@ const Blog: React.FC = () => {
                 onClick={() => handleTagFilter(tag)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   selectedTag === tag
-                    ? "bg-cyan-400 text-gray-900"
-                    : "bg-gray-800/50 text-gray-400 hover:bg-gray-700/50 hover:text-cyan-400 border border-gray-700"
+                    ? "bg-paper-accent text-white"
+                    : "bg-paper-layer text-paper-muted hover:bg-paper-surface hover:text-paper-accent border border-paper-edge"
                 }`}
               >
                 {tag}
@@ -89,7 +89,7 @@ const Blog: React.FC = () => {
         {/* No posts message */}
         {filteredPosts.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-gray-400 text-lg">
+            <p className="text-paper-muted text-lg">
               No posts found for the selected tag.
             </p>
           </div>
@@ -99,7 +99,7 @@ const Blog: React.FC = () => {
         <div className="text-center mt-16">
           <button
             onClick={() => navigate("/")}
-            className="inline-flex items-center px-6 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-gray-300 hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-300"
+            className="inline-flex items-center px-6 py-3 bg-paper-layer border border-paper-edge rounded-md text-paper-muted hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-300"
           >
             <svg
               className="w-5 h-5 mr-2"

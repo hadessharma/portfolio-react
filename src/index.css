@@ -2,6 +2,107 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-paper-base bg-paper-texture bg-repeat text-paper-ink font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif text-paper-ink;
+  }
+}
+
+@layer components {
+  .paper-card {
+    @apply rounded-md border border-paper-edge bg-paper-surface shadow-paper transition-all duration-300;
+  }
+
+  .paper-card-muted {
+    @apply rounded-md border border-paper-edge bg-paper-layer shadow-paper-soft;
+  }
+
+  .paper-link {
+    @apply text-paper-muted transition-colors duration-200 hover:text-paper-accent;
+  }
+
+  .paper-eyebrow {
+    @apply text-sm md:text-lg font-semibold uppercase tracking-[0.12em] text-paper-muted;
+  }
+
+  .paper-title {
+    @apply relative inline-block text-4xl md:text-6xl font-bold text-paper-ink leading-tight;
+    text-wrap: balance;
+  }
+
+  .paper-title-underline {
+    @apply relative;
+  }
+
+  .paper-title-underline::after {
+    content: "";
+    position: absolute;
+    left: 0.2rem;
+    right: 0.2rem;
+    bottom: -0.45rem;
+    height: 0.35rem;
+    border-radius: 999px;
+    background: rgba(63, 101, 142, 0.16);
+    transform: rotate(-0.85deg);
+  }
+
+  .paper-copy {
+    @apply text-paper-muted leading-relaxed;
+    text-wrap: pretty;
+  }
+
+  .paper-icon {
+    @apply opacity-80;
+    filter: sepia(0.15) saturate(0.78) contrast(0.94);
+    mix-blend-mode: multiply;
+  }
+
+  .paper-button-primary {
+    @apply rounded-md border border-paper-accent bg-paper-accent px-6 py-3 font-semibold text-white transition-all duration-200 hover:bg-paper-accentDeep hover:-translate-y-0.5 hover:shadow-paper;
+  }
+
+  .paper-button-secondary {
+    @apply rounded-md border border-paper-edge bg-paper-surface px-6 py-3 font-semibold text-paper-ink transition-all duration-200 hover:border-paper-accent hover:text-paper-accent hover:-translate-y-0.5 hover:shadow-paper-soft;
+  }
+
+  .paper-button-stamp {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border-2 border-paper-accentDeep bg-paper-surface px-5 py-2.5 font-semibold tracking-wide text-paper-accentDeep transition-all duration-200;
+    box-shadow: 0 1px 0 rgba(47, 42, 37, 0.08), inset 0 0 0 1px rgba(252, 248, 240, 0.8);
+  }
+
+  .paper-button-stamp:hover {
+    @apply -translate-y-0.5 bg-paper-accentSoft text-paper-accentDeep;
+    box-shadow: 0 8px 18px rgba(47, 42, 37, 0.12), inset 0 0 0 1px rgba(252, 248, 240, 0.9);
+  }
+
+  .paper-icon-button {
+    @apply flex items-center justify-center rounded-md border border-paper-edge bg-paper-surface transition-all duration-200;
+    box-shadow: inset 0 0 0 1px rgba(252, 248, 240, 0.75);
+  }
+
+  .paper-icon-button:hover {
+    @apply -translate-y-0.5 border-paper-accent/50 bg-paper-accentSoft shadow-paper-soft;
+  }
+
+  .paper-interactive-lift {
+    @apply transition-all duration-300 hover:-translate-y-0.5 hover:shadow-paper;
+  }
+
+  .paper-section-divider {
+    border-top: 1px solid rgba(215, 204, 187, 0.75);
+    box-shadow: inset 0 1px 0 rgba(252, 248, 240, 0.9);
+  }
+}
+
 .embla {
   overflow: hidden;
 }

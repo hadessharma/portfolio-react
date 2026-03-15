@@ -38,7 +38,7 @@ const StandardHome: React.FC = () => {
 
     return (
         <>
-            <div className="flex flex-col xl:flex-row items-center justify-center min-h-[85vh] px-4 py-8 xl:py-0 gap-12 md:gap-16 w-full max-w-7xl mx-auto">
+            <div className="flex flex-col xl:flex-row items-center justify-center min-h-[85vh] px-4 py-10 xl:py-0 gap-12 md:gap-16 w-full max-w-7xl mx-auto">
 
                 {/* Left Side: Profile & Intro */}
                 <div className="flex flex-col items-center xl:items-start text-center xl:text-left space-y-6 max-w-xl shrink-0">
@@ -46,34 +46,34 @@ const StandardHome: React.FC = () => {
                         <img
                             src={profilePic}
                             alt="Deep Sharma"
-                            className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-cyan-900 to-gray-950 shadow-xl shadow-cyan-500/10 border-2 border-cyan-500/20"
+                            className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-paper-layer shadow-paper border-2 border-paper-edge"
                         />
                         <div>
-                            <h1 className="text-2xl md:text-5xl font-bold text-gray-100 tracking-tight">Deep Sharma</h1>
-                            <h2 className="text-sm md:text-xl font-medium text-cyan-400 mt-1">
-                                Software Developer <span className="text-gray-500">and</span>{" "}
-                                <span className="block md:inline transition-all duration-700 ease-in-out text-gray-300">
+                            <h1 className="text-2xl md:text-5xl font-bold text-paper-ink tracking-tight">Deep Sharma</h1>
+                            <h2 className="text-sm md:text-xl font-medium text-paper-accentDeep mt-1">
+                                Software Developer <span className="text-paper-muted">and</span>{" "}
+                                <span className="block md:inline transition-all duration-700 ease-in-out text-paper-muted">
                                     {roles[currentRoleIndex]}
                                 </span>
                             </h2>
                         </div>
                     </div>
 
-                    <p className="text-sm md:text-lg text-gray-400 leading-relaxed max-w-lg">
-                        Computer Science Graduate Student at <span className="text-cyan-400 font-medium">ASU</span> and <span className="text-cyan-400 font-medium">Software Engineer</span>.
+                    <p className="paper-copy text-sm md:text-lg max-w-lg">
+                        Computer Science Graduate Student at <span className="text-paper-accent font-medium">ASU</span> and <span className="text-paper-accent font-medium">Software Engineer</span>.
                         Specializing in Full stack development, Distributed Systems, Cloud Automation.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                         <a
                             href="#contact"
-                            className="px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 text-center"
+                            className="paper-button-primary text-center"
                         >
                             Contact Me
                         </a>
                         <a
                             href="#projects"
-                            className="px-6 py-3 border border-gray-600 hover:border-cyan-500 text-gray-300 hover:text-cyan-400 font-semibold rounded-lg transition-all duration-300 bg-gray-900/50 text-center"
+                            className="paper-button-secondary text-center"
                         >
                             View Work
                         </a>
@@ -83,7 +83,7 @@ const StandardHome: React.FC = () => {
                 {/* Right Side: Featured Projects (Compact) */}
                 <div className="flex flex-col items-center xl:items-start w-full max-w-2xl mt-8 xl:mt-0">
                     <div className="text-center xl:text-left mb-6 w-full">
-                        <h2 className="text-xs md:text-sm font-semibold text-slate-400 uppercase tracking-wider">Featured Projects</h2>
+                        <h2 className="paper-eyebrow !text-xs md:!text-sm">Featured Projects</h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
@@ -95,7 +95,7 @@ const StandardHome: React.FC = () => {
                     <div className="mt-6 w-full flex justify-center xl:justify-start">
                         <a
                             href="#projects"
-                            className="text-sm text-cyan-400 hover:text-cyan-300 hover:underline flex items-center gap-1 group"
+                            className="text-sm text-paper-accent hover:text-paper-accentDeep hover:underline flex items-center gap-1 group"
                         >
                             Explore All Projects
                             <span className="group-hover:translate-x-1 transition-transform">→</span>

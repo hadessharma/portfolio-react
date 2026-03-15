@@ -60,21 +60,21 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   const hasMultipleDemos = project.demo && project.demo.length > 1;
 
   const imageContainerClass = project.app
-    ? "bg-gray-950"
-    : "bg-black";
+    ? "bg-paper-layer"
+    : "bg-paper-layer";
 
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onClose}
       className="fixed inset-0 flex items-center justify-center p-4 z-50"
-      overlayClassName="fixed inset-0 bg-black bg-opacity-75 z-40"
+      overlayClassName="fixed inset-0 bg-paper-ink/55 z-40"
       contentLabel="Project Modal"
     >
-      <div className="relative bg-gray-900 rounded-xl p-6 max-w-5xl w-full max-h-[85vh] overflow-y-auto">
+      <div className="relative bg-paper-surface rounded-md border border-paper-edge shadow-paper p-6 max-w-5xl w-full max-h-[85vh] overflow-y-auto">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 bg-gray-800/50 border border-gray-700 rounded-lg text-gray-400 hover:bg-gray-800 hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-200 z-10"
+          className="absolute top-4 right-4 p-2 bg-paper-layer border border-paper-edge rounded-md text-paper-muted hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-200 z-10"
         >
           <FiX className="w-6 h-6" />
         </button>
@@ -100,13 +100,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 <>
                   <button
                     onClick={scrollPrev}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-gray-800/80 border border-gray-700 rounded-lg text-gray-300 hover:bg-gray-800 hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-200"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-paper-surface/95 border border-paper-edge rounded-md text-paper-muted hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-200"
                   >
                     <FiChevronLeft className="w-5 h-5" />
                   </button>
                   <button
                     onClick={scrollNext}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-gray-800/80 border border-gray-700 rounded-lg text-gray-300 hover:bg-gray-800 hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-200"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-paper-surface/95 border border-paper-edge rounded-md text-paper-muted hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-200"
                   >
                     <FiChevronRight className="w-5 h-5" />
                   </button>
@@ -122,7 +122,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                     key={index}
                     onClick={() => scrollTo(index)}
                     className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-                      index === selectedIndex ? 'bg-cyan-400' : 'bg-gray-600 hover:bg-gray-500'
+                      index === selectedIndex ? 'bg-paper-accent' : 'bg-paper-edge hover:bg-paper-muted'
                     }`}
                   />
                 ))}
@@ -132,15 +132,15 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 
           {/* Right: Details */}
           <div className="lg:w-2/5 w-full space-y-4">
-            <h2 className="text-3xl font-bold text-cyan-400 mb-4">
+            <h2 className="text-3xl font-bold text-paper-accent mb-4">
               {project.name}
             </h2>
-            <p className="text-gray-300 mb-6">{project.info.join(" ")}</p>
+            <p className="text-paper-muted mb-6">{project.info.join(" ")}</p>
             <div className="flex flex-wrap gap-2 mb-8">
               {project.stack.map((tech) => (
                 <span
                   key={tech}
-                  className="bg-gray-800/50 border border-gray-700 text-gray-300 text-sm font-medium px-3 py-1 rounded-lg"
+                  className="bg-paper-layer border border-paper-edge text-paper-ink text-sm font-medium px-3 py-1 rounded-md"
                 >
                   {tech}
                 </span>
@@ -151,7 +151,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-800 border-2 border-gray-600 rounded-xl text-white font-semibold hover:from-gray-600 hover:to-gray-700 hover:border-gray-500 hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+                className="flex items-center gap-2 px-6 py-3 bg-paper-layer border border-paper-edge rounded-md text-paper-ink font-semibold hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-200"
               >
                 <FiGithub className="w-5 h-5" />
                 <span>View Code</span>
@@ -163,17 +163,17 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                     <div className="relative" ref={dropdownRef}>
                       <button
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-600 to-cyan-700 border-2 border-cyan-500 rounded-xl text-white font-semibold hover:from-cyan-500 hover:to-cyan-600 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/25 transform hover:scale-105 transition-all duration-200"
+                        className="flex items-center gap-2 px-6 py-3 bg-paper-accent border border-paper-accent rounded-md text-white font-semibold hover:bg-paper-accentDeep transition-all duration-200"
                       >
                         <FiExternalLink className="w-5 h-5" />
                         <span>Live Demo</span>
                       </button>
                       {isDropdownOpen && (
-                        <ul className="absolute bottom-full mb-2 w-48 bg-gray-800 border border-gray-700 rounded-lg shadow-lg z-20">
+                        <ul className="absolute bottom-full mb-2 w-48 bg-paper-surface border border-paper-edge rounded-md shadow-paper z-20">
                           {project.demo.map((item, i) => (
                             <li
                               key={i}
-                              className="px-4 py-2 text-sm text-gray-300 hover:bg-cyan-600 hover:text-white cursor-pointer rounded-lg text-center transition-all duration-200"
+                              className="px-4 py-2 text-sm text-paper-ink hover:bg-paper-accentSoft hover:text-paper-accentDeep cursor-pointer rounded-md text-center transition-all duration-200"
                               onClick={() => {
                                 window.open(item.link);
                                 setIsDropdownOpen(false);
@@ -190,7 +190,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                       href={project.demo[0].link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-600 to-cyan-700 border-2 border-cyan-500 rounded-xl text-white font-semibold hover:from-cyan-500 hover:to-cyan-600 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/25 transform hover:scale-105 transition-all duration-200"
+                      className="flex items-center gap-2 px-6 py-3 bg-paper-accent border border-paper-accent rounded-md text-white font-semibold hover:bg-paper-accentDeep transition-all duration-200"
                     >
                       <FiExternalLink className="w-5 h-5" />
                       <span>{project.demo[0].title}</span>

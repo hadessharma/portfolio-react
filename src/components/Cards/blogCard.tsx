@@ -10,14 +10,14 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-cyan-400/50 transition-all duration-300 hover:bg-gray-800/70 cursor-pointer hover:transform hover:scale-105 group"
+      className="paper-card paper-interactive-lift p-6 hover:border-paper-accent/50 cursor-pointer group"
     >
       {/* Tags */}
       <div className="flex flex-wrap gap-2 mb-4">
         {post.tags.map((tag, index) => (
           <span
             key={index}
-            className="px-3 py-1 text-xs font-medium bg-cyan-400/10 text-cyan-400 rounded-full border border-cyan-400/20"
+            className="px-3 py-1 text-xs font-medium bg-paper-accentSoft text-paper-accentDeep rounded-full border border-paper-accent/30"
           >
             {tag}
           </span>
@@ -25,17 +25,17 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, onClick }) => {
       </div>
 
       {/* Title */}
-      <h3 className="text-xl font-semibold text-gray-100 mb-3 group-hover:text-cyan-400 transition-colors duration-300">
+      <h3 className="text-xl font-semibold text-paper-ink mb-3 group-hover:text-paper-accent transition-colors duration-300">
         {post.title}
       </h3>
 
       {/* Excerpt */}
-      <p className="text-gray-400 mb-4 leading-relaxed">
+      <p className="text-paper-muted mb-4 leading-relaxed">
         {post.excerpt}
       </p>
 
       {/* Meta Information */}
-      <div className="flex items-center justify-between text-sm text-gray-500">
+      <div className="flex items-center justify-between text-sm text-paper-muted">
         <div className="flex items-center gap-4">
           <span>{new Date(post.date).toLocaleDateString("en-US", {
             year: "numeric",
@@ -45,7 +45,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, onClick }) => {
           <span>•</span>
           <span>{post.readTime}</span>
         </div>
-        <div className="flex items-center text-cyan-400/80 group-hover:text-cyan-400 transition-colors duration-300">
+        <div className="flex items-center text-paper-accent/80 group-hover:text-paper-accent transition-colors duration-300">
           <span className="text-sm font-medium">Read more</span>
           <svg
             className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300"

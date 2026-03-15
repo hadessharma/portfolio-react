@@ -5,17 +5,17 @@ import educationIcon from "../../assets/education.png";
 const About: React.FC = () => {
   return (
     <div
-      className="min-h-full flex flex-col justify-center items-center px-4 py-8 bg-gray-900"
+      className="min-h-full flex flex-col justify-center items-center px-4 py-8 bg-transparent"
     >
       {/* Header */}
-      <div className="text-center mb-16 max-w-4xl mx-auto">
-        <h2 className="text-base md:text-lg font-medium text-gray-400 mb-2">Get To Know More</h2>
-        <h1 className="text-4xl md:text-6xl font-bold text-gray-100 mb-8">About Me</h1>
-        <p className="text-base md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+      <div className="text-center mb-14 md:mb-16 max-w-4xl mx-auto space-y-4 md:space-y-5">
+        <h2 className="paper-eyebrow">Get To Know More</h2>
+        <h1 className="paper-title paper-title-underline">About Me</h1>
+        <p className="paper-copy text-base md:text-xl max-w-3xl mx-auto pt-3">
           I am a <strong>Computer Science Graduate Student at ASU</strong> and a <strong>Software Engineer</strong> with over
           three years of experience in automating and scaling cloud infrastructure.
           <br /><br />
-          I specialize in <span className="text-cyan-400">bridging the gap</span> between full-stack development and DevOps
+          I specialize in <span className="text-paper-accent">bridging the gap</span> between full-stack development and DevOps
           to build resilient, cost-effective solutions.
         </p>
       </div>
@@ -23,49 +23,49 @@ const About: React.FC = () => {
       {/* Cards Section */}
       <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto w-full">
         {/* Experience Card */}
-        <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-8 hover:border-cyan-400/50 transition-all duration-300 hover:bg-gray-800/70">
+        <div className="paper-card p-8 transition-all duration-300 hover:border-paper-accent/50 hover:-translate-y-1">
           <div className="flex items-center justify-center mb-6">
-            <div className="w-12 h-12 bg-cyan-600/20 rounded-lg flex items-center justify-center mr-4">
+            <div className="w-12 h-12 bg-paper-accentSoft rounded-md flex items-center justify-center mr-4">
               <img
                 src={experienceIcon}
                 alt="Experience"
-                className="w-6 h-6 filter invert opacity-80"
+                className="w-6 h-6 paper-icon"
               />
             </div>
-            <h3 className="text-2xl font-bold text-cyan-400">Experience</h3>
+            <h3 className="text-2xl font-bold text-paper-accent">Experience</h3>
           </div>
           <div className="space-y-4 text-center">
-            <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
-              <h4 className="text-lg font-semibold text-gray-100 mb-1">Software Engineer</h4>
-              <p className="text-gray-400">3 years of industry experience</p>
+            <div className="paper-card-muted p-4">
+              <h4 className="text-lg font-semibold text-paper-ink mb-1">Software Engineer</h4>
+              <p className="text-paper-muted">3 years of industry experience</p>
             </div>
-            <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
-              <h4 className="text-lg font-semibold text-gray-100 mb-1">Core Competencies</h4>
-              <p className="text-gray-400">Full-Stack Dev, DevOps & Cloud</p>
+            <div className="paper-card-muted p-4">
+              <h4 className="text-lg font-semibold text-paper-ink mb-1">Core Competencies</h4>
+              <p className="text-paper-muted">Full-Stack Dev, DevOps & Cloud</p>
             </div>
           </div>
         </div>
 
         {/* Education Card */}
-        <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-8 hover:border-cyan-400/50 transition-all duration-300 hover:bg-gray-800/70">
+        <div className="paper-card p-8 transition-all duration-300 hover:border-paper-accent/50 hover:-translate-y-1">
           <div className="flex items-center justify-center mb-6">
-            <div className="w-12 h-12 bg-cyan-600/20 rounded-lg flex items-center justify-center mr-4">
+            <div className="w-12 h-12 bg-paper-accentSoft rounded-md flex items-center justify-center mr-4">
               <img
                 src={educationIcon}
                 alt="Education"
-                className="w-6 h-6 filter invert opacity-80"
+                className="w-6 h-6 paper-icon"
               />
             </div>
-            <h3 className="text-2xl font-bold text-cyan-400">Education</h3>
+            <h3 className="text-2xl font-bold text-paper-accent">Education</h3>
           </div>
           <div className="space-y-4 text-center">
-            <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
-              <h4 className="text-lg font-semibold text-gray-100 mb-1">M.S. Computer Science</h4>
-              <p className="text-gray-400">Arizona State University, USA</p>
+            <div className="paper-card-muted p-4">
+              <h4 className="text-lg font-semibold text-paper-ink mb-1">M.S. Computer Science</h4>
+              <p className="text-paper-muted">Arizona State University, USA</p>
             </div>
-            <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700">
-              <h4 className="text-lg font-semibold text-gray-100 mb-1">B.Tech. Computer Science</h4>
-              <p className="text-gray-400">SRM University, India</p>
+            <div className="paper-card-muted p-4">
+              <h4 className="text-lg font-semibold text-paper-ink mb-1">B.Tech. Computer Science</h4>
+              <p className="text-paper-muted">SRM University, India</p>
             </div>
           </div>
         </div>

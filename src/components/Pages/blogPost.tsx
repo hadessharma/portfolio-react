@@ -12,17 +12,17 @@ const BlogPost: React.FC = () => {
     return (
       <>
         <Navbar />
-        <div className="min-h-screen bg-gray-900 pt-20 pb-16 flex items-center justify-center">
+        <div className="min-h-screen bg-paper-base bg-paper-texture pt-20 pb-16 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-100 mb-4">
+          <h1 className="text-4xl font-bold text-paper-ink mb-4">
             Post Not Found
           </h1>
-          <p className="text-gray-400 mb-8">
+          <p className="text-paper-muted mb-8">
             The blog post you're looking for doesn't exist.
           </p>
           <button
             onClick={() => navigate("/blog")}
-            className="inline-flex items-center px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-xl transition-colors duration-300"
+            className="paper-button-primary"
           >
             <svg
               className="w-5 h-5 mr-2"
@@ -48,13 +48,13 @@ const BlogPost: React.FC = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gray-900 pt-20 pb-16">
+      <div className="min-h-screen bg-paper-base bg-paper-texture pt-20 pb-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Button */}
         <div className="mb-8">
           <button
             onClick={() => navigate("/blog")}
-            className="inline-flex items-center text-gray-400 hover:text-cyan-400 transition-colors duration-300"
+            className="inline-flex items-center text-paper-muted hover:text-paper-accent transition-colors duration-300"
           >
             <svg
               className="w-5 h-5 mr-2"
@@ -80,7 +80,7 @@ const BlogPost: React.FC = () => {
             {post.tags.map((tag, index) => (
               <span
                 key={index}
-                className="px-3 py-1 text-sm font-medium bg-cyan-400/10 text-cyan-400 rounded-full border border-cyan-400/20"
+                className="px-3 py-1 text-sm font-medium bg-paper-accentSoft text-paper-accentDeep rounded-full border border-paper-accent/30"
               >
                 {tag}
               </span>
@@ -88,12 +88,12 @@ const BlogPost: React.FC = () => {
           </div>
 
           {/* Title */}
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-100 mb-6 leading-tight">
+          <h1 className="paper-title paper-title-underline !text-4xl md:!text-5xl mb-7 leading-tight">
             {post.title}
           </h1>
 
           {/* Meta Information */}
-          <div className="flex flex-wrap items-center gap-4 text-gray-400 mb-6">
+          <div className="flex flex-wrap items-center gap-4 text-paper-muted mb-6">
             <div className="flex items-center">
               <svg
                 className="w-5 h-5 mr-2"
@@ -151,24 +151,24 @@ const BlogPost: React.FC = () => {
           </div>
 
           {/* Excerpt */}
-          <p className="text-xl text-gray-400 leading-relaxed">
+          <p className="paper-copy text-xl">
             {post.excerpt}
           </p>
         </header>
 
         {/* Article Content */}
-        <article className="prose prose-base prose-invert max-w-none">
+        <article className="prose prose-base max-w-none">
           <div 
-            className="text-gray-400 leading-relaxed text-sm font-light"
+            className="text-paper-muted leading-relaxed text-sm font-light"
             dangerouslySetInnerHTML={{ 
               __html: post.content
-                .replace(/^# /gm, '<h1 class="text-3xl font-bold text-gray-100 mb-6 mt-8">')
-                .replace(/^## /gm, '<h2 class="text-xl font-semibold text-gray-100 mb-4 mt-6">')
-                .replace(/^### /gm, '<h3 class="text-lg font-medium text-gray-100 mb-3 mt-5">')
-                .replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-200 font-medium">$1</strong>')
-                .replace(/\*(.*?)\*/g, '<em class="text-gray-400">$1</em>')
-                .replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre class="bg-gray-800 border border-gray-700 rounded-lg p-4 my-6 overflow-x-auto"><code class="text-cyan-400">$2</code></pre>')
-                .replace(/`(.*?)`/g, '<code class="bg-gray-800 text-cyan-400 px-2 py-1 rounded">$1</code>')
+                .replace(/^# /gm, '<h1 class="text-3xl font-bold text-paper-ink mb-6 mt-8">')
+                .replace(/^## /gm, '<h2 class="text-xl font-semibold text-paper-ink mb-4 mt-6">')
+                .replace(/^### /gm, '<h3 class="text-lg font-medium text-paper-ink mb-3 mt-5">')
+                .replace(/\*\*(.*?)\*\*/g, '<strong class="text-paper-ink font-medium">$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em class="text-paper-muted">$1</em>')
+                .replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre class="bg-paper-layer border border-paper-edge rounded-md p-4 my-6 overflow-x-auto"><code class="text-paper-accent">$2</code></pre>')
+                .replace(/`(.*?)`/g, '<code class="bg-paper-layer text-paper-accent px-2 py-1 rounded">$1</code>')
                 .replace(/\n\n/g, '</p><p class="mb-3 text-sm font-light leading-relaxed">')
                 .replace(/^(.+)$/gm, '<p class="mb-3 text-sm font-light leading-relaxed">$1</p>')
                 .replace(/^- (.+)$/gm, '<li class="mb-2 text-sm font-light">$1</li>')
@@ -178,11 +178,11 @@ const BlogPost: React.FC = () => {
         </article>
 
         {/* Navigation */}
-        <div className="mt-16 pt-8 border-t border-gray-800">
+        <div className="mt-16 pt-8 border-t border-paper-edge">
           <div className="flex justify-between items-center">
             <button
               onClick={() => navigate("/blog")}
-              className="inline-flex items-center px-6 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-gray-300 hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-300"
+              className="inline-flex items-center px-6 py-3 bg-paper-layer border border-paper-edge rounded-md text-paper-muted hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-300"
             >
               <svg
                 className="w-5 h-5 mr-2"
@@ -202,7 +202,7 @@ const BlogPost: React.FC = () => {
             
             <button
               onClick={() => navigate("/")}
-              className="inline-flex items-center px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-xl transition-colors duration-300"
+              className="inline-flex items-center px-6 py-3 bg-paper-accent hover:bg-paper-accentDeep text-white rounded-md transition-colors duration-300"
             >
               Portfolio
               <svg

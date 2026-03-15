@@ -101,21 +101,21 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
   const navLinkClasses = (section: string) => {
     const isActive = isBlogPage ? section === "blog" : activeSection === section;
     return `px-4 py-2 text-base transition-all duration-300 rounded-lg border border-transparent ${isActive
-      ? "text-cyan-400 font-semibold bg-cyan-400/10 border-cyan-400/30"
-      : "text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 hover:border-gray-600/50 font-medium"
+      ? "text-paper-accent font-semibold bg-paper-accentSoft border-paper-accent/30"
+      : "text-paper-muted hover:text-paper-accent hover:bg-paper-layer hover:border-paper-edge font-medium"
       }`;
   };
 
   const mobileNavLinkClasses = (section: string) => {
     const isActive = isBlogPage ? section === "blog" : activeSection === section;
     return `block px-3 py-3 text-lg transition-all duration-300 rounded-lg text-center border border-transparent ${isActive
-      ? "text-cyan-400 font-semibold bg-cyan-400/10 border-cyan-400/30"
-      : "text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 hover:border-gray-600/50 font-medium"
+      ? "text-paper-accent font-semibold bg-paper-accentSoft border-paper-accent/30"
+      : "text-paper-muted hover:text-paper-accent hover:bg-paper-layer hover:border-paper-edge font-medium"
       }`;
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-paper-base/90 backdrop-blur-sm border-b border-paper-edge/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -123,7 +123,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
             {isBlogPage ? (
               <button
                 onClick={() => navigate("/")}
-                className="text-2xl font-bold font-mono tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors duration-300"
+                className="text-2xl font-bold font-mono tracking-wider text-paper-accent hover:text-paper-accentDeep transition-colors duration-300"
               >
                 <span>&lt;</span>
                 <span>Deep</span>
@@ -133,7 +133,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
             ) : (
               <button
                 onClick={() => scrollToSection("home")}
-                className="text-2xl font-bold font-mono tracking-wider text-cyan-400 hover:text-cyan-300 transition-colors duration-300"
+                className="text-2xl font-bold font-mono tracking-wider text-paper-accent hover:text-paper-accentDeep transition-colors duration-300"
               >
                 <span>&lt;</span>
                 <span>Deep</span>
@@ -174,15 +174,16 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
               <div className="flex items-center space-x-3 ml-8">
                 <button
                   onClick={handleDownloadCV}
-                  className="px-5 py-2.5 bg-gradient-to-r from-cyan-600 to-cyan-700 border border-cyan-500 rounded-xl text-white font-semibold hover:from-cyan-500 hover:to-cyan-600 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/30 transform hover:scale-105 transition-all duration-200"
+                  className="paper-button-stamp"
                 >
+                  <span className="text-xs opacity-80">PDF</span>
                   Download CV
                 </button>
                 <button
                   onClick={() => navigate("/blog")}
                   className={`px-4 py-2 text-base transition-all duration-300 rounded-lg border font-medium ${isBlogPage
-                    ? "text-cyan-400 bg-cyan-400/10 border-cyan-400/30"
-                    : "border-gray-600 text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 hover:border-cyan-400/50"
+                    ? "text-paper-accent bg-paper-accentSoft border-paper-accent/30"
+                    : "border-paper-edge text-paper-muted hover:text-paper-accent hover:bg-paper-layer hover:border-paper-accent/50"
                     }`}
                 >
                   Blog
@@ -190,7 +191,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
               </div>
               <div className="flex items-center space-x-2 ml-4">
                 <div
-                  className="p-2 rounded-lg bg-gray-800/50 border border-gray-700/50 hover:bg-gray-700/50 hover:border-gray-600 hover:scale-105 transition-all duration-200 cursor-pointer"
+                  className="paper-icon-button h-10 w-10 cursor-pointer"
                   onClick={() => {
                     window.open("https://www.linkedin.com/in/deepsharma993/");
                   }}
@@ -198,11 +199,11 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
                   <img
                     src={linkedinIcon}
                     alt="LinkedIn"
-                    className="w-5 h-5 filter brightness-0 invert hover:brightness-100 transition-all duration-200"
+                    className="w-5 h-5 paper-icon hover:opacity-100 transition-all duration-200"
                   />
                 </div>
                 <div
-                  className="p-2 rounded-lg bg-gray-800/50 border border-gray-700/50 hover:bg-gray-700/50 hover:border-gray-600 hover:scale-105 transition-all duration-200 cursor-pointer"
+                  className="paper-icon-button h-10 w-10 cursor-pointer"
                   onClick={() => {
                     window.open("https://github.com/hadessharma");
                   }}
@@ -210,7 +211,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
                   <img
                     src={githubIcon}
                     alt="GitHub"
-                    className="w-5 h-5 filter brightness-0 invert hover:brightness-100 transition-all duration-200"
+                    className="w-5 h-5 paper-icon hover:opacity-100 transition-all duration-200"
                   />
                 </div>
               </div>
@@ -221,7 +222,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-cyan-400 hover:bg-gray-800/50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-400 transition-colors duration-200"
+              className="inline-flex items-center justify-center p-2 rounded-md text-paper-muted hover:text-paper-accent hover:bg-paper-layer focus:outline-none focus:ring-2 focus:ring-inset focus:ring-paper-accent transition-colors duration-200"
             >
               <span className="sr-only">Open main menu</span>
               {/* Icon when menu is closed */}
@@ -261,7 +262,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden bg-gray-900/95 backdrop-blur-sm border-b border-gray-800/50 transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-screen" : "max-h-0"
+        className={`md:hidden bg-paper-base/95 backdrop-blur-sm border-b border-paper-edge/80 transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-screen" : "max-h-0"
           }`}
       >
         <div className="px-2 pt-2 pb-3 space-y-2 sm:px-3">
@@ -319,14 +320,15 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
           )}
 
           {/* Action buttons section */}
-          <div className="border-t border-gray-700 pt-4 mt-4">
+          <div className="border-t border-paper-edge pt-4 mt-4">
             <button
               onClick={() => {
                 handleDownloadCV();
                 toggleMenu();
               }}
-              className="block w-full px-4 py-3 mb-3 text-lg font-semibold bg-gradient-to-r from-cyan-600 to-cyan-700 border border-cyan-500 rounded-xl text-white hover:from-cyan-500 hover:to-cyan-600 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-200 text-center"
+              className="paper-button-stamp w-full mb-3 py-3 text-lg justify-center"
             >
+              <span className="text-sm opacity-80 mr-2">PDF</span>
               Download CV
             </button>
             <button
@@ -334,9 +336,9 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
                 navigate("/blog");
                 toggleMenu();
               }}
-              className={`block w-full px-4 py-3 text-lg font-medium border rounded-xl transition-all duration-200 text-center ${isBlogPage
-                ? "text-cyan-400 bg-cyan-400/10 border-cyan-400/30"
-                : "border-gray-600 text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 hover:border-cyan-400/50"
+              className={`block w-full px-4 py-3 text-lg font-medium border rounded-md transition-all duration-200 text-center ${isBlogPage
+                ? "text-paper-accent bg-paper-accentSoft border-paper-accent/30"
+                : "border-paper-edge text-paper-muted hover:text-paper-accent hover:bg-paper-layer hover:border-paper-accent/50"
                 }`}
             >
               Blog
@@ -344,7 +346,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
           </div>
           <div className="flex justify-center space-x-4 mt-4">
             <div
-              className="p-3 rounded-lg bg-gray-800/50 border border-gray-700/50 hover:bg-gray-700/50 hover:border-gray-600 hover:scale-105 transition-all duration-200 cursor-pointer"
+              className="paper-icon-button h-12 w-12 cursor-pointer"
               onClick={() => {
                 window.open("https://www.linkedin.com/in/deepsharma993/");
                 toggleMenu();
@@ -353,11 +355,11 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
               <img
                 src={linkedinIcon}
                 alt="LinkedIn"
-                className="w-6 h-6 filter brightness-0 invert"
+                className="w-6 h-6 paper-icon"
               />
             </div>
             <div
-              className="p-3 rounded-lg bg-gray-800/50 border border-gray-700/50 hover:bg-gray-700/50 hover:border-gray-600 hover:scale-105 transition-all duration-200 cursor-pointer"
+              className="paper-icon-button h-12 w-12 cursor-pointer"
               onClick={() => {
                 window.open("https://github.com/hadessharma");
                 toggleMenu();
@@ -366,7 +368,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollContainerRef }) => {
               <img
                 src={githubIcon}
                 alt="GitHub"
-                className="w-6 h-6 filter brightness-0 invert"
+                className="w-6 h-6 paper-icon"
               />
             </div>
           </div>
