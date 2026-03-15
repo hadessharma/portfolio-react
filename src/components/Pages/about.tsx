@@ -9,9 +9,9 @@ const About: React.FC = () => {
     >
       {/* Header */}
       <div className="text-center mb-16 max-w-4xl mx-auto">
-        <h2 className="text-lg font-medium text-gray-400 mb-2">Get To Know More</h2>
-        <h1 className="text-6xl font-bold text-gray-100 mb-8">About Me</h1>
-        <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        <h2 className="text-base md:text-lg font-medium text-gray-400 mb-2">Get To Know More</h2>
+        <h1 className="text-4xl md:text-6xl font-bold text-gray-100 mb-8">About Me</h1>
+        <p className="text-base md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
           I am a <strong>Computer Science Graduate Student at ASU</strong> and a <strong>Software Engineer</strong> with over
           three years of experience in automating and scaling cloud infrastructure.
           <br /><br />
