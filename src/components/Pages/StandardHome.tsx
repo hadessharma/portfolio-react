@@ -12,7 +12,8 @@ const StandardHome: React.FC = () => {
     const roles = [
         "DevOps Enthusiast",
         "Cloud Engineer",
-        "Problem Solver"
+        "Problem Solver",
+        "Cloud Solution Architect"
     ];
 
     const featuredProjects = getFeaturedProjects();
@@ -60,7 +61,7 @@ const StandardHome: React.FC = () => {
 
                     <p className="text-sm md:text-lg text-gray-400 leading-relaxed max-w-lg">
                         Computer Science Graduate Student at <span className="text-cyan-400 font-medium">ASU</span> and <span className="text-cyan-400 font-medium">Software Engineer</span>.
-                        Specializing in Cloud Automation, DevOps, and Full Stack Development.
+                        Specializing in Full stack development, Distributed Systems, Cloud Automation.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">

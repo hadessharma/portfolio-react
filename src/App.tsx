@@ -9,6 +9,7 @@ import Contact from "./components/Pages/contact";
 import Blog from "./components/Pages/blog";
 import BlogPost from "./components/Pages/blogPost";
 import Projects from "./components/Pages/projects";
+import RecruiterChatbot from "./components/RecruiterChatbot";
 
 const Layout: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -118,6 +119,7 @@ const Layout: React.FC = () => {
           </div>
         </>
       )}
+      <RecruiterChatbot />
     </div>
   );
 };

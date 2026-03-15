@@ -15,31 +15,23 @@ const Home: React.FC<HomeProps> = ({ isDevMode, setIsDevMode }) => {
       <div className="hidden md:block fixed top-28 right-8 z-50">
         <button
           onClick={() => setIsDevMode(!isDevMode)}
-          className="group relative p-2 rounded-full transition-all duration-300 hover:bg-gray-800/50"
+          className="group relative flex items-center gap-2 rounded-full border border-cyan-500/30 bg-gray-900/90 px-3 py-2 shadow-md shadow-cyan-500/10 transition-all duration-300 hover:border-cyan-400/60 hover:bg-gray-800/95 hover:shadow-cyan-500/20"
           aria-label="Toggle Developer Mode"
         >
           <img
             src={devIcon}
             alt="Developer Mode"
-            className={`w-12 h-12 md:w-14 md:h-14 transition-all duration-300 ${isDevMode ? "drop-shadow-[0_0_8px_rgba(74,222,128,0.5)]" : "opacity-70 hover:opacity-100 grayscale hover:grayscale-0"
+            className={`w-8 h-8 transition-all duration-300 ${isDevMode ? "drop-shadow-[0_0_8px_rgba(74,222,128,0.6)]" : "opacity-90 group-hover:scale-105"
               }`}
           />
+          <span className="text-xs font-semibold tracking-wide text-cyan-300">
+            {isDevMode ? "Exit" : "Terminal"}
+          </span>
 
-          {/* Tooltip */}
-          <span className="absolute right-full mr-2 top-1/2 -translate-y-1/2 px-2 py-1 bg-gray-900 text-xs text-green-400 border border-green-500/30 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-            {isDevMode ? "Exit Terminal" : "Enter Terminal"}
+          <span className="pointer-events-none absolute right-full mr-3 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-md border border-cyan-500/30 bg-gray-900 px-2 py-1 text-xs text-cyan-300 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+            {isDevMode ? "Back to portfolio view" : "Open interactive developer terminal"}
           </span>
         </button>
-
-        {/* Developer Mode Hint */}
-        {!isDevMode && (
-          <div className="absolute top-16 right-0 mr-2 w-max animate-bounce">
-            <div className="relative bg-gray-800 text-cyan-400 px-4 py-2 rounded-lg border border-cyan-500/30 shadow-lg shadow-cyan-500/20">
-              <span className="text-sm font-medium">Developer? Click here!</span>
-              <div className="absolute -top-1 right-4 w-2 h-2 bg-gray-800 border-t border-l border-cyan-500/30 transform rotate-45"></div>
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Main Content */}
