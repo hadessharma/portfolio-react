@@ -25,8 +25,9 @@ const Layout: React.FC = () => {
     if (!container || isDevMode) return;
 
     const handleWheel = (e: WheelEvent) => {
-      // Disable custom scroll logic on mobile (md breakpoint is 768px in Tailwind)
-      if (window.innerWidth < 768) return;
+      // Enable full-page wheel snapping only on large screens.
+      // Medium screens/tablets should keep native section scrolling.
+      if (window.innerWidth < 1024) return;
 
       e.preventDefault();
       if (isScrolling.current) return;
@@ -79,13 +80,13 @@ const Layout: React.FC = () => {
     <div
       ref={scrollContainerRef}
       className={`h-dvh w-full bg-paper-base font-sans text-paper-ink 
-        ${isDevMode ? 'overflow-y-auto' : 'overflow-y-auto md:overflow-hidden'}
+        ${isDevMode ? 'overflow-y-auto' : 'overflow-y-auto lg:overflow-hidden'}
       `}
     >
       {!isDevMode && <Navbar scrollContainerRef={scrollContainerRef} />}
       <div
         id="home"
-        className={`min-h-screen w-full ${!isDevMode ? 'md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent' : ''}`}
+        className={`min-h-screen w-full ${!isDevMode ? 'lg:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent' : ''}`}
       >
         <Home isDevMode={isDevMode} setIsDevMode={setIsDevMode} />
       </div>
@@ -94,25 +95,25 @@ const Layout: React.FC = () => {
         <>
           <div
             id="about"
-            className="paper-section-divider min-h-screen w-full md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent"
+            className="paper-section-divider min-h-screen w-full lg:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent"
           >
             <About />
           </div>
           <div
             id="projects"
-            className="paper-section-divider min-h-screen w-full md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent"
+            className="paper-section-divider min-h-screen w-full lg:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent"
           >
             <Projects />
           </div>
           <div
             id="skills"
-            className="paper-section-divider min-h-screen w-full md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent"
+            className="paper-section-divider min-h-screen w-full lg:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent"
           >
             <Experience />
           </div>
           <div
             id="contact"
-            className="paper-section-divider min-h-screen w-full md:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent"
+            className="paper-section-divider min-h-screen w-full lg:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent"
           >
             <Contact />
           </div>
