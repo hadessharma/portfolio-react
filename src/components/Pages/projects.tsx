@@ -8,6 +8,9 @@ const Project: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectType | null>(
     null
   );
+  const orderedProjects = [...projects].sort(
+    (a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured))
+  );
 
   const openModal = (project: ProjectType) => {
     setSelectedProject(project);
@@ -26,11 +29,18 @@ const Project: React.FC = () => {
           Browse My Recent
         </h2>
         <h2 className="paper-title paper-title-underline">Projects</h2>
+        <p className="paper-copy text-sm md:text-base max-w-2xl mx-auto pt-3">
+          Featured work is highlighted first with richer card treatment.
+        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl shrink-0">
-        {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} onOpenModal={openModal} />
+        {orderedProjects.map((project, index) => (
+          <ProjectCard
+            key={index}
+            project={project}
+            onOpenModal={openModal}
+          />
         ))}
       </div>
 

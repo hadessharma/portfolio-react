@@ -62,7 +62,7 @@ export const projects: Project[] = [
     info: [
       "Architected a highly-concurrent Cloud Management Platform using FastAPI and React, allowing users to dynamically provision and monitor AWS and Azure infrastructure via interactive UI dashboards. Containerized the orchestration engine using Docker, creating an isolated backend environment that safely executes Terraform CLI commands via asynchronous Python subprocesses, mirroring enterprise CI/CD runners. Implemented secure, multi-tenant credential management using PostgreSQL and SQLAlchemy, allowing dynamic mapping of multiple distinct AWS IAM and Azure Service Principal accounts to real-time cloud SDK queries.",
     ],
-    stack: ["React", "Node.js", "Express", "MongoDB", "Terraform", "Azure", "AWS"],
+    stack: ["React", "Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Docker", "Terraform", "Azure", "AWS"],
     featured: true,
   },
   {

@@ -6,7 +6,10 @@ interface ProjectCardProps {
   onOpenModal: (project: Project) => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  project,
+  onOpenModal,
+}) => {
   // Extract brief description (first 100 characters)
   const briefDescription = project.info[0].length > 100 
     ? project.info[0].substring(0, 100) + "..." 
@@ -15,8 +18,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
   return (
     <div
       onClick={() => onOpenModal(project)}
-      className="paper-card flex flex-col justify-between p-4 sm:p-6 w-full h-full min-h-[14rem] transition-all duration-300 hover:shadow-paper hover:border-paper-accent/40 hover:-translate-y-1 cursor-pointer overflow-hidden"
+      className={`paper-card relative flex flex-col justify-between p-4 sm:p-6 w-full h-full min-h-[14rem] transition-all duration-300 hover:shadow-paper hover:-translate-y-1 cursor-pointer overflow-hidden ${
+        project.featured
+          ? "border-paper-accent/40 bg-paper-surface"
+          : "hover:border-paper-accent/40"
+      }`}
     >
+      {project.featured && (
+        <>
+          <span className="pointer-events-none absolute left-6 right-6 top-0 h-px bg-paper-accent/35" />
+          <span className="pointer-events-none absolute top-0 left-1/2 h-1 w-10 -translate-x-1/2 rounded-b-sm bg-paper-accent/25" />
+        </>
+      )}
       <div className="flex-1 min-h-0">
         <h3 className="text-lg sm:text-xl font-bold text-paper-accent mb-2 sm:mb-3 text-left truncate">
           {project.name}

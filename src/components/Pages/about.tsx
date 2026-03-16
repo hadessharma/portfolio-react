@@ -12,11 +12,11 @@ const About: React.FC = () => {
         <h2 className="paper-eyebrow">Get To Know More</h2>
         <h1 className="paper-title paper-title-underline">About Me</h1>
         <p className="paper-copy text-base md:text-xl max-w-3xl mx-auto pt-3">
-          I am a <strong>Computer Science Graduate Student at ASU</strong> and a <strong>Software Engineer</strong> with over
-          three years of experience in automating and scaling cloud infrastructure.
+          I am a <strong>Software Engineer</strong> and <strong>Computer Science Graduate Student at ASU</strong>, focused on
+          building full-stack applications and backend systems that solve real-world problems.
           <br /><br />
-          I specialize in <span className="text-paper-accent">bridging the gap</span> between full-stack development and DevOps
-          to build resilient, cost-effective solutions.
+          I build AI-driven software solutions by leveraging AI agents and agentic coding workflows to accelerate delivery and improve system quality.
+          Alongside that, I apply DevOps and cloud architecture practices to ensure everything is resilient, efficient, and production-ready.
         </p>
       </div>
 
@@ -41,7 +41,7 @@ const About: React.FC = () => {
             </div>
             <div className="paper-card-muted p-4">
               <h4 className="text-lg font-semibold text-paper-ink mb-1">Core Competencies</h4>
-              <p className="text-paper-muted">Full-Stack Dev, DevOps & Cloud</p>
+              <p className="text-paper-muted">AI-Driven Development, Backend Systems, and DevOps</p>
             </div>
           </div>
         </div>

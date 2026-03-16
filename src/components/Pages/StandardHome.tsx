@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import profilePic from "../../assets/profile-pic.png";
+import cvPDF from "../../assets/resume_DeepSharma.pdf";
+import githubIcon from "../../assets/github.png";
+import linkedinIcon from "../../assets/linkedin.png";
 import ProjectCard from "../Cards/projectCard";
 import ProjectModal from "../Cards/projectModal";
 import { getFeaturedProjects, Project as ProjectType } from "../data/projectData";
@@ -10,13 +13,15 @@ const StandardHome: React.FC = () => {
     const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
 
     const roles = [
-        "DevOps Enthusiast",
-        "Cloud Engineer",
-        "Problem Solver",
-        "Cloud Solution Architect"
+        "Cloud Automation Engineer",
+        "AI Solutions Engineer",
+        "DevOps Enthusiast"
     ];
+    const maxRoleLength = Math.max(...roles.map((role) => role.length));
 
-    const featuredProjects = getFeaturedProjects();
+    const featuredProjects = getFeaturedProjects().filter(
+        (project) => project.name !== "TerraZure"
+    );
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -36,6 +41,10 @@ const StandardHome: React.FC = () => {
         setSelectedProject(null);
     };
 
+    const handleDownloadCV = () => {
+        window.open(cvPDF);
+    };
+
     return (
         <>
             <div className="flex flex-col xl:flex-row items-center justify-center min-h-[85vh] px-4 py-10 xl:py-0 gap-12 md:gap-16 w-full max-w-7xl mx-auto">
@@ -52,7 +61,10 @@ const StandardHome: React.FC = () => {
                             <h1 className="text-2xl md:text-5xl font-bold text-paper-ink tracking-tight">Deep Sharma</h1>
                             <h2 className="text-sm md:text-xl font-medium text-paper-accentDeep mt-1">
                                 Software Developer <span className="text-paper-muted">and</span>{" "}
-                                <span className="block md:inline transition-all duration-700 ease-in-out text-paper-muted">
+                                <span
+                                    className="block md:inline-block transition-all duration-700 ease-in-out text-paper-muted"
+                                    style={{ minWidth: `${maxRoleLength}ch` }}
+                                >
                                     {roles[currentRoleIndex]}
                                 </span>
                             </h2>
@@ -64,19 +76,41 @@ const StandardHome: React.FC = () => {
                         Specializing in Full stack development, Distributed Systems, Cloud Automation.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                        <a
-                            href="#contact"
-                            className="paper-button-primary text-center"
-                        >
-                            Contact Me
-                        </a>
-                        <a
-                            href="#projects"
+                    <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                        <button
+                            onClick={handleDownloadCV}
                             className="paper-button-secondary text-center"
                         >
-                            View Work
-                        </a>
+                            Download CV
+                        </button>
+                        <div className="flex items-center gap-3">
+                            <a
+                                href="https://www.linkedin.com/in/deepsharma993/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="paper-icon-button paper-logo-stamp h-11 w-11 cursor-pointer"
+                                aria-label="Open LinkedIn profile"
+                            >
+                                <img
+                                    src={linkedinIcon}
+                                    alt="LinkedIn"
+                                    className="w-5 h-5 paper-icon"
+                                />
+                            </a>
+                            <a
+                                href="https://github.com/hadessharma"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="paper-icon-button paper-logo-stamp h-11 w-11 cursor-pointer"
+                                aria-label="Open GitHub profile"
+                            >
+                                <img
+                                    src={githubIcon}
+                                    alt="GitHub"
+                                    className="w-5 h-5 paper-icon"
+                                />
+                            </a>
+                        </div>
                     </div>
                 </div>
 
