@@ -1,0 +1,10 @@
+{
+  "id": "3",
+  "title": "Behind the Code: Building FairShare, the Smart Bill Splitter",
+  "excerpt": "A deep dive into the technology stack and engineering decisions behind FairShare, a modern application for fair and precise bill splitting.",
+  "date": "2026-03-29",
+  "tags": ["Engineering", "FastAPI", "React"],
+  "readTime": "4 min read",
+  "author": "Deep Sharma",
+  "slug": "building-fairshare-smart-bill-splitter"
+}
