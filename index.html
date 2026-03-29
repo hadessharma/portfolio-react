@@ -33,7 +33,24 @@
       rel="stylesheet"
     />
     <link rel="icon" href="/assets/favicon-CJEXtEjw.ico" />
-    <script type="module" crossorigin src="/assets/main-BccgABr2.js"></script>
+    
+    <!-- Single Page Apps for GitHub Pages -->
+    <!-- https://github.com/rafgraph/spa-github-pages -->
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search[1] === 'p' && l.search[2] === '=') {
+          var a = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&') 
+          })
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + a[0].slice(2) +
+            (a.length > 1 ? '?' + a.slice(1).join('&').replace(/~and~/g, '&') : '') +
+            l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <script type="module" crossorigin src="/assets/main-rN13q0eN.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/main-BJabxaa2.css">
   </head>
   <body>
