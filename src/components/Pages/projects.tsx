@@ -23,7 +23,7 @@ const Project: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full w-full items-center justify-start px-4 md:px-20 py-8 pb-20 md:pb-8 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent">
+    <div className="flex flex-col h-full w-full items-center justify-start px-4 md:px-20 py-8 pb-20 md:pb-8 overflow-y-auto scrollbar-none md:scrollbar-thin md:scrollbar-thumb-paper-edge md:scrollbar-track-transparent">
       <div className="text-center mb-12 md:mb-14 shrink-0 space-y-3">
         <h2 className="paper-eyebrow">
           Browse My Recent

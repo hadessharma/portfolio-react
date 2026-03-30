@@ -370,7 +370,7 @@ const Terminal: React.FC = () => {
                 {/* Terminal Body */}
                 <div
                     ref={scrollRef}
-                    className="flex-1 p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500 scrollbar-track-transparent"
+                    className="flex-1 p-4 overflow-y-auto scrollbar-none md:scrollbar-thin md:scrollbar-thumb-gray-600 md:hover:scrollbar-thumb-gray-500 md:scrollbar-track-transparent"
                     onClick={() => {
                         const selection = window.getSelection();
                         if (!selection || selection.toString().length === 0) {

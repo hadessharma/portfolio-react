@@ -13,80 +13,86 @@ import Projects from "./components/Pages/projects";
 const Layout: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isDevMode, setIsDevMode] = useState(false);
-  const isScrolling = useRef(false);
-
-  // Helper to check if we are on a mobile device
-  // You might want to use a more robust check or a library like react-responsive,
-  // but checking window width is a simple start for layout logic.
-  // However, for the wheel event listener, we can just check if window.innerWidth < 768 inside the handler.
+  const sectionIds = ["home", "about", "projects", "skills", "contact"] as const;
+  const [sectionOpacities, setSectionOpacities] = useState<Record<string, number>>(() =>
+    sectionIds.reduce<Record<string, number>>((acc, id) => {
+      acc[id] = 1;
+      return acc;
+    }, {})
+  );
 
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container || isDevMode) return;
+    let rafId: number | null = null;
 
-    const handleWheel = (e: WheelEvent) => {
-      // Enable full-page wheel snapping only on large screens.
-      // Medium screens/tablets should keep native section scrolling.
-      if (window.innerWidth < 1024) return;
+    const updateSectionFade = () => {
+      const viewportTop = container.scrollTop;
+      const viewportHeight = container.clientHeight;
+      const fadeDistance = viewportHeight * 0.7;
+      const nextOpacities: Record<string, number> = {};
 
-      e.preventDefault();
-      if (isScrolling.current) return;
+      sectionIds.forEach((id) => {
+        const section = document.getElementById(id);
+        if (!section) {
+          nextOpacities[id] = 1;
+          return;
+        }
 
-      const direction = e.deltaY > 0 ? 1 : -1;
-      const height = container.clientHeight;
-      const currentScroll = container.scrollTop;
-      // Use a small threshold to determine current section more accurately during partial scrolls
-      const currentSectionIndex = Math.round(currentScroll / height);
+        const sectionTop = section.offsetTop;
+        const distancePast = Math.max(0, viewportTop - sectionTop);
+        const fadeProgress = Math.min(distancePast / fadeDistance, 1);
 
-      const nextSectionIndex = currentSectionIndex + direction;
-      const sectionsCount = 5; // Home, About, Projects, Skills, Contact
+        // Keep the effect subtle so content remains readable.
+        nextOpacities[id] = 1 - fadeProgress * 0.16;
+      });
 
-      if (nextSectionIndex >= 0 && nextSectionIndex < sectionsCount) {
-        isScrolling.current = true;
-        const targetScroll = nextSectionIndex * height;
+      setSectionOpacities((prev) => {
+        let hasChanged = false;
+        const roundedEntries = Object.entries(nextOpacities).map(([id, value]) => {
+          const rounded = Number(value.toFixed(3));
+          if (prev[id] !== rounded) hasChanged = true;
+          return [id, rounded] as const;
+        });
 
-        const start = container.scrollTop;
-        const change = targetScroll - start;
-        const duration = 700; // ms
-        const startTime = performance.now();
+        if (!hasChanged) return prev;
 
-        const animateScroll = (currentTime: number) => {
-          const timeElapsed = currentTime - startTime;
-          const progress = Math.min(timeElapsed / duration, 1);
-
-          // easeInOutCubic for smoother start/end
-          const ease = progress < 0.5
-            ? 4 * progress * progress * progress
-            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-
-          container.scrollTop = start + change * ease;
-
-          if (timeElapsed < duration) {
-            requestAnimationFrame(animateScroll);
-          } else {
-            isScrolling.current = false;
-          }
-        };
-
-        requestAnimationFrame(animateScroll);
-      }
+        return roundedEntries.reduce<Record<string, number>>((acc, [id, value]) => {
+          acc[id] = value;
+          return acc;
+        }, {});
+      });
     };
 
-    container.addEventListener('wheel', handleWheel, { passive: false });
-    return () => container.removeEventListener('wheel', handleWheel);
+    const handleScroll = () => {
+      if (rafId !== null) return;
+      rafId = window.requestAnimationFrame(() => {
+        updateSectionFade();
+        rafId = null;
+      });
+    };
+
+    updateSectionFade();
+    container.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      container.removeEventListener("scroll", handleScroll);
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
+    };
   }, [isDevMode]);
 
   return (
     <div
       ref={scrollContainerRef}
-      className={`h-dvh w-full bg-paper-base font-sans text-paper-ink 
-        ${isDevMode ? 'overflow-y-auto' : 'overflow-y-auto lg:overflow-hidden'}
+      className={`themed-scrollbar h-dvh w-full bg-paper-base font-sans text-paper-ink 
+        overflow-y-auto
       `}
     >
       {!isDevMode && <Navbar scrollContainerRef={scrollContainerRef} />}
       <div
         id="home"
-        className={`min-h-screen w-full ${!isDevMode ? 'lg:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent' : ''}`}
+        className={`paper-fade-section min-h-screen w-full ${!isDevMode ? "pt-20" : ""}`}
+        style={{ opacity: sectionOpacities.home }}
       >
         <Home isDevMode={isDevMode} setIsDevMode={setIsDevMode} />
       </div>
@@ -95,25 +101,29 @@ const Layout: React.FC = () => {
         <>
           <div
             id="about"
-            className="paper-section-divider min-h-screen w-full lg:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent"
+            className="paper-fade-section paper-section-divider min-h-screen w-full pt-20"
+            style={{ opacity: sectionOpacities.about }}
           >
             <About />
           </div>
           <div
             id="projects"
-            className="paper-section-divider min-h-screen w-full lg:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent"
+            className="paper-fade-section paper-section-divider min-h-screen w-full pt-20"
+            style={{ opacity: sectionOpacities.projects }}
           >
             <Projects />
           </div>
           <div
             id="skills"
-            className="paper-section-divider min-h-screen w-full lg:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent"
+            className="paper-fade-section paper-section-divider min-h-screen w-full pt-20"
+            style={{ opacity: sectionOpacities.skills }}
           >
             <Experience />
           </div>
           <div
             id="contact"
-            className="paper-section-divider min-h-screen w-full lg:h-screen pt-20 overflow-y-auto scrollbar-thin scrollbar-thumb-paper-edge scrollbar-track-transparent"
+            className="paper-fade-section paper-section-divider min-h-screen w-full pt-20"
+            style={{ opacity: sectionOpacities.contact }}
           >
             <Contact />
           </div>

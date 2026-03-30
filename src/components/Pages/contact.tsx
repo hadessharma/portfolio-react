@@ -42,10 +42,10 @@ const Contact: React.FC = () => {
 
   return (
     <div
-      className="min-h-full flex flex-col items-center px-4 py-8 bg-transparent"
+      className="min-h-[calc(100vh-5rem)] flex flex-col items-center px-4 py-8 bg-transparent"
     >
       {/* Main Content Wrapper */}
-      <div className="flex-grow flex flex-col justify-center items-center w-full pb-20 md:pb-0">
+      <div className="flex-1 flex flex-col justify-center items-center w-full">
         {/* Main Content */}
         <div className="text-center max-w-4xl mx-auto w-full">
           <h2 className="paper-title paper-title-underline mb-5">
@@ -98,41 +98,6 @@ const Contact: React.FC = () => {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="w-full text-center pt-16">
-        <div className="max-w-4xl mx-auto">
-          <nav className="flex justify-center mb-6 gap-8">
-            <a
-              href="#about"
-              className="paper-link"
-            >
-              About
-            </a>
-            <a
-              href="#skills"
-              className="paper-link"
-            >
-              Skills
-            </a>
-            <a
-              href="#projects"
-              className="paper-link"
-            >
-              Projects
-            </a>
-            <a
-              href="/blog"
-              className="paper-link"
-            >
-              Blog
-            </a>
-          </nav>
-          <p className="text-paper-muted text-sm">
-            © {new Date().getFullYear()} Deep Sharma. All rights reserved.
-          </p>
-        </div>
-      </footer>
-
       {/* Floating Blog Navigation Prompt */}
       {showBlogPrompt && (
         <div className="fixed bottom-8 right-8 z-50 animate-bounce">
@@ -161,6 +126,44 @@ const Contact: React.FC = () => {
           </button>
         </div>
       )}
+
+      {/* Footer */}
+      <footer className="w-full mt-auto pt-8 pb-4 text-center">
+        <div className="max-w-4xl mx-auto">
+          <nav className="flex justify-center items-center gap-4 text-sm">
+            <a href="#home" className="paper-link whitespace-nowrap">
+              Home
+            </a>
+            <span className="text-paper-muted select-none" aria-hidden="true">
+              |
+            </span>
+            <a href="#about" className="paper-link whitespace-nowrap">
+              About
+            </a>
+            <span className="text-paper-muted select-none" aria-hidden="true">
+              |
+            </span>
+            <a href="#projects" className="paper-link whitespace-nowrap">
+              Project
+            </a>
+            <span className="text-paper-muted select-none" aria-hidden="true">
+              |
+            </span>
+            <a href="#skills" className="paper-link whitespace-nowrap">
+              Skills
+            </a>
+            <span className="text-paper-muted select-none" aria-hidden="true">
+              |
+            </span>
+            <a href="/blog" className="paper-link whitespace-nowrap">
+              Blog
+            </a>
+          </nav>
+          <p className="text-paper-muted text-sm mt-3">
+            © {new Date().getFullYear()} Deep Sharma. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };

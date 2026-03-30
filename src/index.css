@@ -23,6 +23,7 @@
   --paper-logo-stamp-ring: rgba(252, 248, 240, 0.82);
   --paper-logo-stamp-bg: 241 234 223;
   --paper-logo-stamp-border: 215 204 187;
+  --paper-scrollbar-track: 226 218 205;
   --paper-texture-image: url("/paper-texture.svg");
 }
 
@@ -47,6 +48,7 @@
   --paper-logo-stamp-ring: rgba(255, 255, 255, 0.1);
   --paper-logo-stamp-bg: 214 204 190;
   --paper-logo-stamp-border: 166 152 132;
+  --paper-scrollbar-track: 37 35 33;
   --paper-texture-image: url("/paper-texture-dark.svg");
 }
 
@@ -167,6 +169,85 @@
   .paper-section-divider {
     border-top: 1px solid var(--paper-divider-border);
     box-shadow: inset 0 1px 0 var(--paper-divider-highlight);
+  }
+
+  .paper-fade-section {
+    @apply transition-opacity duration-300;
+  }
+
+  html,
+  .themed-scrollbar {
+    scrollbar-width: auto;
+    scrollbar-color: rgba(var(--paper-accent), 0.92) rgba(var(--paper-scrollbar-track), 0.35);
+    scrollbar-gutter: stable;
+  }
+
+  html::-webkit-scrollbar,
+  .themed-scrollbar::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+
+  html::-webkit-scrollbar-track,
+  .themed-scrollbar::-webkit-scrollbar-track {
+    background: linear-gradient(
+      180deg,
+      rgba(var(--paper-scrollbar-track), 0.18),
+      rgba(var(--paper-scrollbar-track), 0.42)
+    );
+    border: 1px solid rgba(var(--paper-edge), 0.24);
+    border-radius: 999px;
+  }
+
+  html::-webkit-scrollbar-thumb,
+  .themed-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      180deg,
+      rgba(var(--paper-accent), 0.96),
+      rgba(var(--paper-accent-deep), 0.96)
+    );
+    border: 2px solid rgba(var(--paper-accent-deep), 0.95);
+    border-radius: 999px;
+    background-clip: padding-box, border-box;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16), 0 2px 8px rgba(0, 0, 0, 0.16);
+  }
+
+  html::-webkit-scrollbar-thumb:hover,
+  .themed-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      180deg,
+      rgba(var(--paper-accent-deep), 1),
+      rgba(var(--paper-accent), 1)
+    );
+    border-color: rgba(var(--paper-accent-deep), 1);
+    background-clip: padding-box, border-box;
+  }
+
+  html::-webkit-scrollbar-thumb:active,
+  .themed-scrollbar::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(
+      180deg,
+      rgba(var(--paper-accent-deep), 1),
+      rgba(var(--paper-accent), 1)
+    );
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24), 0 1px 3px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Hide scrollbars on small screens; scrolling still works via touch/trackpad */
+  @media (max-width: 767px) {
+    html,
+    .themed-scrollbar {
+      scrollbar-width: none;
+      scrollbar-gutter: auto;
+      -ms-overflow-style: none;
+    }
+
+    html::-webkit-scrollbar,
+    .themed-scrollbar::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
   }
 }
 

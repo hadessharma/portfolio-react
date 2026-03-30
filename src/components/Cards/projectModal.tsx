@@ -71,7 +71,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
       overlayClassName="fixed inset-0 bg-paper-ink/55 z-40"
       contentLabel="Project Modal"
     >
-      <div className="relative bg-paper-surface rounded-md border border-paper-edge shadow-paper p-6 max-w-5xl w-full max-h-[85vh] overflow-y-auto">
+      <div className="relative bg-paper-surface rounded-md border border-paper-edge shadow-paper p-6 max-w-5xl w-full max-h-[85vh] overflow-y-auto scrollbar-none md:scrollbar-thin md:scrollbar-thumb-paper-edge md:scrollbar-track-transparent">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 p-2 bg-paper-layer border border-paper-edge rounded-md text-paper-muted hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-200 z-10"

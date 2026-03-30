@@ -45,7 +45,7 @@ export const projects: Project[] = [
     demo: [
       {
         title: "Visit Website",
-        link: "https://fair-share-split.vercel.app/",
+        link: "https://www.fair-share.online/",
       },
     ],
     info: [
