@@ -9,6 +9,7 @@ import Contact from "./components/Pages/contact";
 import Blog from "./components/Pages/blog";
 import BlogPost from "./components/Pages/blogPost";
 import Projects from "./components/Pages/projects";
+import ChatWidget from "./components/ChatWidget/ChatWidget";
 
 const Layout: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -141,6 +142,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
+      <ChatWidget />
     </Router>
   );
 }
