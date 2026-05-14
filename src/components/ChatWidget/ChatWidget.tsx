@@ -33,20 +33,30 @@ const ChatWidget: React.FC = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  const suggestedQuestions = [
+    "What is Deep's tech stack?",
+    "Can you tell me about his recent projects?",
+    "What is his experience with AWS?",
+    "How can I contact him?"
+  ];
+
   const handleToggle = () => setIsOpen(!isOpen);
 
-  const handleSend = async (e?: React.FormEvent) => {
+  const handleSend = async (e?: React.FormEvent, textOverride?: string) => {
     e?.preventDefault();
-    if (!inputText.trim()) return;
+    const textToSend = textOverride !== undefined ? textOverride : inputText;
+    if (!textToSend.trim()) return;
 
     const userMessage: Message = {
       id: Date.now().toString(),
-      text: inputText,
+      text: textToSend,
       sender: "user",
     };
 
     setMessages((prev) => [...prev, userMessage]);
-    setInputText("");
+    if (textOverride === undefined) {
+      setInputText("");
+    }
     setIsLoading(true);
 
     const botMessageId = (Date.now() + 1).toString();
@@ -104,7 +114,7 @@ const ChatWidget: React.FC = () => {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
       {isOpen && (
-        <div className="mb-4 w-80 sm:w-96 h-[500px] max-h-[80vh] flex flex-col bg-paper-surface border border-paper-edge rounded-2xl shadow-paper-soft overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
+        <div className="mb-4 w-[90vw] sm:w-[450px] md:w-[500px] h-[550px] max-h-[80vh] flex flex-col bg-paper-surface border border-paper-edge rounded-2xl shadow-paper-soft overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
           {/* Header */}
           <div className="flex items-center justify-between p-4 bg-paper-accent text-white">
             <div>
@@ -139,17 +149,34 @@ const ChatWidget: React.FC = () => {
                     }`}
                   >
                     {msg.sender === "bot" ? (
-                      <div className="prose prose-sm dark:prose-invert max-w-none prose-p:my-1 prose-a:text-blue-500 hover:prose-a:text-blue-600">
+                      <div className="prose prose-sm dark:prose-invert max-w-none prose-p:my-2 prose-p:leading-relaxed prose-a:text-blue-500 hover:prose-a:text-blue-600 whitespace-pre-wrap">
                         <ReactMarkdown>{msg.text}</ReactMarkdown>
                       </div>
                     ) : (
-                      msg.text
+                      <div className="whitespace-pre-wrap">{msg.text}</div>
                     )}
                   </div>
                 </div>
               );
             })}
             
+            {!isLoading && (
+              <div className="flex flex-wrap gap-2 mt-2">
+                {suggestedQuestions.map((q, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      setInputText("");
+                      handleSend(undefined, q);
+                    }}
+                    className="text-xs bg-paper-surface border border-paper-accent/30 text-paper-accent px-3 py-1.5 rounded-full hover:bg-paper-accent hover:text-white transition-colors text-left"
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
+            )}
+
             {isLoading && (
               <div className="flex justify-start">
                 <div className="bg-paper-layer border border-paper-edge rounded-2xl rounded-tl-sm p-4 flex gap-1 items-center">
