@@ -135,7 +135,23 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
             <h2 className="text-3xl font-bold text-paper-accent mb-4">
               {project.name}
             </h2>
-            <p className="text-paper-muted mb-6">{project.info.join(" ")}</p>
+            <div className="text-paper-muted mb-6 space-y-3">
+              {project.info.map((paragraph, index) => {
+                if (paragraph.includes(": ")) {
+                  const [title, desc] = paragraph.split(/:\s(.+)/);
+                  return (
+                    <p key={index} className="text-sm md:text-base leading-relaxed text-left">
+                      <strong className="text-paper-accent font-semibold">{title}:</strong> {desc}
+                    </p>
+                  );
+                }
+                return (
+                  <p key={index} className="text-sm md:text-base leading-relaxed text-left">
+                    {paragraph}
+                  </p>
+                );
+              })}
+            </div>
             <div className="flex flex-wrap gap-2 mb-8">
               {project.stack.map((tech) => (
                 <span

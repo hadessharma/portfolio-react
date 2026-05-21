@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
-import { FiMessageSquare, FiX, FiSend } from "react-icons/fi";
+import { FiX, FiSend } from "react-icons/fi";
+import { LuBot } from "react-icons/lu";
 
 type Message = {
   id: string;
@@ -87,6 +88,8 @@ const ChatWidget: React.FC = () => {
       while (true) {
         const { value, done } = await reader.read();
         if (done) break;
+        
+        setIsLoading(false);
         
         const chunk = decoder.decode(value, { stream: true });
         setMessages((prev) =>
@@ -222,7 +225,9 @@ const ChatWidget: React.FC = () => {
           isOpen ? "scale-0 opacity-0" : "scale-100 opacity-100"
         }`}
       >
-        <FiMessageSquare size={28} />
+        <div className={!isOpen ? "animate-bounce" : ""}>
+          <LuBot size={28} />
+        </div>
       </button>
     </div>
   );
