@@ -4,6 +4,7 @@ import { Project } from "../data/projectData";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { FiExternalLink, FiGithub, FiX, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import ImageModal from "./imageModal";
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -19,6 +20,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   project,
 }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isZoomed, setIsZoomed] = useState(false);
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true,
     align: 'start',
@@ -87,9 +89,10 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 {project.img.map((src, index) => (
                   <div className="embla__slide flex items-center justify-center flex-shrink-0 w-full" key={index}>
                     <img
-                      className="w-auto h-auto max-w-full max-h-[60vh] object-contain"
+                      className="w-auto h-auto max-w-full max-h-[60vh] object-contain cursor-zoom-in hover:opacity-95 transition-opacity duration-150"
                       src={src}
                       alt={`${project.name} screenshot ${index + 1}`}
+                      onClick={() => setIsZoomed(true)}
                     />
                   </div>
                 ))}
@@ -218,6 +221,16 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
           </div>
         </div>
       </div>
+      {isZoomed && (
+        <ImageModal
+          isOpen={isZoomed}
+          onClose={() => setIsZoomed(false)}
+          images={project.img}
+          currentIndex={selectedIndex}
+          onIndexChange={scrollTo}
+          alt={`${project.name} screenshot`}
+        />
+      )}
     </Modal>
   );
 };

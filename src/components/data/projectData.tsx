@@ -33,6 +33,8 @@ import portfolioAgentImage1 from "../../assets/project/portfolio_agent/1.png";
 import text2SqlImage1 from "../../assets/project/text2sql/1.png";
 
 // Project Data Structure
+export type ProjectCategory = "ai" | "cloud" | "other";
+
 export interface Project {
   name: string;
   img: string[];
@@ -42,6 +44,7 @@ export interface Project {
   info: string[];
   stack: string[];
   featured?: boolean; // Add featured flag for top projects
+  category: ProjectCategory;
 }
 
 // Project Data Array
@@ -65,6 +68,7 @@ export const projects: Project[] = [
     ],
     stack: ["React", "Tailwind CSS", "Python", "FastAPI", "PostgreSQL", "Supabase", "LLMs", "Structured Outputs", "AWS Textract", "Render"],
     featured: true,
+    category: "ai",
   },
   {
     name: "ASU Tutoring Assistant",
@@ -79,6 +83,7 @@ export const projects: Project[] = [
     ],
     stack: ["LangChain", "Python", "OpenAI GPT", "RAG", "Prompt Engineering", "Academic Integrity Guardrails"],
     featured: false,
+    category: "ai",
   },
   {
     name: "Portfolio Conversational AI",
@@ -99,6 +104,7 @@ export const projects: Project[] = [
     ],
     stack: ["FastAPI", "React", "ReadableStream API", "Prompt Engineering", "Streaming API", "Markdown Context"],
     featured: false,
+    category: "ai",
   },
   {
     name: "Text2SQL",
@@ -113,6 +119,7 @@ export const projects: Project[] = [
     ],
     stack: ["FLAN-T5 LLM", "Hugging Face", "Python", "FastAPI", "React", "PostgreSQL", "SQL Parsing", "Database Security"],
     featured: false,
+    category: "ai",
   },
   {
     name: "TerraZure",
@@ -124,6 +131,7 @@ export const projects: Project[] = [
     ],
     stack: ["React", "Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Docker", "Terraform", "Azure", "AWS"],
     featured: true,
+    category: "cloud",
   },
   {
     name: "Phishing Detection",
@@ -135,6 +143,7 @@ export const projects: Project[] = [
     ],
     stack: ["Python", "Scikit-learn", "Flask", "Machine Learning"],
     featured: false,
+    category: "other",
   },
   {
     name: "Elastic Face Recognition",
@@ -146,6 +155,7 @@ export const projects: Project[] = [
     ],
     stack: ["Python", "FastAPI", "AWS", "EC2", "S3", "SQS"],
     featured: true,
+    category: "cloud",
   },
   {
     name: "Tic Tac Toe",
@@ -166,6 +176,7 @@ export const projects: Project[] = [
       "This project develops a Tic-Tac-Toe app for Android, featuring an AI opponent that uses the Minimax algorithm with alpha-beta pruning for optimized gameplay across three difficulty levels: Easy, Medium, and Hard.",
     ],
     stack: ["Android", "Kotlin", "XML", "Minimax"],
+    category: "other",
   },
 ];
 
