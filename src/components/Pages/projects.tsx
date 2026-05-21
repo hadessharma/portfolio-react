@@ -1,54 +1,359 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProjectCard from "../Cards/projectCard";
 import ProjectModal from "../Cards/projectModal";
-import { projects, Project as ProjectType } from "../data/projectData";
+import { projects, Project as ProjectType, ProjectCategory } from "../data/projectData";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { FiExternalLink, FiGithub, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import ImageModal from "../Cards/imageModal";
+
+const ProjectDetailPanel: React.FC<{ project: ProjectType }> = ({ project }) => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    align: 'start',
+    slidesToScroll: 1
+  }, [Autoplay({ delay: 4000, stopOnInteraction: true })]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    emblaApi.on("select", () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    });
+  }, [emblaApi]);
+
+  const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
+  const scrollNext = () => emblaApi && emblaApi.scrollNext();
+  const scrollTo = (index: number) => emblaApi && emblaApi.scrollTo(index);
+
+  const hasMultipleDemos = project.demo && project.demo.length > 1;
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
+
+  return (
+    <div className="flex flex-col w-full min-h-full text-left pr-1">
+      {/* Top: Title */}
+      <div className="w-full text-left pb-3 mb-5 border-b border-paper-edge/60 shrink-0">
+        <h2 className="text-2xl font-bold text-paper-accent">
+          {project.name}
+        </h2>
+      </div>
+
+      {/* Bottom: Columns */}
+      <div className="flex flex-col xl:flex-row gap-6 w-full items-center justify-center flex-grow">
+        {/* Left: Image Carousel (60%) */}
+        <div className="xl:w-[60%] w-full flex-shrink-0 flex flex-col justify-center">
+        <div className="embla rounded-lg overflow-hidden relative border border-paper-edge bg-paper-layer/20" ref={emblaRef}>
+          <div className="embla__container flex bg-paper-layer/30">
+            {project.img.map((src, index) => (
+              <div className="embla__slide flex items-center justify-center flex-shrink-0 w-full p-2 aspect-[16/10] bg-paper-layer/10" key={index}>
+                <img
+                  className="w-full h-full object-contain rounded cursor-zoom-in hover:opacity-95 transition-opacity duration-150"
+                  src={src}
+                  alt={`${project.name} screenshot ${index + 1}`}
+                  onClick={() => setIsZoomed(true)}
+                />
+              </div>
+            ))}
+          </div>
+          
+          {/* Navigation Arrows */}
+          {project.img.length > 1 && (
+            <>
+              <button
+                onClick={scrollPrev}
+                className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-paper-surface/95 border border-paper-edge rounded-md text-paper-muted hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-200"
+              >
+                <FiChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={scrollNext}
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-paper-surface/95 border border-paper-edge rounded-md text-paper-muted hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-200"
+              >
+                <FiChevronRight className="w-4 h-4" />
+              </button>
+            </>
+          )}
+        </div>
+        
+        {/* Dots Indicator */}
+        {project.img.length > 1 && (
+          <div className="flex justify-center mt-3 space-x-1.5">
+            {project.img.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                  index === selectedIndex ? 'bg-paper-accent' : 'bg-paper-edge hover:bg-paper-muted'
+                }`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Right: Details (40%) */}
+      <div className="xl:w-[40%] w-full flex flex-col justify-center space-y-4 my-auto">
+        <div>
+          <div className="text-paper-muted space-y-2.5 mb-4">
+            {project.info.map((paragraph, index) => {
+              if (paragraph.includes(": ")) {
+                const [title, desc] = paragraph.split(/:\s(.+)/);
+                return (
+                  <p key={index} className="text-xs md:text-sm leading-relaxed text-left">
+                    <strong className="text-paper-accent font-semibold">{title}:</strong> {desc}
+                  </p>
+                );
+              }
+              return (
+                <p key={index} className="text-xs md:text-sm leading-relaxed text-left">
+                  {paragraph}
+                </p>
+              );
+            })}
+          </div>
+          <div className="flex flex-wrap gap-1.5 mb-6">
+            {project.stack.map((tech) => (
+              <span
+                key={tech}
+                className="bg-paper-layer border border-paper-edge text-paper-ink text-[11px] font-medium px-2 py-0.5 rounded"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+        
+        <div className="flex items-center space-x-3 pt-2 border-t border-paper-edge/50">
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 bg-paper-layer border border-paper-edge rounded-md text-paper-ink text-xs font-semibold hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-200"
+          >
+            <FiGithub className="w-4 h-4" />
+            <span>View Code</span>
+          </a>
+          
+          {project.demo && project.demo.length > 0 && (
+            <div className="relative" ref={dropdownRef}>
+              {hasMultipleDemos ? (
+                <>
+                  <button
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    className="flex items-center gap-2 px-4 py-2 bg-paper-accent border border-paper-accent rounded-md text-white text-xs font-semibold hover:bg-paper-accentDeep transition-all duration-200"
+                  >
+                    <FiExternalLink className="w-4 h-4" />
+                    <span>Live Demo</span>
+                  </button>
+                  {isDropdownOpen && (
+                    <ul className="absolute bottom-full mb-2 w-40 bg-paper-surface border border-paper-edge rounded-md shadow-paper z-20">
+                      {project.demo.map((item, i) => (
+                        <li
+                          key={i}
+                          className="px-3 py-1.5 text-xs text-paper-ink hover:bg-paper-accentSoft hover:text-paper-accentDeep cursor-pointer rounded-md text-center transition-all duration-200"
+                          onClick={() => {
+                            window.open(item.link);
+                            setIsDropdownOpen(false);
+                          }}
+                        >
+                          {item.title}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : (
+                <a
+                  href={project.demo[0].link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-paper-accent border border-paper-accent rounded-md text-white text-xs font-semibold hover:bg-paper-accentDeep transition-all duration-200"
+                >
+                  <FiExternalLink className="w-4 h-4" />
+                  <span>{project.demo[0].title}</span>
+                </a>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+      {isZoomed && (
+        <ImageModal
+          isOpen={isZoomed}
+          onClose={() => setIsZoomed(false)}
+          images={project.img}
+          currentIndex={selectedIndex}
+          onIndexChange={scrollTo}
+          alt={`${project.name} screenshot`}
+        />
+      )}
+    </div>
+  );
+};
 
 const Project: React.FC = () => {
+  const [activeCategory, setActiveCategory] = useState<"all" | ProjectCategory>("all");
+  const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null);
+  
+  // Mobile modal state
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<ProjectType | null>(
-    null
-  );
-  const orderedProjects = [...projects].sort(
-    (a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured))
-  );
+  const [modalProject, setModalProject] = useState<ProjectType | null>(null);
 
-  const openModal = (project: ProjectType) => {
-    setSelectedProject(project);
+  const filteredProjects = [...projects]
+    .filter((p) => activeCategory === "all" || p.category === activeCategory)
+    .sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)));
+
+  // Auto-select first project in active category for desktop inline preview
+  const activeProject = selectedProject || filteredProjects[0] || null;
+
+  useEffect(() => {
+    if (filteredProjects.length > 0) {
+      setSelectedProject(filteredProjects[0]);
+    } else {
+      setSelectedProject(null);
+    }
+  }, [activeCategory]);
+
+  const openMobileModal = (project: ProjectType) => {
+    setModalProject(project);
     setModalIsOpen(true);
   };
 
-  const closeModal = () => {
+  const closeMobileModal = () => {
     setModalIsOpen(false);
-    setSelectedProject(null);
+    setModalProject(null);
   };
 
+  const categories = [
+    { id: "all", label: "All Projects" },
+    { id: "ai", label: "AI & Agents" },
+    { id: "cloud", label: "Cloud & Systems" },
+    { id: "other", label: "Other" },
+  ] as const;
+
   return (
-    <div className="flex flex-col h-full w-full items-center justify-start px-4 md:px-20 py-8 pb-20 md:pb-8 overflow-y-auto scrollbar-none md:scrollbar-thin md:scrollbar-thumb-paper-edge md:scrollbar-track-transparent">
-      <div className="text-center mb-12 md:mb-14 shrink-0 space-y-3">
-        <h2 className="paper-eyebrow">
-          Browse My Recent
-        </h2>
-        <h2 className="paper-title paper-title-underline">Projects</h2>
-        <p className="paper-copy text-sm md:text-base max-w-2xl mx-auto pt-3">
-          Featured work is highlighted first with richer card treatment.
-        </p>
+    <div className="flex flex-col h-full w-full items-center justify-start px-4 md:px-20 py-8 pb-20 md:pb-8 overflow-hidden">
+      <div className="text-center mb-5 shrink-0">
+        <span className="paper-eyebrow text-xs md:text-sm block mb-1">Browse My Recent</span>
+        <h2 className="relative inline-block text-2xl md:text-3xl font-bold text-paper-ink paper-title-underline">Projects</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl shrink-0">
-        {orderedProjects.map((project, index) => (
+      {/* Tab Selector */}
+      <div className="flex w-full max-w-7xl border-b border-paper-edge mb-6 shrink-0 justify-center overflow-x-auto scrollbar-none">
+        <div className="flex space-x-1">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`px-4 py-2 text-xs md:text-sm font-semibold transition-all duration-200 border-t-2 border-x border-b border-transparent rounded-t-md -mb-[1px] whitespace-nowrap ${
+                activeCategory === cat.id
+                  ? "bg-paper-surface border-paper-edge border-b-paper-surface text-paper-accent"
+                  : "text-paper-muted hover:text-paper-ink hover:bg-paper-layer/40"
+              }`}
+            >
+              {cat.label} ({cat.id === "all" ? projects.length : projects.filter(p => p.category === cat.id).length})
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Main Split Dashboard (Desktop / Large screen) */}
+      <div className="hidden lg:flex gap-6 w-full max-w-7xl h-[calc(100vh-19.5rem)] min-h-[440px] overflow-hidden shrink-0">
+        {/* Left column: Sidebar List */}
+        <div className="w-[35%] border border-paper-edge rounded-md bg-paper-surface shadow-paper p-4 overflow-y-auto themed-scrollbar flex flex-col gap-3">
+          {filteredProjects.map((project) => (
+            <div
+              key={project.name}
+              onClick={() => setSelectedProject(project)}
+              className={`paper-card p-4 text-left cursor-pointer transition-all duration-200 border flex flex-col justify-between min-h-[100px] ${
+                activeProject?.name === project.name
+                  ? "border-paper-accent bg-paper-surface shadow-paper-soft"
+                  : "border-paper-edge hover:border-paper-accent/40 bg-paper-layer/30 hover:bg-paper-surface"
+              }`}
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="text-sm font-bold text-paper-accent truncate">
+                    {project.name}
+                  </h3>
+                  {project.featured && (
+                    <span className="text-[9px] uppercase tracking-wider font-bold bg-paper-accent-soft text-paper-accent-deep px-1.5 py-0.5 rounded flex-shrink-0">
+                      Featured
+                    </span>
+                  )}
+                </div>
+                <p className="text-paper-muted text-[11px] line-clamp-1 mt-1 leading-relaxed">
+                  {project.info[0]}
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-1 mt-2.5">
+                {project.stack.slice(0, 3).map((tech) => (
+                  <span
+                    key={tech}
+                    className="bg-paper-layer text-paper-ink text-[9px] font-medium px-1.5 py-0.5 rounded border border-paper-edge whitespace-nowrap"
+                  >
+                    {tech}
+                  </span>
+                ))}
+                {project.stack.length > 3 && (
+                  <span
+                    className="bg-paper-accentSoft text-paper-accentDeep text-[9px] font-bold px-1.5 py-0.5 rounded border border-paper-edge whitespace-nowrap"
+                  >
+                    +{project.stack.length - 3}
+                  </span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Right column: Rich Preview Pane */}
+        <div className="w-[65%] border border-paper-edge rounded-md bg-paper-surface shadow-paper p-6 overflow-y-auto themed-scrollbar flex flex-col">
+          {activeProject ? (
+            <ProjectDetailPanel key={activeProject.name} project={activeProject} />
+          ) : (
+            <div className="flex items-center justify-center h-full text-paper-muted">
+              Select a project to see details
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Fallback Grid (Mobile / Medium screens) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-7xl lg:hidden overflow-y-auto h-[calc(100vh-21rem)] pb-8 pr-1 themed-scrollbar">
+        {filteredProjects.map((project, index) => (
           <ProjectCard
             key={index}
             project={project}
-            onOpenModal={openModal}
+            onOpenModal={openMobileModal}
           />
         ))}
       </div>
 
-      {selectedProject && (
+      {/* Fallback Modal for Mobile */}
+      {modalProject && (
         <ProjectModal
           isOpen={modalIsOpen}
-          onClose={closeModal}
-          project={selectedProject}
+          onClose={closeMobileModal}
+          project={modalProject}
         />
       )}
     </div>
