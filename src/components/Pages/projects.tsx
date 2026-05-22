@@ -4,7 +4,7 @@ import ProjectModal from "../Cards/projectModal";
 import { projects, Project as ProjectType, ProjectCategory } from "../data/projectData";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { FiExternalLink, FiGithub, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FiExternalLink, FiGithub, FiChevronLeft, FiChevronRight, FiZoomIn } from "react-icons/fi";
 import ImageModal from "../Cards/imageModal";
 
 const ProjectDetailPanel: React.FC<{ project: ProjectType }> = ({ project }) => {
@@ -14,7 +14,14 @@ const ProjectDetailPanel: React.FC<{ project: ProjectType }> = ({ project }) => 
     loop: true,
     align: 'start',
     slidesToScroll: 1
-  }, [Autoplay({ delay: 4000, stopOnInteraction: true })]);
+  }, [
+    Autoplay({
+      delay: 4500,
+      stopOnInteraction: true,
+      stopOnMouseEnter: true,
+      playOnMouseLeave: true
+    })
+  ]);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -59,54 +66,81 @@ const ProjectDetailPanel: React.FC<{ project: ProjectType }> = ({ project }) => 
       <div className="flex flex-col xl:flex-row gap-6 w-full items-center justify-center flex-grow">
         {/* Left: Image Carousel (60%) */}
         <div className="xl:w-[60%] w-full flex-shrink-0 flex flex-col justify-center">
-        <div className="embla rounded-lg overflow-hidden relative border border-paper-edge bg-paper-layer/20" ref={emblaRef}>
-          <div className="embla__container flex bg-paper-layer/30">
-            {project.img.map((src, index) => (
-              <div className="embla__slide flex items-center justify-center flex-shrink-0 w-full p-2 aspect-[16/10] bg-paper-layer/10" key={index}>
-                <img
-                  className="w-full h-full object-contain rounded cursor-zoom-in hover:opacity-95 transition-opacity duration-150"
-                  src={src}
-                  alt={`${project.name} screenshot ${index + 1}`}
-                  onClick={() => setIsZoomed(true)}
-                />
-              </div>
-            ))}
+          <div className="embla rounded-lg overflow-hidden relative border border-paper-edge bg-paper-layer/30 aspect-[16/10] flex items-center justify-center group/carousel shadow-inner" ref={emblaRef}>
+            <div className="embla__container h-full w-full flex bg-paper-layer/5">
+              {project.img.map((src, index) => (
+                <div className="embla__slide h-full flex items-center justify-center flex-shrink-0 w-full relative group/slide" key={index}>
+                  {/* Blurred background layer for aesthetic padding */}
+                  <img
+                    className="absolute inset-0 w-full h-full object-cover blur-xl opacity-20 select-none pointer-events-none"
+                    src={src}
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  
+                  {/* Main Image */}
+                  <img
+                    className="relative z-10 max-h-full max-w-full object-contain cursor-zoom-in transition-transform duration-300 group-hover/slide:scale-[1.01] p-1.5"
+                    src={src}
+                    alt={`${project.name} screenshot ${index + 1}`}
+                    onClick={() => setIsZoomed(true)}
+                  />
+                  
+                  {/* Hover Click to Enlarge HUD overlay */}
+                  <div className="absolute inset-0 bg-black/10 opacity-0 group-hover/slide:opacity-100 flex items-center justify-center transition-opacity duration-300 pointer-events-none z-20">
+                    <span className="flex items-center gap-1.5 px-3 py-1.5 bg-paper-surface/90 backdrop-blur-md text-paper-ink text-[11px] font-semibold rounded-full border border-paper-edge shadow-lg scale-90 group-hover/slide:scale-100 transition-all duration-300">
+                      <FiZoomIn className="w-3.5 h-3.5 text-paper-accent" />
+                      <span>Click to Enlarge</span>
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            {/* Navigation Arrows */}
+            {project.img.length > 1 && (
+              <>
+                <button
+                  onClick={scrollPrev}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2 bg-paper-surface/85 backdrop-blur-md border border-paper-edge/50 rounded-full text-paper-muted hover:border-paper-accent/50 hover:text-paper-accent hover:scale-105 active:scale-95 transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 -translate-x-3 group-hover/carousel:translate-x-0 z-20 cursor-pointer shadow-md"
+                  aria-label="Previous screenshot"
+                >
+                  <FiChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={scrollNext}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-paper-surface/85 backdrop-blur-md border border-paper-edge/50 rounded-full text-paper-muted hover:border-paper-accent/50 hover:text-paper-accent hover:scale-105 active:scale-95 transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 translate-x-3 group-hover/carousel:translate-x-0 z-20 cursor-pointer shadow-md"
+                  aria-label="Next screenshot"
+                >
+                  <FiChevronRight className="w-4 h-4" />
+                </button>
+              </>
+            )}
           </div>
           
-          {/* Navigation Arrows */}
+          {/* Interactive Thumbnail Strip */}
           {project.img.length > 1 && (
-            <>
-              <button
-                onClick={scrollPrev}
-                className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-paper-surface/95 border border-paper-edge rounded-md text-paper-muted hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-200"
-              >
-                <FiChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={scrollNext}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-paper-surface/95 border border-paper-edge rounded-md text-paper-muted hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-200"
-              >
-                <FiChevronRight className="w-4 h-4" />
-              </button>
-            </>
+            <div className="flex gap-1.5 mt-3 justify-center overflow-x-auto py-1 scrollbar-none select-none max-w-full">
+              {project.img.map((src, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollTo(index)}
+                  className={`relative w-12 h-8 sm:w-16 sm:h-10 flex-shrink-0 rounded overflow-hidden border-2 transition-all duration-300 cursor-pointer ${
+                    index === selectedIndex
+                      ? "border-paper-accent scale-105 shadow-sm opacity-100"
+                      : "border-paper-edge/60 opacity-60 hover:opacity-90 hover:scale-[1.02]"
+                  }`}
+                >
+                  <img
+                    src={src}
+                    alt={`Thumbnail ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
           )}
         </div>
-        
-        {/* Dots Indicator */}
-        {project.img.length > 1 && (
-          <div className="flex justify-center mt-3 space-x-1.5">
-            {project.img.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => scrollTo(index)}
-                className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                  index === selectedIndex ? 'bg-paper-accent' : 'bg-paper-edge hover:bg-paper-muted'
-                }`}
-              />
-            ))}
-          </div>
-        )}
-      </div>
 
       {/* Right: Details (40%) */}
       <div className="xl:w-[40%] w-full flex flex-col justify-center space-y-4 my-auto">
