@@ -80,10 +80,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 
   const hasMultipleDemos = project.demo && project.demo.length > 1;
 
-  const imageContainerClass = project.app
-    ? "bg-paper-layer"
-    : "bg-paper-layer";
-
   return (
     <Modal
       isOpen={isOpen}
@@ -92,19 +88,26 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
       overlayClassName="fixed inset-0 bg-paper-ink/55 z-40"
       contentLabel="Project Modal"
     >
-      <div className="relative bg-paper-surface rounded-md border border-paper-edge shadow-paper p-6 max-w-5xl w-full max-h-[85vh] overflow-y-auto scrollbar-none md:scrollbar-thin md:scrollbar-thumb-paper-edge md:scrollbar-track-transparent">
+      <div className="relative bg-paper-surface rounded-md border border-paper-edge shadow-paper p-4 sm:p-6 max-w-5xl w-full max-h-[92vh] lg:max-h-[85vh] overflow-y-auto scrollbar-none md:scrollbar-thin md:scrollbar-thumb-paper-edge md:scrollbar-track-transparent">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 bg-paper-layer border border-paper-edge rounded-md text-paper-muted hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-200 z-10"
+          className="absolute top-3 right-3 p-1.5 sm:top-4 sm:right-4 sm:p-2 bg-paper-layer border border-paper-edge rounded-md text-paper-muted hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-200 z-10"
         >
-          <FiX className="w-6 h-6" />
+          <FiX className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
+
+        {/* Mobile-only Title Header */}
+        <div className="lg:hidden pr-10 mb-4 text-left">
+          <h2 className="text-2xl font-bold text-paper-accent">
+            {project.name}
+          </h2>
+        </div>
 
         <div className="flex flex-col lg:flex-row items-start gap-6">
           {/* Left: Image Carousel */}
           <div className="lg:w-3/5 w-full">
             <div 
-              className={`embla rounded-lg overflow-hidden relative border border-paper-edge bg-transparent max-h-[260px] sm:max-h-[320px] md:max-h-[380px] lg:max-h-[400px] mx-auto ${!aspectRatio ? (project.app ? "aspect-[9/16]" : "h-[260px] sm:h-[320px] md:h-[380px] lg:h-[400px] w-full") : ""} flex items-center justify-center group/carousel`} 
+              className={`embla rounded-lg overflow-hidden relative border border-paper-edge bg-transparent max-h-[200px] sm:max-h-[300px] md:max-h-[380px] lg:max-h-[400px] mx-auto ${!aspectRatio ? (project.app ? "aspect-[9/16]" : "h-[200px] sm:h-[300px] md:h-[380px] lg:h-[400px] w-full") : ""} flex items-center justify-center group/carousel`} 
               ref={emblaRef}
               style={aspectRatio ? { aspectRatio: `${aspectRatio}` } : undefined}
             >
@@ -177,7 +180,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 
           {/* Right: Details */}
           <div className="lg:w-2/5 w-full space-y-4">
-            <h2 className="text-3xl font-bold text-paper-accent mb-4">
+            <h2 className="hidden lg:block text-3xl font-bold text-paper-accent mb-4">
               {project.name}
             </h2>
             <div className="text-paper-muted mb-6 space-y-3">
@@ -207,30 +210,30 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 </span>
               ))}
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full">
               <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-paper-layer border border-paper-edge rounded-md text-paper-ink font-semibold hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-200"
+                className="flex items-center justify-center gap-2 px-6 py-3 w-full sm:w-auto bg-paper-layer border border-paper-edge rounded-md text-paper-ink font-semibold hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-200"
               >
                 <FiGithub className="w-5 h-5" />
                 <span>View Code</span>
               </a>
               {/* --- Live Demo Button/Dropdown --- */}
               {project.demo && project.demo.length > 0 && (
-                <>
+                <div className="w-full sm:w-auto">
                   {hasMultipleDemos ? (
-                    <div className="relative" ref={dropdownRef}>
+                    <div className="relative w-full" ref={dropdownRef}>
                       <button
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        className="flex items-center gap-2 px-6 py-3 bg-paper-accent border border-paper-accent rounded-md text-white font-semibold hover:bg-paper-accentDeep transition-all duration-200"
+                        className="flex items-center justify-center gap-2 px-6 py-3 w-full bg-paper-accent border border-paper-accent rounded-md text-white font-semibold hover:bg-paper-accentDeep transition-all duration-200"
                       >
                         <FiExternalLink className="w-5 h-5" />
                         <span>Live Demo</span>
                       </button>
                       {isDropdownOpen && (
-                        <ul className="absolute bottom-full mb-2 w-48 bg-paper-surface border border-paper-edge rounded-md shadow-paper z-20">
+                        <ul className="absolute bottom-full mb-2 w-full sm:w-48 bg-paper-surface border border-paper-edge rounded-md shadow-paper z-20">
                           {project.demo.map((item, i) => (
                             <li
                               key={i}
@@ -251,13 +254,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                       href={project.demo[0].link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-6 py-3 bg-paper-accent border border-paper-accent rounded-md text-white font-semibold hover:bg-paper-accentDeep transition-all duration-200"
+                      className="flex items-center justify-center gap-2 px-6 py-3 w-full bg-paper-accent border border-paper-accent rounded-md text-white font-semibold hover:bg-paper-accentDeep transition-all duration-200"
                     >
                       <FiExternalLink className="w-5 h-5" />
                       <span>{project.demo[0].title}</span>
                     </a>
                   )}
-                </>
+                </div>
               )}
             </div>
           </div>

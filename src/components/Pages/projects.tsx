@@ -259,6 +259,34 @@ const Project: React.FC = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalProject, setModalProject] = useState<ProjectType | null>(null);
 
+  // Tab scrolling indicators state
+  const tabContainerRef = React.useRef<HTMLDivElement>(null);
+  const [showLeftFade, setShowLeftFade] = useState(false);
+  const [showRightFade, setShowRightFade] = useState(false);
+
+  const checkScroll = () => {
+    if (tabContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = tabContainerRef.current;
+      setShowLeftFade(scrollLeft > 2);
+      setShowRightFade(scrollWidth - scrollLeft - clientWidth > 2);
+    }
+  };
+
+  useEffect(() => {
+    const container = tabContainerRef.current;
+    if (container) {
+      // Tiny delay to ensure layout rendering has settled
+      const timeoutId = setTimeout(checkScroll, 100);
+      container.addEventListener("scroll", checkScroll);
+      window.addEventListener("resize", checkScroll);
+      return () => {
+        clearTimeout(timeoutId);
+        container.removeEventListener("scroll", checkScroll);
+        window.removeEventListener("resize", checkScroll);
+      };
+    }
+  }, [activeCategory]);
+
   const filteredProjects = [...projects]
     .filter((p) => activeCategory === "all" || p.category === activeCategory)
     .sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)));
@@ -292,29 +320,49 @@ const Project: React.FC = () => {
   ] as const;
 
   return (
-    <div className="flex flex-col h-full w-full items-center justify-start px-4 md:px-20 py-8 pb-20 md:pb-8 overflow-hidden">
+    <div className="flex flex-col lg:h-full w-full items-center justify-start px-4 md:px-20 py-8 pb-20 md:pb-8 lg:overflow-hidden">
       <div className="text-center mb-5 shrink-0">
         <span className="paper-eyebrow text-xs md:text-sm block mb-1">Browse My Recent</span>
         <h2 className="relative inline-block text-2xl md:text-3xl font-bold text-paper-ink paper-title-underline">Projects</h2>
       </div>
 
-      {/* Tab Selector */}
-      <div className="flex w-full max-w-7xl border-b border-paper-edge mb-6 shrink-0 justify-center overflow-x-auto scrollbar-none">
-        <div className="flex space-x-1">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 text-xs md:text-sm font-semibold transition-all duration-200 border-t-2 border-x border-b border-transparent rounded-t-md -mb-[1px] whitespace-nowrap ${
-                activeCategory === cat.id
-                  ? "bg-paper-surface border-paper-edge border-b-paper-surface text-paper-accent"
-                  : "text-paper-muted hover:text-paper-ink hover:bg-paper-layer/40"
-              }`}
-            >
-              {cat.label} ({cat.id === "all" ? projects.length : projects.filter(p => p.category === cat.id).length})
-            </button>
-          ))}
+      {/* Tab Selector with responsive scroll fade indicators */}
+      <div className="relative w-full max-w-7xl mb-6 shrink-0">
+        {/* Left Fade Overlay */}
+        <div
+          className={`absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-paper-base to-transparent pointer-events-none z-10 transition-opacity duration-300 ${
+            showLeftFade ? "opacity-100" : "opacity-0"
+          }`}
+        />
+
+        {/* Scrollable Selector */}
+        <div
+          ref={tabContainerRef}
+          className="flex w-full border-b border-paper-edge justify-start lg:justify-center overflow-x-auto scrollbar-none px-4 lg:px-0"
+        >
+          <div className="flex space-x-1">
+            {categories.map((cat) => (
+              <button
+                 key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`px-4 py-2 text-xs md:text-sm font-semibold transition-all duration-200 border-t-2 border-x border-b border-transparent rounded-t-md -mb-[1px] whitespace-nowrap ${
+                  activeCategory === cat.id
+                    ? "bg-paper-surface border-paper-edge border-b-paper-surface text-paper-accent"
+                    : "text-paper-muted hover:text-paper-ink hover:bg-paper-layer/40"
+                }`}
+              >
+                {cat.label} ({cat.id === "all" ? projects.length : projects.filter(p => p.category === cat.id).length})
+              </button>
+            ))}
+          </div>
         </div>
+
+        {/* Right Fade Overlay */}
+        <div
+          className={`absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-paper-base to-transparent pointer-events-none z-10 transition-opacity duration-300 ${
+            showRightFade ? "opacity-100" : "opacity-0"
+          }`}
+        />
       </div>
 
       {/* Main Split Dashboard (Desktop / Large screen) */}
@@ -380,7 +428,7 @@ const Project: React.FC = () => {
       </div>
 
       {/* Fallback Grid (Mobile / Medium screens) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-7xl lg:hidden overflow-y-auto h-[calc(100vh-21rem)] pb-8 pr-1 themed-scrollbar">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-7xl lg:hidden h-auto pb-8 px-1">
         {filteredProjects.map((project, index) => (
           <ProjectCard
             key={index}
