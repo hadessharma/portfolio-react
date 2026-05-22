@@ -127,7 +127,10 @@ export const projects: Project[] = [
     app: false,
     github: "https://github.com/hadessharma/terraZure",
     info: [
-      "Architected a highly-concurrent Cloud Management Platform using FastAPI and React, allowing users to dynamically provision and monitor AWS and Azure infrastructure via interactive UI dashboards. Containerized the orchestration engine using Docker, creating an isolated backend environment that safely executes Terraform CLI commands via asynchronous Python subprocesses, mirroring enterprise CI/CD runners. Implemented secure, multi-tenant credential management using PostgreSQL and SQLAlchemy, allowing dynamic mapping of multiple distinct AWS IAM and Azure Service Principal accounts to real-time cloud SDK queries.",
+      "Cloud Management Platform built with FastAPI and React for dynamically provisioning and monitoring hybrid AWS and Azure infrastructure.",
+      "Containerized Orchestration: Isolated the execution environment using Docker to safely run Terraform CLI commands via asynchronous Python subprocesses.",
+      "Credential Management: Implemented secure multi-tenant credential systems using PostgreSQL and SQLAlchemy to dynamically map AWS IAM and Azure Service Principal accounts.",
+      "Interactive Dashboards: Built real-time React UI dashboards connected to cloud SDK queries for live resource tracking and monitoring."
     ],
     stack: ["React", "Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Docker", "Terraform", "Azure", "AWS"],
     featured: true,
@@ -139,7 +142,10 @@ export const projects: Project[] = [
     app: false,
     github: "https://github.com/shoviknandy/Phishing-detection---ML",
     info: [
-      "This project aims to detect phishing URLs using advanced machine learning techniques. We compare and contrast different algorithms to identify the most effective approach in phishing detection.",
+      "Machine learning project designed to detect phishing URLs by comparing and contrasting different classification algorithms for optimal accuracy.",
+      "Machine Learning Frameworks: Evaluated multiple classifiers including XGBoost and Scikit-learn algorithms to identify the most effective detection model.",
+      "Feature Engineering: Engineered 26 distinct lexical and network features to robustly identify phishing characteristics in target URLs.",
+      "Dataset & Scale: Trained and evaluated models on a diverse, verified dataset comprising over 10,000 benign and phishing URLs."
     ],
     stack: ["Python", "Scikit-learn", "Flask", "Machine Learning"],
     featured: false,
@@ -151,7 +157,10 @@ export const projects: Project[] = [
     app: false,
     github: "https://github.com/hadessharma/Elastic-Face-Recognition-Service-on-AWS",
     info: [
-      "A scalable, cloud-native face recognition service built on AWS infrastructure that automatically scales based on demand. The system processes uploaded images to identify faces using a pre-trained machine learning model and returns results in real-time.",
+      "A scalable, cloud-native face recognition service built on AWS infrastructure that automatically scales based on real-time demand.",
+      "Real-Time Processing: Built an asynchronous image processing pipeline using AWS S3 and SQS to handle concurrent face recognition requests.",
+      "Auto-Scaling Infrastructure: Orchestrated AWS EC2 instances to dynamically scale resources up or down in response to queue length and workload demands.",
+      "Deep Learning Inference: Integrated a pre-trained machine learning model behind a FastAPI gateway for low-latency image analysis."
     ],
     stack: ["Python", "FastAPI", "AWS", "EC2", "S3", "SQS"],
     featured: true,
@@ -173,7 +182,10 @@ export const projects: Project[] = [
       },
     ],
     info: [
-      "This project develops a Tic-Tac-Toe app for Android, featuring an AI opponent that uses the Minimax algorithm with alpha-beta pruning for optimized gameplay across three difficulty levels: Easy, Medium, and Hard.",
+      "Android Tic-Tac-Toe application featuring optimized AI gameplay and local/wireless multiplayer support.",
+      "Minimax AI Engine: Implemented the Minimax algorithm with alpha-beta pruning to power a responsive AI opponent across three difficulty levels.",
+      "Bluetooth Multiplayer: Integrated Android Bluetooth APIs to enable seamless, low-latency multiplayer gaming between two separate devices.",
+      "Data Persistence: Built local storage mechanisms to persist game history, player statistics, and match states across app launches."
     ],
     stack: ["Android", "Kotlin", "XML", "Minimax"],
     category: "other",

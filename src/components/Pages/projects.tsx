@@ -31,8 +31,7 @@ const ProjectDetailPanel: React.FC<{ project: ProjectType }> = ({ project }) => 
     Autoplay({
       delay: 4500,
       stopOnInteraction: true,
-      stopOnMouseEnter: true,
-      playOnMouseLeave: true
+      stopOnMouseEnter: true
     })
   ]);
 
@@ -68,11 +67,65 @@ const ProjectDetailPanel: React.FC<{ project: ProjectType }> = ({ project }) => 
 
   return (
     <div className="flex flex-col w-full min-h-full text-left pr-1">
-      {/* Top: Title */}
-      <div className="w-full text-left pb-3 mb-5 border-b border-paper-edge/60 shrink-0">
+      {/* Top: Title & Action Buttons */}
+      <div className="w-full flex items-center justify-between pb-3 mb-5 border-b border-paper-edge/60 shrink-0">
         <h2 className="text-2xl font-bold text-paper-accent">
           {project.name}
         </h2>
+        
+        <div className="flex items-center space-x-3">
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 bg-paper-layer border border-paper-edge rounded-md text-paper-ink text-xs font-semibold hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-200"
+          >
+            <FiGithub className="w-4 h-4" />
+            <span>View Code</span>
+          </a>
+          
+          {project.demo && project.demo.length > 0 && (
+            <div className="relative" ref={dropdownRef}>
+              {hasMultipleDemos ? (
+                <>
+                  <button
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    className="flex items-center gap-2 px-4 py-2 bg-paper-accent border border-paper-accent rounded-md text-white text-xs font-semibold hover:bg-paper-accentDeep transition-all duration-200"
+                  >
+                    <FiExternalLink className="w-4 h-4" />
+                    <span>Live Demo</span>
+                  </button>
+                  {isDropdownOpen && (
+                    <ul className="absolute top-full mt-2 right-0 w-40 bg-paper-surface border border-paper-edge rounded-md shadow-paper z-20">
+                      {project.demo.map((item, i) => (
+                        <li
+                          key={i}
+                          className="px-3 py-1.5 text-xs text-paper-ink hover:bg-paper-accentSoft hover:text-paper-accentDeep cursor-pointer rounded-md text-center transition-all duration-200"
+                          onClick={() => {
+                            window.open(item.link);
+                            setIsDropdownOpen(false);
+                          }}
+                        >
+                          {item.title}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : (
+                <a
+                  href={project.demo[0].link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-paper-accent border border-paper-accent rounded-md text-white text-xs font-semibold hover:bg-paper-accentDeep transition-all duration-200"
+                >
+                  <FiExternalLink className="w-4 h-4" />
+                  <span>{project.demo[0].title}</span>
+                </a>
+              )}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Bottom: Columns */}
@@ -151,93 +204,39 @@ const ProjectDetailPanel: React.FC<{ project: ProjectType }> = ({ project }) => 
           )}
         </div>
 
-      {/* Right: Details (40%) */}
-      <div className="xl:w-[40%] w-full flex flex-col justify-center space-y-4 my-auto">
-        <div>
-          <div className="text-paper-muted space-y-2.5 mb-4">
-            {project.info.map((paragraph, index) => {
-              if (paragraph.includes(": ")) {
-                const [title, desc] = paragraph.split(/:\s(.+)/);
+        {/* Right: Details (40%) */}
+        <div className="xl:w-[40%] w-full flex flex-col justify-center space-y-4 my-auto">
+          <div>
+            <div className="text-paper-muted space-y-2.5 mb-4">
+              {project.info.map((paragraph, index) => {
+                if (paragraph.includes(": ")) {
+                  const [title, desc] = paragraph.split(/:\s(.+)/);
+                  return (
+                    <p key={index} className="text-xs md:text-sm leading-relaxed text-left">
+                      <strong className="text-paper-accent font-semibold">{title}:</strong> {desc}
+                    </p>
+                  );
+                }
                 return (
                   <p key={index} className="text-xs md:text-sm leading-relaxed text-left">
-                    <strong className="text-paper-accent font-semibold">{title}:</strong> {desc}
+                    {paragraph}
                   </p>
                 );
-              }
-              return (
-                <p key={index} className="text-xs md:text-sm leading-relaxed text-left">
-                  {paragraph}
-                </p>
-              );
-            })}
-          </div>
-          <div className="flex flex-wrap gap-1.5 mb-6">
-            {project.stack.map((tech) => (
-              <span
-                key={tech}
-                className="bg-paper-layer border border-paper-edge text-paper-ink text-[11px] font-medium px-2 py-0.5 rounded"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-        
-        <div className="flex items-center space-x-3 pt-2 border-t border-paper-edge/50">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 bg-paper-layer border border-paper-edge rounded-md text-paper-ink text-xs font-semibold hover:border-paper-accent/50 hover:text-paper-accent transition-all duration-200"
-          >
-            <FiGithub className="w-4 h-4" />
-            <span>View Code</span>
-          </a>
-          
-          {project.demo && project.demo.length > 0 && (
-            <div className="relative" ref={dropdownRef}>
-              {hasMultipleDemos ? (
-                <>
-                  <button
-                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="flex items-center gap-2 px-4 py-2 bg-paper-accent border border-paper-accent rounded-md text-white text-xs font-semibold hover:bg-paper-accentDeep transition-all duration-200"
-                  >
-                    <FiExternalLink className="w-4 h-4" />
-                    <span>Live Demo</span>
-                  </button>
-                  {isDropdownOpen && (
-                    <ul className="absolute bottom-full mb-2 w-40 bg-paper-surface border border-paper-edge rounded-md shadow-paper z-20">
-                      {project.demo.map((item, i) => (
-                        <li
-                          key={i}
-                          className="px-3 py-1.5 text-xs text-paper-ink hover:bg-paper-accentSoft hover:text-paper-accentDeep cursor-pointer rounded-md text-center transition-all duration-200"
-                          onClick={() => {
-                            window.open(item.link);
-                            setIsDropdownOpen(false);
-                          }}
-                        >
-                          {item.title}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </>
-              ) : (
-                <a
-                  href={project.demo[0].link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-paper-accent border border-paper-accent rounded-md text-white text-xs font-semibold hover:bg-paper-accentDeep transition-all duration-200"
-                >
-                  <FiExternalLink className="w-4 h-4" />
-                  <span>{project.demo[0].title}</span>
-                </a>
-              )}
+              })}
             </div>
-          )}
+            <div className="flex flex-wrap gap-1.5 mb-6">
+              {project.stack.map((tech) => (
+                <span
+                  key={tech}
+                  className="bg-paper-layer border border-paper-edge text-paper-ink text-[11px] font-medium px-2 py-0.5 rounded"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
       {isZoomed && (
         <ImageModal
           isOpen={isZoomed}

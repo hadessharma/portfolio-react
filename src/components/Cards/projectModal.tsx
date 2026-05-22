@@ -42,8 +42,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
     Autoplay({
       delay: 4500,
       stopOnInteraction: true,
-      stopOnMouseEnter: true,
-      playOnMouseLeave: true
+      stopOnMouseEnter: true
     })
   ]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
