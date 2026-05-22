@@ -21,6 +21,19 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
+  const [aspectRatio, setAspectRatio] = useState<number | null>(null);
+
+  useEffect(() => {
+    setAspectRatio(null);
+    if (!project) return;
+    const img = new Image();
+    img.src = project.img[0];
+    img.onload = () => {
+      if (img.naturalWidth && img.naturalHeight) {
+        setAspectRatio(img.naturalWidth / img.naturalHeight);
+      }
+    };
+  }, [project]);
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true,
     align: 'start',
@@ -91,21 +104,17 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
         <div className="flex flex-col lg:flex-row items-start gap-6">
           {/* Left: Image Carousel */}
           <div className="lg:w-3/5 w-full">
-            <div className="embla rounded-lg overflow-hidden relative border border-paper-edge bg-paper-layer/30 h-[260px] sm:h-[320px] md:h-[380px] lg:h-[400px] flex items-center justify-center group/carousel shadow-inner" ref={emblaRef}>
-              <div className={`embla__container h-full w-full flex ${imageContainerClass}`}>
+            <div 
+              className={`embla rounded-lg overflow-hidden relative border border-paper-edge bg-transparent max-h-[260px] sm:max-h-[320px] md:max-h-[380px] lg:max-h-[400px] mx-auto ${!aspectRatio ? (project.app ? "aspect-[9/16]" : "h-[260px] sm:h-[320px] md:h-[380px] lg:h-[400px] w-full") : ""} flex items-center justify-center group/carousel`} 
+              ref={emblaRef}
+              style={aspectRatio ? { aspectRatio: `${aspectRatio}` } : undefined}
+            >
+              <div className="embla__container h-full w-full flex">
                 {project.img.map((src, index) => (
                   <div className="embla__slide h-full flex items-center justify-center flex-shrink-0 w-full relative group/slide" key={index}>
-                    {/* Blurred background layer for aesthetic padding */}
-                    <img
-                      className="absolute inset-0 w-full h-full object-cover blur-xl opacity-20 select-none pointer-events-none"
-                      src={src}
-                      alt=""
-                      aria-hidden="true"
-                    />
-                    
                     {/* Main Image */}
                     <img
-                      className="relative z-10 max-h-full max-w-full object-contain cursor-zoom-in transition-transform duration-300 group-hover/slide:scale-[1.01]"
+                      className="relative z-10 w-full h-full object-contain cursor-zoom-in transition-transform duration-300 group-hover/slide:scale-[1.01]"
                       src={src}
                       alt={`${project.name} screenshot ${index + 1}`}
                       onClick={() => setIsZoomed(true)}

@@ -10,6 +10,19 @@ import ImageModal from "../Cards/imageModal";
 const ProjectDetailPanel: React.FC<{ project: ProjectType }> = ({ project }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
+  const [aspectRatio, setAspectRatio] = useState<number | null>(null);
+
+  useEffect(() => {
+    setAspectRatio(null);
+    const img = new Image();
+    img.src = project.img[0];
+    img.onload = () => {
+      if (img.naturalWidth && img.naturalHeight) {
+        setAspectRatio(img.naturalWidth / img.naturalHeight);
+      }
+    };
+  }, [project]);
+
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true,
     align: 'start',
@@ -66,21 +79,17 @@ const ProjectDetailPanel: React.FC<{ project: ProjectType }> = ({ project }) => 
       <div className="flex flex-col xl:flex-row gap-6 w-full items-center justify-center flex-grow">
         {/* Left: Image Carousel (60%) */}
         <div className="xl:w-[60%] w-full flex-shrink-0 flex flex-col justify-center">
-          <div className="embla rounded-lg overflow-hidden relative border border-paper-edge bg-paper-layer/30 aspect-[16/10] flex items-center justify-center group/carousel shadow-inner" ref={emblaRef}>
-            <div className="embla__container h-full w-full flex bg-paper-layer/5">
+          <div 
+            className={`embla rounded-lg overflow-hidden relative border border-paper-edge bg-transparent max-h-[350px] md:max-h-[420px] mx-auto ${!aspectRatio ? (project.app ? "aspect-[9/16]" : "aspect-[16/10]") : ""} flex items-center justify-center group/carousel`} 
+            ref={emblaRef}
+            style={aspectRatio ? { aspectRatio: `${aspectRatio}` } : undefined}
+          >
+            <div className="embla__container h-full w-full flex">
               {project.img.map((src, index) => (
                 <div className="embla__slide h-full flex items-center justify-center flex-shrink-0 w-full relative group/slide" key={index}>
-                  {/* Blurred background layer for aesthetic padding */}
-                  <img
-                    className="absolute inset-0 w-full h-full object-cover blur-xl opacity-20 select-none pointer-events-none"
-                    src={src}
-                    alt=""
-                    aria-hidden="true"
-                  />
-                  
                   {/* Main Image */}
                   <img
-                    className="relative z-10 max-h-full max-w-full object-contain cursor-zoom-in transition-transform duration-300 group-hover/slide:scale-[1.01] p-1.5"
+                    className="relative z-10 w-full h-full object-contain cursor-zoom-in transition-transform duration-300 group-hover/slide:scale-[1.01]"
                     src={src}
                     alt={`${project.name} screenshot ${index + 1}`}
                     onClick={() => setIsZoomed(true)}
