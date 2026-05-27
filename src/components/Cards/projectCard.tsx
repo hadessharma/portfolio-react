@@ -10,10 +10,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   project,
   onOpenModal,
 }) => {
-  // Extract brief description (first 100 characters)
-  const briefDescription = project.info[0].length > 100 
+  // Use overview if available, otherwise fallback to brief description (first 100 characters)
+  const briefDescription = project.overview || (project.info[0].length > 100 
     ? project.info[0].substring(0, 100) + "..." 
-    : project.info[0];
+    : project.info[0]);
 
   return (
     <div
@@ -34,7 +34,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <h3 className="text-lg sm:text-xl font-bold text-paper-accent mb-2 sm:mb-3 text-left truncate">
           {project.name}
         </h3>
-        <p className="text-paper-muted text-xs sm:text-sm mb-3 sm:mb-4 text-left leading-relaxed line-clamp-3 overflow-hidden">
+        <p className="text-paper-muted text-xs sm:text-sm mb-3 sm:mb-4 text-left leading-relaxed line-clamp-2 overflow-hidden">
           {briefDescription}
         </p>
       </div>

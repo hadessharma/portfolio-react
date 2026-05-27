@@ -42,6 +42,7 @@ export interface Project {
   github: string;
   demo?: { title: string; link: string }[];
   info: string[];
+  overview?: string;
   stack: string[];
   featured?: boolean; // Add featured flag for top projects
   category: ProjectCategory;
@@ -66,6 +67,7 @@ export const projects: Project[] = [
       "Deterministic Tool Integration: Designed a workflow utilizing structured API outputs to serve as a reliable, predictable bridge between the LLM and the relational database.",
       "Full-Stack Automation: Integrated the backend with a React/TypeScript frontend where users dynamically select items and confirm split ratios, eliminating manual data entry."
     ],
+    overview: "AI-driven bill splitting app with automated receipt parsing.",
     stack: ["React", "Tailwind CSS", "Python", "FastAPI", "PostgreSQL", "Supabase", "LLMs", "Structured Outputs", "AWS Textract", "Render"],
     featured: true,
     category: "ai",
@@ -81,6 +83,7 @@ export const projects: Project[] = [
       "Orchestration & RAG (LangChain): Built a multi-source retrieval pipeline using LangChain to ingest and process raw student queries alongside pre-documented learning resources and call transcripts.",
       "Thematic Curriculums: Synthesized unstructured dialogue and support logs into clean, topic-by-topic study schedules mapped to specific student learning gaps."
     ],
+    overview: "AI study planner enforcing strict academic integrity guardrails.",
     stack: ["LangChain", "Python", "OpenAI GPT", "RAG", "Prompt Engineering", "Academic Integrity Guardrails"],
     featured: false,
     category: "ai",
@@ -102,6 +105,7 @@ export const projects: Project[] = [
       "Guardrails & Inference Control: Implemented prompt-level guardrails, low-temperature inference configurations, and length limits to restrict responses strictly to the provided knowledge base.",
       "Streaming Pipeline: Architected a real-time streaming inference pipeline using FastAPI StreamingResponse and the React ReadableStream API to minimize user-facing latency."
     ],
+    overview: "Real-time portfolio chat agent with secure, hallucination-free retrieval.",
     stack: ["FastAPI", "React", "ReadableStream API", "Prompt Engineering", "Streaming API", "Markdown Context"],
     featured: false,
     category: "ai",
@@ -117,6 +121,7 @@ export const projects: Project[] = [
       "Multi-Stage Validation: Engineered a validation pipeline that performs syntactic, semantic, and security checks to catch and reject unsafe or malformed SQL queries before they reach the database.",
       "Secure Layer Separation: Architected a strict separation between the LLM inference layer and the data layer, enforcing enterprise-style security boundaries for database execution."
     ],
+    overview: "Natural language to SQL translator with semantic and security validation.",
     stack: ["FLAN-T5 LLM", "Hugging Face", "Python", "FastAPI", "React", "PostgreSQL", "SQL Parsing", "Database Security"],
     featured: false,
     category: "ai",
@@ -132,6 +137,7 @@ export const projects: Project[] = [
       "Credential Management: Implemented secure multi-tenant credential systems using PostgreSQL and SQLAlchemy to dynamically map AWS IAM and Azure Service Principal accounts.",
       "Interactive Dashboards: Built real-time React UI dashboards connected to cloud SDK queries for live resource tracking and monitoring."
     ],
+    overview: "Cloud platform for dynamically provisioning AWS and Azure infrastructure.",
     stack: ["React", "Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Docker", "Terraform", "Azure", "AWS"],
     featured: true,
     category: "cloud",
@@ -147,6 +153,7 @@ export const projects: Project[] = [
       "Feature Engineering: Engineered 26 distinct lexical and network features to robustly identify phishing characteristics in target URLs.",
       "Dataset & Scale: Trained and evaluated models on a diverse, verified dataset comprising over 10,000 benign and phishing URLs."
     ],
+    overview: "Machine learning models for detecting and classifying phishing URLs.",
     stack: ["Python", "Scikit-learn", "Flask", "Machine Learning"],
     featured: false,
     category: "other",
@@ -162,6 +169,7 @@ export const projects: Project[] = [
       "Auto-Scaling Infrastructure: Orchestrated AWS EC2 instances to dynamically scale resources up or down in response to queue length and workload demands.",
       "Deep Learning Inference: Integrated a pre-trained machine learning model behind a FastAPI gateway for low-latency image analysis."
     ],
+    overview: "Scalable, cloud-native face recognition service with auto-scaling infrastructure.",
     stack: ["Python", "FastAPI", "AWS", "EC2", "S3", "SQS"],
     featured: true,
     category: "cloud",
@@ -187,6 +195,7 @@ export const projects: Project[] = [
       "Bluetooth Multiplayer: Integrated Android Bluetooth APIs to enable seamless, low-latency multiplayer gaming between two separate devices.",
       "Data Persistence: Built local storage mechanisms to persist game history, player statistics, and match states across app launches."
     ],
+    overview: "Android Tic-Tac-Toe game with Bluetooth multiplayer and Minimax AI.",
     stack: ["Android", "Kotlin", "XML", "Minimax"],
     category: "other",
   },

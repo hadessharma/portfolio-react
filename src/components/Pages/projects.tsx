@@ -391,7 +391,7 @@ const Project: React.FC = () => {
                   )}
                 </div>
                 <p className="text-paper-muted text-xs line-clamp-2 mt-1.5 leading-relaxed">
-                  {project.info[0]}
+                  {project.overview || project.info[0]}
                 </p>
               </div>
               <div className="flex flex-wrap gap-1.5 mt-3">
