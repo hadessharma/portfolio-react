@@ -373,7 +373,7 @@ const Project: React.FC = () => {
             <div
               key={project.name}
               onClick={() => setSelectedProject(project)}
-              className={`paper-card p-4 text-left cursor-pointer transition-all duration-200 border flex flex-col justify-between min-h-[100px] ${
+              className={`paper-card p-5 text-left cursor-pointer transition-all duration-200 border flex flex-col justify-between min-h-[130px] ${
                 activeProject?.name === project.name
                   ? "border-paper-accent bg-paper-surface shadow-paper-soft"
                   : "border-paper-edge hover:border-paper-accent/40 bg-paper-layer/30 hover:bg-paper-surface"
@@ -381,31 +381,31 @@ const Project: React.FC = () => {
             >
               <div>
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="text-sm font-bold text-paper-accent truncate">
+                  <h3 className="text-base font-bold text-paper-accent truncate">
                     {project.name}
                   </h3>
                   {project.featured && (
-                    <span className="text-[9px] uppercase tracking-wider font-bold bg-paper-accent-soft text-paper-accent-deep px-1.5 py-0.5 rounded flex-shrink-0">
+                    <span className="text-[10px] uppercase tracking-wider font-bold bg-paper-accent-soft text-paper-accent-deep px-1.5 py-0.5 rounded flex-shrink-0">
                       Featured
                     </span>
                   )}
                 </div>
-                <p className="text-paper-muted text-[11px] line-clamp-1 mt-1 leading-relaxed">
+                <p className="text-paper-muted text-xs line-clamp-2 mt-1.5 leading-relaxed">
                   {project.info[0]}
                 </p>
               </div>
-              <div className="flex flex-wrap gap-1 mt-2.5">
+              <div className="flex flex-wrap gap-1.5 mt-3">
                 {project.stack.slice(0, 3).map((tech) => (
                   <span
                     key={tech}
-                    className="bg-paper-layer text-paper-ink text-[9px] font-medium px-1.5 py-0.5 rounded border border-paper-edge whitespace-nowrap"
+                    className="bg-paper-layer text-paper-ink text-[10px] font-medium px-2 py-0.5 rounded border border-paper-edge whitespace-nowrap"
                   >
                     {tech}
                   </span>
                 ))}
                 {project.stack.length > 3 && (
                   <span
-                    className="bg-paper-accentSoft text-paper-accentDeep text-[9px] font-bold px-1.5 py-0.5 rounded border border-paper-edge whitespace-nowrap"
+                    className="bg-paper-accentSoft text-paper-accentDeep text-[10px] font-bold px-2 py-0.5 rounded border border-paper-edge whitespace-nowrap"
                   >
                     +{project.stack.length - 3}
                   </span>

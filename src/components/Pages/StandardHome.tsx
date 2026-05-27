@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import profilePic from "../../assets/profile-pic.png";
-import cvPDF from "../../assets/resume_DeepSharma.pdf";
+import cvPDF from "../../assets/DeepSharma.pdf";
 import githubIcon from "../../assets/github.png";
 import linkedinIcon from "../../assets/linkedin.png";
 import ProjectCard from "../Cards/projectCard";
