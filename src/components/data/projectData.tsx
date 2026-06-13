@@ -23,8 +23,11 @@ import fairShareImage5 from "../../assets/project/FairShare/5.png";
 // Elastic Face Recognition
 import elasticFaceRecognitionImage1 from "../../assets/project/ElasticFaceRecognition/1.png";
 
-// ASU Tutoring Assistant
-import asuTutoringImage1 from "../../assets/project/asu_tutoring_assistant/1.png";
+// Tutoring Assistant
+import asuTutoringImage1 from "../../assets/project/tutoring_assistant/1.png";
+import asuTutoringImage2 from "../../assets/project/tutoring_assistant/2.png";
+import asuTutoringImage3 from "../../assets/project/tutoring_assistant/3.png";
+import asuTutoringImage4 from "../../assets/project/tutoring_assistant/4.png";
 
 // Portfolio Agent
 import portfolioAgentImage1 from "../../assets/project/portfolio_agent/1.png";
@@ -73,13 +76,13 @@ export const projects: Project[] = [
     category: "ai",
   },
   {
-    name: "ASU Tutoring Assistant",
-    img: [asuTutoringImage1],
+    name: "Tutoring Assistant",
+    img: [asuTutoringImage1, asuTutoringImage2, asuTutoringImage3, asuTutoringImage4],
     app: false,
     github: "https://github.com/hadessharma",
     info: [
-      "Intelligent assistant developed for the Arizona State University tutoring center to generate structured student study plans while strictly enforcing academic integrity policies.",
-      "Strict Policy Guardrails: Implemented rigid prompt constraints and system boundaries to guarantee the agent never discloses direct answers, enforcing ASU's strict academic integrity policy.",
+      "Intelligent assistant developed for a university tutoring center to generate structured student study plans while strictly enforcing academic integrity policies.",
+      "Strict Policy Guardrails: Implemented rigid prompt constraints and system boundaries to guarantee the agent never discloses direct answers, enforcing strict academic integrity policies.",
       "Orchestration & RAG (LangChain): Built a multi-source retrieval pipeline using LangChain to ingest and process raw student queries alongside pre-documented learning resources and call transcripts.",
       "Thematic Curriculums: Synthesized unstructured dialogue and support logs into clean, topic-by-topic study schedules mapped to specific student learning gaps."
     ],

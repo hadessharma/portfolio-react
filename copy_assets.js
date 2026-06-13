@@ -5,7 +5,7 @@ const srcAsu = '/home/deep/.gemini/antigravity/brain/be442f4e-9933-464f-98e6-ec5
 const srcAgent = '/home/deep/.gemini/antigravity/brain/be442f4e-9933-464f-98e6-ec5102b6a4fc/portfolio_agent_mockup_1779316776797.png';
 const srcSql = '/home/deep/.gemini/antigravity/brain/be442f4e-9933-464f-98e6-ec5102b6a4fc/text2sql_dashboard_1779316803621.png';
 
-const destDirAsu = 'src/assets/project/asu_tutoring_assistant';
+const destDirAsu = 'src/assets/project/tutoring_assistant';
 const destDirAgent = 'src/assets/project/portfolio_agent';
 const destDirSql = 'src/assets/project/text2sql';
 
