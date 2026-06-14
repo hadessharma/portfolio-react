@@ -95,7 +95,7 @@ const Terminal: React.FC = () => {
         root.children!['about.md'] = {
             type: 'file',
             name: 'about.md',
-            content: "CS Grad Student @ ASU | Software Engineer. I build resilient cloud infrastructure and full-stack apps. Focused on automating the boring stuff.",
+            content: "Founding Software Engineer | Architect. I build resilient cloud infrastructure and full-stack apps. Focused on automating the boring stuff.",
             parent: root
         };
 
@@ -329,9 +329,9 @@ const Terminal: React.FC = () => {
                 </div>
 
                 <div className="text-gray-400 text-sm space-y-2">
-                    <p>Software Engineer</p>
+                    <p>Founding Software Engineer</p>
                     <p>DevOps Enthusiast</p>
-                    <p>ASU Graduate</p>
+                    <p>Architect</p>
                 </div>
 
                 <div className="w-full h-px bg-gray-700/50 my-4"></div>

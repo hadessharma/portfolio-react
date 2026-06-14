@@ -12,7 +12,7 @@ const About: React.FC = () => {
         <h2 className="paper-eyebrow">Get To Know More</h2>
         <h1 className="paper-title paper-title-underline">About Me</h1>
         <p className="paper-copy text-base md:text-xl max-w-3xl mx-auto pt-3">
-          I am a <strong>Software Engineer</strong> and <strong>Computer Science Graduate Student at ASU</strong>, focused on
+          I am a <strong>Founding Software Engineer</strong> and <strong>Architect</strong>, focused on
           building full-stack applications and backend systems that solve real-world problems.
           <br /><br />
           I build AI-driven software solutions by leveraging AI agents and agentic coding workflows to accelerate delivery and improve system quality.
