@@ -221,12 +221,16 @@ const ChatWidget: React.FC = () => {
       {/* Toggle Button */}
       <button
         onClick={handleToggle}
-        className={`p-4 rounded-full shadow-paper bg-paper-accent text-white hover:scale-105 transition-transform duration-200 flex items-center justify-center ${
-          isOpen ? "scale-0 opacity-0" : "scale-100 opacity-100"
+        className={`p-3 pr-5 rounded-2xl shadow-paper bg-paper-accent text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex items-center gap-3 ${
+          isOpen ? "scale-0 opacity-0 pointer-events-none" : "scale-100 opacity-100"
         }`}
       >
-        <div className={!isOpen ? "animate-bounce" : ""}>
-          <LuBot size={28} />
+        <div className="bg-white/20 p-2 rounded-xl">
+          <LuBot size={24} />
+        </div>
+        <div className="flex flex-col items-start text-left">
+          <span className="font-semibold text-sm leading-tight">Deep's AI Assistant</span>
+          <span className="text-xs text-white/90 mt-0.5">Ask about Deep!</span>
         </div>
       </button>
     </div>
