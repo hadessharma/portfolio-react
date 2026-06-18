@@ -12,7 +12,7 @@ const About: React.FC = () => {
         <h2 className="paper-eyebrow">Get To Know More</h2>
         <h1 className="paper-title paper-title-underline">About Me</h1>
         <p className="paper-copy text-base md:text-xl max-w-3xl mx-auto pt-3">
-          I am a <strong>Founding Software Engineer</strong> and <strong>Architect</strong>, focused on
+          I am a <strong>Founding Software Engineer</strong> and <strong>Solutions Architect</strong>, focused on
           building full-stack applications and backend systems that solve real-world problems.
           <br /><br />
           I build AI-driven software solutions by leveraging AI agents and agentic coding workflows to accelerate delivery and improve system quality.
@@ -37,11 +37,11 @@ const About: React.FC = () => {
           <div className="space-y-4 text-center">
             <div className="paper-card-muted p-4">
               <h4 className="text-lg font-semibold text-paper-ink mb-1">Software Engineer</h4>
-              <p className="text-paper-muted">3 years of industry experience</p>
+              <p className="text-paper-muted">4+ years of industry experience</p>
             </div>
             <div className="paper-card-muted p-4">
               <h4 className="text-lg font-semibold text-paper-ink mb-1">Core Competencies</h4>
-              <p className="text-paper-muted">AI-Driven Development, Backend Systems, and DevOps</p>
+              <p className="text-paper-muted">AI-Driven Development, Distributed Systems, and DevOps</p>
             </div>
           </div>
         </div>

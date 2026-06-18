@@ -20,7 +20,7 @@ This document serves as a structured knowledge base containing the professional 
 
 ### Lead Cloud Architect (Founding Team) (Powerhouse9ja LLC)
 *2026 - Present*
-- **Cloud Architecture:** Currently serving as a Cloud Solution Architect, managing foundational cloud infrastructure for the startup.
+- **Cloud Architecture:** Currently serving as a Cloud Solutions Architect, managing foundational cloud infrastructure for the startup.
 - **Scalability:** Developing infrastructure to support 100M+ users, while keeping the cloud environment secure and resilient.
 - **Core Focus:** Data backup, integrity, security, and auditability.
 

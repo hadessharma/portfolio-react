@@ -72,7 +72,7 @@ const StandardHome: React.FC = () => {
                     </div>
 
                     <p className="paper-copy text-sm md:text-lg max-w-lg">
-                        <span className="text-paper-accent font-medium">Founding Software Engineer</span> and <span className="text-paper-accent font-medium">Architect</span>.
+                        <span className="text-paper-accent font-medium">Founding Software Engineer</span> and <span className="text-paper-accent font-medium">Solutions Architect</span>.
                         Specializing in Full stack development, Distributed Systems, Cloud Automation.
                     </p>
 
