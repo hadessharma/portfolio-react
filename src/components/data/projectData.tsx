@@ -30,7 +30,9 @@ import asuTutoringImage3 from "../../assets/project/tutoring_assistant/3.png";
 import asuTutoringImage4 from "../../assets/project/tutoring_assistant/4.png";
 
 // Portfolio Agent
-import portfolioAgentImage1 from "../../assets/project/portfolio_agent/1.png";
+import portfolioAgentImage1 from "../../assets/project/portfolio_conversational_ai/1.png";
+import portfolioAgentImage2 from "../../assets/project/portfolio_conversational_ai/2.png";
+import portfolioAgentImage3 from "../../assets/project/portfolio_conversational_ai/3.png";
 
 // Text2SQL
 import text2SqlImage1 from "../../assets/project/text2sql/1.png";
@@ -93,7 +95,7 @@ export const projects: Project[] = [
   },
   {
     name: "Portfolio Conversational AI",
-    img: [portfolioAgentImage1],
+    img: [portfolioAgentImage1, portfolioAgentImage2, portfolioAgentImage3],
     app: false,
     github: "https://github.com/hadessharma/portfolio-react",
     demo: [
