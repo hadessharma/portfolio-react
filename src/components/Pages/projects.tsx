@@ -14,6 +14,7 @@ const ProjectDetailPanel: React.FC<{ project: ProjectType }> = ({ project }) => 
 
   useEffect(() => {
     setAspectRatio(null);
+    if (!project || project.img.length === 0) return;
     const img = new Image();
     img.src = project.img[0];
     img.onload = () => {

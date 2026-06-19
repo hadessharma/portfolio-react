@@ -35,7 +35,6 @@ import portfolioAgentImage2 from "../../assets/project/portfolio_conversational_
 import portfolioAgentImage3 from "../../assets/project/portfolio_conversational_ai/3.png";
 
 // Text2SQL
-import text2SqlImage1 from "../../assets/project/text2sql/1.png";
 
 // Project Data Structure
 export type ProjectCategory = "ai" | "cloud" | "other";
@@ -117,7 +116,7 @@ export const projects: Project[] = [
   },
   {
     name: "Text2SQL",
-    img: [text2SqlImage1],
+    img: [],
     app: false,
     github: "https://github.com/hadessharma/Text2SQL",
     info: [

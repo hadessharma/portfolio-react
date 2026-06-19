@@ -25,7 +25,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 
   useEffect(() => {
     setAspectRatio(null);
-    if (!project) return;
+    if (!project || project.img.length === 0) return;
     const img = new Image();
     img.src = project.img[0];
     img.onload = () => {
